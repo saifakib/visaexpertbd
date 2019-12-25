@@ -1,0 +1,121 @@
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+color: #000;  /*Sets the text hover color on navbar*/
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >   
+ a:hover, .navbar-default .navbar-nav > .active > a:focus {
+color: white; /*BACKGROUND color for active*/
+background-color: #030033;
+}
+
+  .navbar-default {
+    background-color: #363d40;
+    border-color: #84888a;
+}
+
+
+.navbar-default .navbar-collapse {
+	 background-color: #363d40;
+    border-color: #84888a;
+}
+@media (min-width: 200px) {
+.navbar-default .navbar-collapse {
+	 background-color: #363d40;
+    border-color: #84888a;
+}	
+}
+
+  .dropdown-menu > li > a:hover,
+   .dropdown-menu > li > a:focus {
+    color: #262626;
+   text-decoration: none;
+  background-color: #53595c;  /*change color of links in drop down here*/
+   }
+
+ .nav > li > a:hover,
+ .nav > li > a:focus {
+    text-decoration: none;
+    background-color: silver; /*Change rollover cell color here*/
+  }
+
+
+  .navbar-default .navbar-nav > li > a {
+   color: white; /*Change active text color here*/
+    }
+	
+	.list-inline > li {
+  
+  color: #00ff00;
+}
+
+#main-menu li.dropdown{display:block !important}
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+fieldset#jform_tickifanyofthisneeded .checkbox,
+fieldset#jform_languageknown .checkbox{margin-left:30px;}
+
+input#jform_dateofbirth,
+input#jform_joiningdate,
+input#jform_expirydateofyourpassport{
+	display: inline-block;
+  width: 93%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+button#jform_dateofbirth_btn,
+button#jform_joiningdate_btn,
+button#jform_expirydateofyourpassport_btn
+{
+	display: inline-block;
+*display: inline;
+*zoom: 1;
+padding: 4px 12px;
+margin-bottom: 0;
+font-size: 13px;
+line-height: 18px;
+text-align: center;
+vertical-align: middle;
+cursor: pointer;
+background-color: #f3f3f3;
+color: #333;
+border: 1px solid #b3b3b3;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+
+}
+button#jform_dateofbirth_btn span.icon-calendar,
+button#jform_joiningdate_btn span.icon-calendar,
+button#jform_expirydateofyourpassport_btn span.icon-calendar{
+display: inline-block;
+width: 14px;
+height: 14px;
+margin-right: .25em;
+line-height: 14px;
+}
+
+button#jform_dateofbirth_btn span.icon-calendar:before,
+button#jform_joiningdate_btn span.icon-calendar:before,
+button#jform_expirydateofyourpassport_btn span.icon-calendar:before{
+	content:"\1F4C5";	
+	color:#333;
+}

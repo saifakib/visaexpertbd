@@ -1,0 +1,5 @@
+//permission problem
+chmod -R 777 storage/
+
+//laravel log problem
+sudo chmod 777 -R /opt/lampp/.....
