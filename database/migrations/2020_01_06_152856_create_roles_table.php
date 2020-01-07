@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAgentsTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateAgentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('agents', function (Blueprint $table) {
-            $table->bigIncrements('agent_id');
-            $table->integer('user_id');
-            $table->string('agent_name')->unique();
-            $table->tinyInteger('status')->default(1)->comment('1=>Active 0=>Deactive');
+        Schema::create('roles', function (Blueprint $table) {
+            $table->bigIncrements('role_id');
+            $table->string('name')->uniqid();
+            $table->string('slug');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateAgentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('agents');
+        Schema::dropIfExists('roles');
     }
 }

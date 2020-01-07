@@ -15,7 +15,6 @@ class CreateCandidateDetailsTable extends Migration
     {
         Schema::create('candidate_details', function (Blueprint $table) {
             $table->integer('candidate_id');
-            $table->integer('candidate_code');
             $table->integer('user_id');
             $table->string('full_name');
             $table->string('user_name');

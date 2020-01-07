@@ -9,7 +9,7 @@
 		<div id="navigation" class="wrapper">
 
 				<!-- ========navbar start ========-->     
-				@include('layouts.visa24.partials..navbar')
+				@include('layouts.visa24.partials.navbar')
 				<!-- ========navbar end ========-->
 
 				<!-- ========Header start ========-->

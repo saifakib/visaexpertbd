@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
+use App\User;
+use App\Agent;
+use App\AgentDetails;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -50,6 +54,50 @@ class HomeController extends Controller
     public function contactUs()
     {
         return view('contactUs');
+    }
+
+    public function profile()
+    {
+        $user = User::where('user_id', Auth::id())->first();
+        return view('layouts.visa24.agent.profile',compact('user'));
+    }
+    public function editProfile($id) {
+        $user = User::where('user_id', $id)->first();
+        return view('layouts.visa24.agent.editProfile',compact('user'));
+    }
+
+    public function updateProfile(Request $request) {
+        //dd($request);
+        // $this->validate($request, [
+        //     'id' => 'required',
+        //     'full_name' => 'required',
+        //     'username' => 'required',
+        //     'agent_name' => 'required|unique:agents',
+        //     'title' => 'required',
+        //     'details' => 'required',
+        //     'license' => 'required',
+        //     'location' => 'required',
+        //     'logo' => 'required|image'
+        // ]);
+        $agent = Agent::where('user_id', $request->id)->first();
+        DB::beginTransaction();
+        if(!$agent) 
+        {
+            $user = User::where('user_id', $request->id)->first();
+            $user->full_name = $request->full_name;
+            $user->username = $request->username;
+            //$user->updated_at = getTimestamp();
+            $user->save();
+
+            if($user){
+                $agent = Agent::insertGetId([
+                ]);
+            }
+            
+        } else {
+
+        }
+        
     }
 
 

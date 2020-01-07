@@ -10,9 +10,9 @@
 				<div class="services block block-bg-gradient block-border-bottom">
 					<div class="item-page" itemscope itemtype="https://schema.org/Article">
 					
-					<h2 class="block-title">
-						আমাদের সম্পর্কে			
-					</h2>
+						<h2 class="block-title">
+							আমাদের সম্পর্কে			
+						</h2>
 										
 					<div itemprop="articleBody" class="articleBody">	
 						<img src="{{ asset('assets/img/6_r8_c4.jpg') }}" width="320" height="167" border="0" data-original-height="246" data-original-width="469" style="margin: 0px auto 10px auto;" />	

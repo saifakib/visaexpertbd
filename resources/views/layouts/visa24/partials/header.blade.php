@@ -15,10 +15,28 @@
 			<!--header rightside-->
 			<div class="col-md-2">
 			<!--user menu-->
+			@guest
 				<ul class="list-inline user-menu pull-right">
 					<li class="hidden-xs"><i class="fa fa-edit text-primary"></i> <a href="{{ route('register') }}" class="text-uppercase">Register</a></li>
 					<li class="hidden-xs"><i class="fa fa-sign-in text-primary"></i> <a href="{{ route('login') }}" class="text-uppercase">Login</a></li>
 				</ul>
+			@else
+				@if(Auth::user()->role_id == 0)
+					<ul class="list-inline user-menu pull-right">
+						<li class="hidden-xs"><i class="fa fa-edit text-primary"></i> <a href="{{ route('logout') }}" class="text-uppercase">Logout</a></li>
+					</ul>
+				@endif
+				@if(Auth::user()->role_id == 1)
+					<ul class="list-inline user-menu pull-right">
+						<li class="hidden-xs"><i class="fa fa-edit text-primary"></i> <a href="{{ route('logout') }}" class="text-uppercase">Logout</a></li>
+					</ul>
+				@endif
+				@if(Auth::user()->role_id == 2)
+					<ul class="list-inline user-menu pull-right">
+						<li class="hidden-xs"><i class="fa fa-edit text-primary"></i> <a href="{{ route('logout') }}" class="text-uppercase">Logout</a></li>
+					</ul>
+				@endif
+			@endguest
 			</div>
 		</div>
     </div>

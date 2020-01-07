@@ -11,7 +11,7 @@
 
 			        <div class="col-md-6">
 
-					<form method="POST" action="{{ route('register') }}" class="form-validate form-horizontal well" enctype="multipart/form-data">
+					<form method="POST" action="{{ route('registation-post') }}" class="form-validate form-horizontal well" enctype="multipart/form-data">
 					@csrf
                     <fieldset>
 
@@ -66,8 +66,8 @@
                     <div style="margin-bottom: 25px" class="input-group">                    	
                         <select name="type" class="form-control required" required="required" aria-required="true" aria-invalid="false">
                             <option value="" selected="selected">Select User Type</option>
-                            <option value="Candidate">Candidate</option>
-                            <option value="Agent">Agent</option>
+                            <option value="2">Candidate</option>
+                            <option value="1">Agent</option>
                         </select>
                         <span class="input-group-addon"><i class="glyphicon glyphicon-arrow-down"></i></span>                                        
                     </div> 

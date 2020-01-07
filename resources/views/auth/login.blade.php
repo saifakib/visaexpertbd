@@ -9,20 +9,29 @@
 				<div class="services block block-bg-gradient block-border-bottom ">
 					<div class="col-md-6 well">
 					    <div class="login">
+							<div>
+								@if ($errors->has('email'))
+                  					<span class="error">{{ $errors->first('email') }}</span>
+                  				@endif  
+								@if ($errors->has('password'))
+									<span class="error">{{ $errors->first('password') }}</span>
+								@endif  
+							</div>
 					        
 					     <form method="POST" action="{{ route('login') }}" class="form-validate form-horizontal well">
 							 @csrf
 					        <fieldset>
 					            <legend>Sign In</legend>
 					            <div style="margin-bottom: 25px" class="input-group">                   	
-					                <input name="username" id="username" value="" class="validate-username form-control required invalid" size="25" required="required" aria-required="true" autofocus="" aria-invalid="true" type="text" placeholder="Username">
+					                <input name="email" id="email" value="" class="validate-email form-control required invalid" size="25" required="required" aria-required="true" autofocus="" aria-invalid="true" type="text" placeholder="Email">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>                                        
 					            </div>
+								
 
 					            <div style="margin-bottom: 25px" class="input-group">                    	
 					                <input name="password" id="password" value="" class="validate-password form-control required invalid" size="25" maxlength="99" required="required" aria-required="true" aria-invalid="true" type="password" placeholder="Password">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>                                        
-					            </div>
+								</div>
 
 					            <div class="control-group">
 					                        

@@ -15,7 +15,6 @@ class CreateAgentDetailsTable extends Migration
     {
         Schema::create('agent_details', function (Blueprint $table) {
             $table->integer('agent_id');
-            $table->integer('agent_code');
             $table->integer('user_id');
             $table->string('agent_name')->unique();
             $table->string('title');
