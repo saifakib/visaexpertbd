@@ -12,7 +12,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title')  {{ config('app.name', 'Visa24 BD') }}</title>
+    <title>@yield('title')  {{ config('app.name', 'VisaExpert BD') }}</title>
 
 
     <!-- Facebook Opengraph integration: https://developers.facebook.com/docs/sharing/opengraph -->

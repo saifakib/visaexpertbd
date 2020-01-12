@@ -35,6 +35,10 @@ Route::get('/contact-us', 'HomeController@contactUs')->name('contact-us');
 Route::get('/profile', 'HomeController@profile')->name('profile');
 Route::get('/profile-edit/{id}', 'HomeController@editProfile')->name('editProfile');
 Route::get('/profile-update', 'HomeController@updateProfile')->name('updateProfile');
+Route::get('/visa-category', 'HomeController@visaCategory')->name('visacategory');
+Route::get('/view-visa-offers', 'HomeController@viewVisaOffers')->name('viewvisaoffers');
+
+
 
 
 

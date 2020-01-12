@@ -22,14 +22,15 @@
 							  <!-- Wrapper for slides -->
 							<div class="carousel-inner" role="listbox">
 							   <div class="item active">
-							      <img src="{{ asset('assets/img/slider/001.jpg') }}" alt="...">
+							      <img src="{{ asset('assets/img/slider/Australia.jpg') }}" alt="...">
 							   </div>
 							   <div class="item">
-							     <img src="{{ asset('assets/img/slider/004.jpg') }}" alt="...">
+							     <img src="{{ asset('assets/img/slider/canada.jpg') }}" alt="...">
 							   </div>
 							   <div class="item">
-							     <img src="{{ asset('assets/img/slider/02.jpg') }}" alt="...">
+							     <img src="{{ asset('assets/img/slider/Singapore 8.jpg') }}" alt="...">
 							   </div>
+								
 						    </div>
 						</div>
 

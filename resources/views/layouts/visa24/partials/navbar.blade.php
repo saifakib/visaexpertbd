@@ -26,8 +26,8 @@
 					<!-- Dropdown Menu -->
 					<ul class="dropdown-menu" id="dropdownmenu1">
 						<li class="dropdown-header">VISA PAGES</li>
-						<li><a href="visaOffers.html" tabindex="-1" class="menu-item">Visa Offers</a></li>
-						<li><a href="visaTypes.html" tabindex="-1" class="menu-item">Visa Category</a></li>                  
+						<li><a href="{{ route('viewvisaoffers') }}" tabindex="-1" class="menu-item">Visa Offers</a></li>
+						<li><a href="{{ route('visacategory') }}" tabindex="-1" class="menu-item">Visa Category</a></li>                  
 					</ul>
 				</li>  
 							

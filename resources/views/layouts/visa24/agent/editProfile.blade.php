@@ -46,7 +46,7 @@
                                         <div class="form-group row">
                                             <h5 for="details" class="col-form-label col-md-3 text-uppercase text-success text-left">Details</h5>
                                             <div class="col-md-8">
-                                                <textarea name="deatils" id="details" value="" class="form-control col-md-8 text-left" cols="30" rows="05"></textarea>
+                                                <textarea name="details" id="details" value="" class="form-control col-md-8 text-left" cols="30" rows="05"></textarea>
                                             </div>
                                         </div>
                                         <div class="clearfix"></div>   
