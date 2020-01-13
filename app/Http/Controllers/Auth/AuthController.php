@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Session;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use App\Candidate;
+use App\CandidateDetails;
 use DB;
 
 class AuthController extends Controller
 {
-    public function postRegister(Request $request) 
+    public function postRegister(Request $request)
     {
         $this->validate($request, [
             'name' => 'required',
@@ -21,6 +24,7 @@ class AuthController extends Controller
 
         ]);
 
+        DB::beginTransaction();
         $user = User::insertGetId([
                 'username' => $request->username,
                 'full_name' => $request->name,
@@ -29,11 +33,46 @@ class AuthController extends Controller
                 'role_id' => $request->type,
                 'remember_token' => $request->_token,
         ]);
+
+
+         if($user && $request->type == 2)
+         {
+             if($user)
+             {
+                 $candidate = Candidate::insertGetId([
+                     'user_id' => $user,
+                     'user_name' => $request->username,
+                     'full_name' => $request->name,
+                     'status' => 1,
+                     'created_at' => date('Y-m-d')
+                 ]);
+                 DB::commit();
+
+                 if($candidate)
+                 {
+                     $candidatedetails = CandidateDetails::insert([
+                         'candidate_id' => $candidate,
+                         'user_id' => $user,
+                         'user_name' => $request->username,
+                         'full_name' => $request->name,
+                         'created_at' => date('Y-m-d')
+                     ]);
+                     DB::commit();
+                 }
+                 Session::flash('success', 'Candidate Create Successfull !!');
+                 DB::commit();
+             } else {
+                 DB::rollback();
+             }
+         } else {
+             DB::rollback();
+         }
+
         return redirect()->route('login');
 
 
         // DB::beginTransaction();
-        // if($request->type == 1) 
+        // if($request->type == 1)
         // {
         //     $user = User::insertGetId([
         //         'username' => $request->username,
@@ -53,7 +92,7 @@ class AuthController extends Controller
         //         ]);
         //         DB::commit();
 
-        //         if($agent) 
+        //         if($agent)
         //         {
         //             $agentdetails = AgentDetails::insert([
         //                 'agent_id' => $agent,
@@ -65,7 +104,7 @@ class AuthController extends Controller
         //         DB::rollback();
         //     }
         // } else {
-            
+
         // }
         // $user = new User ();
         // $user->name = $request->get ( 'username' );
@@ -75,7 +114,7 @@ class AuthController extends Controller
         // $user->save ();
         // return redirect ( '/' );
     }
-	
+
     public function postLogin(Request $request) {
 
         $this->validate($request, [
@@ -93,9 +132,9 @@ class AuthController extends Controller
             // return response()->json(['success'=>true,'message'=>'success', 'data' => $user]);
             return redirect()->route('home');
     }
-    
 
-	
+
+
     public function getLogout() {
         //Session::flush ();
         Auth::logout ();

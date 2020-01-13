@@ -19,7 +19,7 @@ Auth::routes();
 // Authentication routes...
 Route::post('auth/login', 'Auth\AuthController@postLogin')->name('login-post');
 Route::get('auth/logout', 'Auth\AuthController@getLogout')->name('logout');
- 
+
 // Registration routes...
 Route::post('auth/register', 'Auth\AuthController@postRegister')->name('registation-post');
 

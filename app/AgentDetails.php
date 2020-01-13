@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class AgentDetails extends Model
 {
-    //
+    protected $primaryKey = 'agent_id';
+
 
     public function user() {
         return $this->belongsTo('App\User', 'user_id','user_id');

@@ -66,7 +66,7 @@ class HomeController extends Controller
     {
         return view('visaCategory');
     }
-    public function viewVisaOffers() 
+    public function viewVisaOffers()
     {
         return view('viewVisaOffers');
     }
@@ -78,7 +78,12 @@ class HomeController extends Controller
     }
     public function editProfile($id) {
         $user = User::where('user_id', $id)->first();
-        return view('layouts.visa24.agent.editProfile',compact('user'));
+        if($user->role_id == 1) {
+            return view('layouts.visa24.agent.editProfile',compact('user'));
+        } else {
+            return view('layouts.visa24.candidate.editProfile',compact('user'));
+        }
+
     }
 
     public function updateProfile(Request $request) {
@@ -94,103 +99,111 @@ class HomeController extends Controller
         //     'location' => 'required',
         //     'logo' => 'required|mimes:jpeg,jpg,JPG,bmp,png,wepp'
         // ]);
-        $agent = Agent::where('user_id', $request->id)->first();
-        DB::beginTransaction();
-        if(!$agent) 
+        $user = User::where('user_id', $request->id)->first();
+        if($user->role_id == 1)
         {
-            $user = User::where('user_id', $request->id)->first();
-            $user->full_name = $request->full_name;
-            $user->username = $request->username;
-            //$user->updated_at = getTimestamp();
-            $user->save();
+            $agent = Agent::where('user_id', $request->id)->first();
+            DB::beginTransaction();
+            if(!$agent)
+            {
+                $user = User::where('user_id', $request->id)->first();
+                $user->full_name = $request->full_name;
+                $user->username = $request->username;
+                //$user->updated_at = getTimestamp();
+                $user->save();
 
-            if($user) {
-                $agentC = Agent::insertGetId([
-                    'user_id' => $user->user_id,
-                    'agent_name' => $request->agent_name,
-                    'status' => '1',
-                ]);
-                if($agentC){
-                    $agentDetais = AgentDetails::insert([
-                        'agent_id' => $agentC,
+                if($user) {
+                    $agentC = Agent::insertGetId([
                         'user_id' => $user->user_id,
                         'agent_name' => $request->agent_name,
-                        'title' => $request->title,
-                        'details' => $request->details,
-                        'license' => $request->license,
-                        'location' => $request->location,
+                        'status' => '1',
                     ]);
-                    //Image upload and update path at Agent
-                    if ($request->hasFile('logo')) 
-                    {
-                        $aimage = $request->file('logo');
-                        $fileName = $user. '-' .time() . '.' . $aimage->getClientOriginalExtension();
-                        Image::make($aimage)->resize(350, 360)->save(public_path('images/agent/' . $fileName));
-                        if($fileName != null){
-                            $agentDetais = AgentDetails::where('agent_id', $agentC)
-                                ->update([
-                                    'logo' => $fileName
-                                ]);
+                    if($agentC){
+                        $agentDetais = AgentDetails::insert([
+                            'agent_id' => $agentC,
+                            'user_id' => $user->user_id,
+                            'agent_name' => $request->agent_name,
+                            'title' => $request->title,
+                            'details' => $request->details,
+                            'license' => $request->license,
+                            'location' => $request->location,
+                        ]);
+                        //Image upload and update path at Agent
+                        if ($request->hasFile('logo'))
+                        {
+                            $aimage = $request->file('logo');
+                            $fileName = $user. '-' .time() . '.' . $aimage->getClientOriginalExtension();
+                            Image::make($aimage)->resize(350, 360)->save(public_path('assets/img/agent' . $fileName));
+                            if($fileName != null){
+                                $agentDetais = AgentDetails::where('agent_id', $agentC)
+                                    ->update([
+                                        'logo' => $fileName
+                                    ]);
+                            }
                         }
+                        DB::commit();
+                    } else{
+                        Session::flash('error', 'Something Went Wrong !!');
+                        DB::rollBack();
                     }
+                    Session::flash('success', 'Agent Update Successfull !!');
                     DB::commit();
-                } else{
+                } else {
                     Session::flash('error', 'Something Went Wrong !!');
                     DB::rollBack();
                 }
-                Session::flash('success', 'Agent Update Successfull !!');
-                DB::commit();
             } else {
-                Session::flash('error', 'Something Went Wrong !!');
-                DB::rollBack();
-            }
-        } else {
-            $user = User::where('user_id', $request->id)->first();
-            $user->full_name = $request->full_name;
-            $user->username = $request->username;
-            $user->save();
+                $user = User::where('user_id', $request->id)->first();
+                $user->full_name = $request->full_name;
+                $user->username = $request->username;
+                $user->save();
 
-            if($user){
-                $agent->agent_name = $request->agent_name;
-                $agent->status = 1;
-                $agent->save();
+                if($user){
+                    $agent->agent_name = $request->agent_name;
+                    $agent->status = 1;
+                    $agent->save();
 
-                $agentU = AgentDetails::where('user_id', $user->user_id)->first();
-                $agentU->agent_name = $request->agent_name;
-                $agentU->title = $request->title;
-                $agentU->details = $request->details;
-                $agentU->license = $request->license;
-                $agentU->location = $request->location;
-                $agentU->save();
+                    $agentU = AgentDetails::where('user_id', $user->user_id)->first();
+                    $agentU->agent_name = $request->agent_name;
+                    $agentU->title = $request->title;
+                    $agentU->details = $request->details;
+                    $agentU->license = $request->license;
+                    $agentU->location = $request->location;
+                    $agentU->save();
 
-                if (strlen($request->file('logo')) > 0) {
-                    $oldImage = $agentU->logo;
-                    $folderPath = 'images/agent/';
-                    $aimage = $request->file('logo');
-                    $fileName = $user . '-' . time() . '.' . $aimage->getClientOriginalExtension();
-                    $img = Image::make($aimage)->resize(350, 360)->save(public_path('images/agent/' . $fileName));
-                    if ($fileName != null) {
-                        $updateAgentImage = AgentDetails::where('user_id', $user)
-                            ->update([
-                                'logo' => $fileName
-                            ]);
-                        if (file_exists(public_path() . '/' . $folderPath . '/' . $fileName)) {
-                            if (file_exists(public_path() . '/' . $folderPath . $oldImage)) {
-                                unlink(public_path() . '/' . $folderPath . $oldImage);
+                    if (strlen($request->file('logo')) > 0) {
+                        $oldImage = $agentU->logo;
+                        $folderPath = 'images/agent/';
+                        $aimage = $request->file('logo');
+                        $fileName = $user . '-' . time() . '.' . $aimage->getClientOriginalExtension();
+                        $img = Image::make($aimage)->resize(350, 360)->save(public_path('images/agent/' . $fileName));
+                        if ($fileName != null) {
+                            $updateAgentImage = AgentDetails::where('user_id', $user)
+                                ->update([
+                                    'logo' => $fileName
+                                ]);
+                            if (file_exists(public_path() . '/' . $folderPath . '/' . $fileName)) {
+                                if (file_exists(public_path() . '/' . $folderPath . $oldImage)) {
+                                    unlink(public_path() . '/' . $folderPath . $oldImage);
+                                }
                             }
                         }
                     }
-                }
 
-                DB::commit();
-                
-            } else {
-                Session::flash('error', 'Something Went Wrong !!');
-                DB::rollBack();
+                    DB::commit();
+
+                } else {
+                    Session::flash('error', 'Something Went Wrong !!');
+                    DB::rollBack();
+                }
             }
+
+        } else {
+
         }
+
         return redirect()->route('profile');
-        
+
     }
 
 

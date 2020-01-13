@@ -15,7 +15,8 @@ class CreateAgentsTable extends Migration
     {
         Schema::create('agents', function (Blueprint $table) {
             $table->bigIncrements('agent_id');
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->string('agent_name')->unique();
             $table->tinyInteger('status')->default(1)->comment('1=>Active 0=>Deactive');
             $table->timestamps();

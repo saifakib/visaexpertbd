@@ -15,7 +15,8 @@ class CreateCandidatesTable extends Migration
     {
         Schema::create('candidates', function (Blueprint $table) {
             $table->bigIncrements('candidate_id');
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->string('full_name');
             $table->string('user_name');
             $table->tinyInteger('status')->default(1)->comment('1=>Active 0=>Deactive');
