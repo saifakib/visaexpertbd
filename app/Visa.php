@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Visa extends Model
 {
+
+    protected $primaryKey = 'visa_id';
+
     public function agent() {
         return $this->belongsTo('App\Agent', 'agent_id','agent_id');
     }

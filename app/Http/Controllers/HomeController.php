@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Candidate;
 use App\CandidateDetails;
 use App\Category;
+use App\Visa;
 use Cassandra\Date;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ use Carbon\Carbon;
 use Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+
 
 class HomeController extends Controller
 {
@@ -73,7 +75,8 @@ class HomeController extends Controller
     }
     public function viewVisaOffers()
     {
-        return view('viewVisaOffers');
+        $visas = Visa::get();
+        return view('viewVisaOffers',compact('visas'));
     }
 
     public function profile()
@@ -293,7 +296,7 @@ class HomeController extends Controller
          $category = Category::insertGetId([
              'category_name' => $request->category_name,
              'created_by' => Auth::id(),
-             'created_at' => Date('Y-m-d')
+             'created_at' => Carbon::now(),
          ]);
         //Image upload
         if ($request->hasFile('image'))
@@ -315,7 +318,109 @@ class HomeController extends Controller
     public function visaCategories()
     {
         $categories = Category::get();
-        return view('layouts.visa24.admin.viewVisaCategoryList',comapact('categories'));
+        return view('layouts.visa24.admin.viewVisaCategoryList',compact('categories'));
+    }
+
+    public function editCategory($id)
+    {
+        $category = Category::where('category_id', $id)->first();
+        return view('layouts.visa24.admin.editCategory',compact('category'));
+    }
+
+    public function updateCategory(Category $id, Request $request)
+    {
+        //return $id + $request;
+        $id->category_name = $request->category_name;
+        $id->updated_at = Carbon::now();
+        $id->save();
+        if ($request->hasFile('image'))
+        {
+            $oldImage = $id->image;
+            $folderPath = 'assets/img/visaCategories';
+            if (file_exists(public_path() . '/' . $folderPath . $oldImage)) {
+                unlink(public_path() . '/' . $folderPath . $oldImage);
+            }
+
+            $newImage = $request->file('image');
+            $fileName = $request->category_name. '-' .time() . '.' . $newImage->getClientOriginalExtension();
+            Image::make($newImage)->resize(225, 225)->save(public_path('assets/img/visaCategories/' . $fileName));
+            if($fileName != null){
+                 $id->image = $fileName;
+                 $id->save();
+            }
+        }
+        return redirect()->route('visaCategories');
+    }
+
+    public function deleteCategorie(Category $id) 
+    {
+        $id->delete();
+        return redirect()->back();
+    }
+
+
+
+
+
+    public function createVisa()
+    {
+        $categories = Category::get();
+        //return $categories;
+        return view('layouts.visa24.agent.createVisa', compact('categories'));
+    }
+    public function postVisa(Request $request)
+    {
+        $visa = Visa::insertGetId([
+            'title' => $request->title,
+            'category_id' => $request->category,
+            'agent_id' => Auth::user()->agent->agent_id,
+            'visa_authority' => $request->visa_authority,
+            'offered_country' => $request->offered_country,
+            'per_month_salary' => $request->per_month_salary,
+            'contact_years' => $request->contact_years,
+            'processing_time' => $request->processing_time,
+            'visa_payment' => $request->visa_payment,
+            'age_limit' => $request->age_limit,
+            'education' => $request->education,
+            'language' => $request->language,
+            'language_test' => $request->language_test,
+            'study_gap' => $request->study_gap,
+            'discount_visa24_clint' => $request->discount_visa24_clint,
+            'payment_system' => $request->payment_system,
+            'security_type' => $request->security_type,
+            'visa_possible_rate'  => $request->visa_possible,
+            'decription'  => $request->decription,
+            'created_at' => Carbon::now(),
+        ]);
+
+        //Image upload
+        if ($request->hasFile('logo'))
+        {
+            $aimage = $request->file('logo');
+            $currentDate = Carbon::now()->toDateString();
+            $fileName = $request->category. '-' .$currentDate. '.' . $aimage->getClientOriginalExtension();
+            Image::make($aimage)->resize(225, 225)->save(public_path('assets/img/visaOffers/' . $fileName));
+            if($fileName != null){
+                 Visa::where('visa_id', $visa)
+                    ->update([
+                        'logo' => $fileName
+                    ]);
+            }
+        }
+        Session::flash('success', 'Visa Post Successfull !!');
+        return redirect()->back();
+    }
+
+
+
+
+
+
+
+    public function visaDetails($id) 
+    {
+        $visa = Visa::where('visa_id', $id)->first();
+        return view('visaDetails', compact('visa'));
     }
 
 

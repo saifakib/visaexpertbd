@@ -5,8 +5,11 @@
                 
         <div class="row subfooter">
 
-          <div class="col-md-3">
+          <!-- <div class="col-md-3">
           	<img src="assets/img/final-footer.png" border="0" class="img-thumbnail2">            
+          </div> -->
+          <div class="col-md-3">
+          	<img src="#" border="0" class="img-thumbnail2">            
           </div>
 
           <div class="col-md-9">    

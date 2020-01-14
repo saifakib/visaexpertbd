@@ -47,7 +47,7 @@
 					<ul class="dropdown-menu"  id="dropdownmenu3">
 					    <li class="dropdown-header">VISA AGENT PAGES</li>
 							<li><a href="{{ route('viewvisaoffers') }}" tabindex="-3" class="menu-item">Search an offer</a></li>
-							<li><a href="visaAgents.html" tabindex="-3" class="menu-item">Visa Agents</a></li> </ul>
+							<li><a href="#" tabindex="-3" class="menu-item">Visa Agents</a></li> </ul>
 				</li>
 
 				<li class="dropdown" >
@@ -61,7 +61,7 @@
 				</li>
 
 				<li><a href="{{ route('about-us') }}">About Us</a></li>
-				<li><a href="blog.html">Blog</a></li>
+				<li><a href="#">Blog</a></li>
 				<li><a href="{{ route('our-services') }}">Our Service</a></li>
 				<li><a href="{{ route('contact-us') }}">Contact Us</a></li>
 

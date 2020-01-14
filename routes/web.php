@@ -42,11 +42,28 @@ Route::get('/profile-update', 'HomeController@updateProfile')->name('updateProfi
 Route::get('/visa-category', 'HomeController@visaCategory')->name('visacategory');
 Route::get('/view-visa-offers', 'HomeController@viewVisaOffers')->name('viewvisaoffers');
 Route::get('/candidate-resumes', 'HomeController@candidateResumes')->name('candidateResumes');
+Route::get('/visa-details/{id}', 'HomeController@visaDetails')->name('visaDetails');
+
+
+
+
+
+//agent
+Route::get('/agent/post-visa', 'HomeController@createVisa')->name('createVisa');
+Route::get('/agent/posted-visa', 'HomeController@postVisa')->name('postVisa');
+
+
 
 
 //admin
 
 Route::get('/admin/visa-categories', 'HomeController@visaCategories')->name('visaCategories');
+Route::get('/admin/delete-category/{id}', 'HomeController@deleteCategorie')->name('deleteCategorie');
+Route::get('/admin/edit-category/{id}', 'HomeController@editCategory')->name('editCategory');
+Route::get('/admin/update-category/{id}', 'HomeController@updateCategory')->name('updateCategory');
+
+
+
 
 
 

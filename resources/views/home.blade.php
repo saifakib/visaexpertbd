@@ -48,7 +48,7 @@
 					<!-- visa search form start -->
 					<div class="col-md-12 m-b-20">
 
-				    <form action="#" method="post" class="form-validate form-horizontal" >
+				    <form action="#" method="#" class="form-validate form-horizontal" >
 				     <div class="row">
 				     	<div class="col-md-3">
 				         <span class="text-uppercase text-default" style="font-size:20px;"><strong>Find Visa Offers</strong>
@@ -94,7 +94,7 @@
 				                  </h5>
 				            	</div>
 				                <div class="col-md-3 text-right">
-				            	  <a href="offersViewDetails.html" class="btn btn-sm btn-success-custom">FIND MORE</a>
+				            	  <a href="#" class="btn btn-sm btn-success-custom">FIND MORE</a>
 				                  <h5 class="text-default">Posted 21 Hours ago </h5>
 				            	</div>
 				            </div>	
@@ -172,7 +172,7 @@
 				        <div class="col-md-12 block-border">
 				        	<h3 class="text-uppercase" style="font-weight:400; color:#666;">কানাডা ওয়ার্কপারমিট ভিসা (ঢাকা থেকে)
 				        	</h3>
-				            <a href="offersViewDetails.html" class="btn btn-sm btn-success-custom">FIND MORE</a>
+				            <a href="#" class="btn btn-sm btn-success-custom">FIND MORE</a>
 				            <h5 class="text-uppercase text-default"><strong>Agent VA-0101, Dhaka  , Country Canada, Cost ১২ লক্ষ টাকা ভিসার পর REF-MIJ-TI5L</strong>
 				            </h5>
 				            <p>এটি একটি পরীক্ষামূলক সংযোজন। প্রচুর চাহিদার প্রেক্ষিতে আমরা কিছু সংখ্যক কানাডা ওয়ার্ক পারমিট ও জব ভিসার কাজ করতে যাচ্ছি। শুধুমাত্র যারা ২০ বছর বয়স থেকে ৪৫ বছর বয়সের মধ্যে আছে ও এসএসসি পাশ তারাই এই ভিসার জন্য আবেদন করুন। সর্বোচ্চ সময় ৩ মাস ১৫ দিন। ঢাকা ভিএসএস এ আপনি নিজের হাতে পেপার জমা দেবেন ও তুলবেন। ভিসা হলে পেমেন্ট করতে হবে। সেক্ষেত্রে সরকারীভাবে ম্যানপাওয়ার হবে এবং স্মার্ট কার্ড পাওয়ার পরই ফ্লাই করবেন। 
@@ -424,7 +424,7 @@
 					of Happy Visa Candidates!
 				</h3>
 				<p>
-					<a href="registration.html" class="btn btn-more btn-lg i-right">Join them today! <i class="fa fa-angle-right"></i></a>
+					<a href="{{ route('register')}}" class="btn btn-more btn-lg i-right">Join them today! <i class="fa fa-angle-right"></i></a>
 				</p>
 			</div>  
 					<!--counter end-->   

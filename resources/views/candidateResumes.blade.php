@@ -8,7 +8,7 @@
                 <div class="services block block-bg-gradient block-border-bottom ">
 
                     <div class="col-md-12">
-                        <form action="" method="post" class="form-horizontal" >
+                        <form action="#" method="" class="form-horizontal" >
                             <div class="row">
                                 <div class="col-md-3">
                                     <span class="text-uppercase text-default" style="font-size:20px;"><strong>Find Candidates</strong></span>
@@ -341,11 +341,11 @@
 					              </span>
 
                                     <span class="col-md-12 text-default " style="padding-bottom:5px; padding-top:15px;">
-					               <button type="submit" class="validate btn btn-danger col-md-5">
+					               <!-- <button type="submit" class="validate btn btn-danger col-md-5">
 										Filter
-								   </button>
+								   </button> -->
 
-					               <a class="btn btn-one col-md-5 pull-right" href="candidateResume.html" title="Reset">
+					               <a class="btn btn-one col-md-5 pull-right" href="#" title="Reset">
 					                    Reset
 					                </a>
 					              </span>

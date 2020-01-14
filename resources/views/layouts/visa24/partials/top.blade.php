@@ -32,6 +32,9 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet">
+
+    <!-- Material Icon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <!-- Bootstrap CSS File -->
     <link href="{{ asset('assets/lib/bootstrap/css/bootstrap.css') }}" rel="stylesheet">    
