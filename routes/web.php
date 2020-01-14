@@ -25,6 +25,10 @@ Route::post('auth/register', 'Auth\AuthController@postRegister')->name('registat
 
 Route::get('/clear', 'HomeController@clear')->name('clear');
 
+Route::get('/create-visa-category', 'HomeController@createVisaCategory')->name('createVisaCategory');
+Route::post('/post-visa-category', 'HomeController@postVisaCategory')->name('postVisaCategory');
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/how-to-start-agent', 'HomeController@agentStart')->name('agent-start');
@@ -37,8 +41,12 @@ Route::get('/profile-edit/{id}', 'HomeController@editProfile')->name('editProfil
 Route::get('/profile-update', 'HomeController@updateProfile')->name('updateProfile');
 Route::get('/visa-category', 'HomeController@visaCategory')->name('visacategory');
 Route::get('/view-visa-offers', 'HomeController@viewVisaOffers')->name('viewvisaoffers');
+Route::get('/candidate-resumes', 'HomeController@candidateResumes')->name('candidateResumes');
 
 
+//admin
+
+Route::get('/admin/visa-categories', 'HomeController@visaCategories')->name('visaCategories');
 
 
 

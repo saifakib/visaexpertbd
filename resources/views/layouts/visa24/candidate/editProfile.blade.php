@@ -95,7 +95,7 @@
                                             <div class="form-group row">
                                                 <h5 for="full_name" class="col-form-label col-md-3 text-uppercase text-success text-left">Expired Passport Date</h5>
                                                 <div class="col-md-8">
-                                                    <input type="text" name="expired_passport_date" value="{{ $user->candidateDetails->expired_passport_date }}" class="form-control col-md-8 text-left" id="full_name">
+                                                    <input type="date" name="expired_passport_date" value="{{ $user->candidateDetails->expired_passport_date }}" class="form-control col-md-8 text-left" id="full_name">
                                                 </div>
                                             </div>
                                             <div class="clearfix"></div>

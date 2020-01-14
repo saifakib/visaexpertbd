@@ -1,4 +1,4 @@
-<div class="navbar-start"> 
+<div class="navbar-start">
 
 	<div class="navbar navbar-default" id="navbar-default" style="margin-left:0px; margin-right:0px;">
 		<!--mobile collapse menu button-->
@@ -27,57 +27,57 @@
 					<ul class="dropdown-menu" id="dropdownmenu1">
 						<li class="dropdown-header">VISA PAGES</li>
 						<li><a href="{{ route('viewvisaoffers') }}" tabindex="-1" class="menu-item">Visa Offers</a></li>
-						<li><a href="{{ route('visacategory') }}" tabindex="-1" class="menu-item">Visa Category</a></li>                  
+						<li><a href="{{ route('visacategory') }}" tabindex="-1" class="menu-item">Visa Category</a></li>
 					</ul>
-				</li>  
-							
+				</li>
+
 				<li class="dropdown" >
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" >Candidate<b class="caret"></b></a>
 					<!-- Dropdown Menu -->
 					<ul class="dropdown-menu"  id="dropdownmenu2">
 						<li class="dropdown-header">Candidate PAGES</li>
-						<li><a href="candidateResume.html" tabindex="-2" class="menu-item">Candidates Resumes</a></li>
-						<li><a href="resumeSearch.html" tabindex="-2" class="menu-item">Search Candidate</a></li>                   
+						<li><a href="{{ route('candidateResumes') }}" tabindex="-2" class="menu-item">Candidates Resumes</a></li>
+						<li><a href="{{ route('candidateResumes') }}" tabindex="-2" class="menu-item">Search Candidate</a></li>
 					</ul>
-				</li> 
-							
+				</li>
+
 				<li class="dropdown" >
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" > Agent<b class="caret"></b></a>
 					<!-- Dropdown Menu -->
 					<ul class="dropdown-menu"  id="dropdownmenu3">
 					    <li class="dropdown-header">VISA AGENT PAGES</li>
-							<li><a href="searchOffers.html" tabindex="-3" class="menu-item">Search an offer</a></li>
+							<li><a href="{{ route('viewvisaoffers') }}" tabindex="-3" class="menu-item">Search an offer</a></li>
 							<li><a href="visaAgents.html" tabindex="-3" class="menu-item">Visa Agents</a></li> </ul>
-				</li>               
-							
+				</li>
+
 				<li class="dropdown" >
 	    			<a href="#" class="dropdown-toggle" data-toggle="dropdown" >How to Start<b class="caret"></b></a>
 						<!-- Dropdown Menu -->
 						<ul class="dropdown-menu" id="dropdownmenu4">
 							<li class="dropdown-header">HOW TO START PAGES</li>
 							<li><a href="{{ route('agent-start') }}" tabindex="-4" class="menu-item">For visa agents</a></li>
-							<li><a href="{{ route('candidate-start') }}" tabindex="-4" class="menu-item">For Candidates</a></li>                    
+							<li><a href="{{ route('candidate-start') }}" tabindex="-4" class="menu-item">For Candidates</a></li>
 						</ul>
-				</li> 
+				</li>
 
-				<li><a href="{{ route('about-us') }}">About Us</a></li>                
+				<li><a href="{{ route('about-us') }}">About Us</a></li>
 				<li><a href="blog.html">Blog</a></li>
 				<li><a href="{{ route('our-services') }}">Our Service</a></li>
 				<li><a href="{{ route('contact-us') }}">Contact Us</a></li>
-				
+
 			</ul>
 		</div>
 		<!--/.navbar-collapse -->
-	</div>  
-				<script>  
+	</div>
+				<script>
 					// $('li.dropdown').mouseenter(function(){
 					//	  $(this).find('.dropdown-menu').slideDown(400);
 					// });
-						
+
 						$('li.dropdown').click(function(){
 							$(this).find('.dropdown-menu').slideDown(400);
 						});
-						
+
 						$('li.dropdown').mouseleave(function(){
 							$(this).find('.dropdown-menu').slideUp(400);
 						});
