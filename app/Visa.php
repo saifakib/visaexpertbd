@@ -20,4 +20,7 @@ class Visa extends Model
     public function category() {
         return $this->belongsTo('App\Category', 'category_id','category_id');
     }
+    public function apply() {
+        return $this->belongsToMany('App\ApplyVisa','visa_id', 'apply_id');
+    }
 }

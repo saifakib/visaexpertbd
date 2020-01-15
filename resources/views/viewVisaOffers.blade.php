@@ -122,6 +122,7 @@
 
 				    <div class="col-md-4">
 				    	<h2 class="block-title">Featured Visa</h2>
+						@if(isset($latest))
 				        <div class="col-md-12 block-border">
 				        	<h3 class="text-uppercase" style="font-weight:400; color:#666;">{{ $latest->title }}
 				        	</h3>
@@ -130,6 +131,7 @@
 				            </h5>
 				            <p>{{ $latest->decription }}</p>
 				        </div>
+						@endif
 				    </div>
 				    <!-- visa offers side bar end -->
 				</div>

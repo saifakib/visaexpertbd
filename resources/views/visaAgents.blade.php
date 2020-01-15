@@ -37,7 +37,7 @@
                                             </h5>
 
                                             <h4 class="text-danger">
-                                                <a href="#" title="" class="btn btn-success col-md-3">
+                                                <a href="{{ route('agentVisa', $agent->agent_id) }}" title="" class="btn btn-success col-md-3">
                                                     view offers
                                                 </a>
                                                 <a href="{{ route('visaAgent', $agent->agent_id) }}" title="" class="btn btn-primary col-md-3 pull-right">

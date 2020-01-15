@@ -116,7 +116,7 @@
 				            <p><span class="glyphicon glyphicon-map-marker text-info"></span> VISA Location<br />{{$visa->offered_country }}</p>
 				            <p><span class="glyphicon glyphicon-usd text-info"></span> Rate<br />{{ $visa->visa_payment}} </p>
 				            <p><span class="glyphicon glyphicon-map-marker text-info"></span> Agent Location<br />{{$visa->agentDetails->location }}</p>
-		                        <a href="#" class="btn btn-info btn-lg text-uppercase" style="margin-left:-8px;">Apply for this visa</a>
+		                        <a href="{{ route('applyVisa',$visa->visa_id)}}" class="btn btn-info btn-lg text-uppercase" style="margin-left:-8px;">Apply for this visa</a>
 		                        <div class="clearfix"></div>
 				            &nbsp;
 				        </div>

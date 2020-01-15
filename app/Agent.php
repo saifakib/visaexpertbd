@@ -23,5 +23,6 @@ class Agent extends Model
     public function visa() {
         return $this->belongsMany('App\Visa', 'agent_id','agent_id');
     }
+
     
 }

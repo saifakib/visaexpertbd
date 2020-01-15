@@ -44,7 +44,7 @@
 
 
                     <h4 class="col-md-12 text-uppercase text-success">
-                        <a href="/view-visa-offers/showallvisaofferss.html?agentid=1" title="VA-0101" class="btn btn-success col-md-3">
+                        <a href="{{ route('agentVisa', $agent->agent_id) }}" title="VA-0101" class="btn btn-success col-md-3">
                             view offers
                         </a>
                     </h4>

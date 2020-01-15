@@ -18,4 +18,5 @@ class Candidate extends Model
     public function candidateDetails() {
         return $this->belongsTo('App\CandidateDetails', 'user_id','user_id');
     }
+
 }

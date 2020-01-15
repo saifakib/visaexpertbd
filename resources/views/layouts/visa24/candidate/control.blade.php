@@ -23,7 +23,7 @@
                         @include('layouts.visa24.candidate.sidebar')
 	     			</div>
 				    <div class="col-md-9">
-                        @yield('agentc')
+                        @yield('candidate')
 					</div>
 				</div>
 				<!-- Contact Us end -->

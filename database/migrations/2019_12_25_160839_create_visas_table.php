@@ -34,7 +34,7 @@ class CreateVisasTable extends Migration
             $table->float('discount_visa24_clint',8,2)->nullable();
             $table->string('payment_system')->nullable();
             $table->string('security_type')->nullable();
-            $table->float('visa_possible-rate',8,2)->nullable();
+            $table->float('visa_possible_rate',8,2)->nullable();
             $table->text('decription')->nullable();
             $table->string('logo')->default('logo.png')->nullable();
             $table->timestamps();

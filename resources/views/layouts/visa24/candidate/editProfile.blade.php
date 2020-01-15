@@ -1,6 +1,6 @@
-@extends('layouts.visa24.agent.control')
+@extends('layouts.visa24.candidate.control')
 
-@section('agentc')
+@section('candidate')
  <div class="col-md-12" style="font-size:22px; line-height:40px;">
 
                                 <h2 class="block-title">

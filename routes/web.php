@@ -42,6 +42,8 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>['auth','admin']],f
 //agent
 Route::group(['as'=>'agent.','prefix'=>'agent','middleware'=>['auth','agent']],function()
 {
+    Route::get('/view-applicant/{id}', 'HomeController@viewApplicant')->name('viewApplicant');
+    Route::get('/delete-applicant/{id}', 'HomeController@deleteApplicant')->name('deleteApplicant');
     Route::get('/view-visa/{id}', 'HomeController@agentviewVisa')->name('viewVisa');
     Route::get('/post-visa', 'HomeController@createVisa')->name('createVisa');
     Route::get('/posted-visa', 'HomeController@postVisa')->name('postVisa');
@@ -74,6 +76,12 @@ Route::get('/visa-details/{id}', 'HomeController@visaDetails')->name('visaDetail
 Route::get('/visa-agents', 'HomeController@visaAgents')->name('visaAgents');
 Route::get('/visa-agent/{id}', 'HomeController@visaAgent')->name('visaAgent');
 Route::get('/category/{id}/visa', 'HomeController@categoryVisa')->name('categoryVisa');
+Route::get('/agent-visas/{id}', 'HomeController@agentVisa')->name('agentVisa');
+Route::get('/apply-visa/{idv}', 'HomeController@applyVisa')->name('applyVisa');
+Route::get('/apply-visa-post/{id}', 'HomeController@applyVisaPost')->name('applyVisaPost');
+
+
+
 
 
 

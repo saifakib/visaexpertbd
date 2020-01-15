@@ -6,6 +6,7 @@ use App\Candidate;
 use App\CandidateDetails;
 use App\Category;
 use App\Visa;
+use App\ApplyVisa;
 use Cassandra\Date;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
@@ -83,7 +84,13 @@ class HomeController extends Controller
     public function profile()
     {
         $user = User::where('user_id', Auth::id())->first();
-        return view('layouts.visa24.agent.profile',compact('user'));
+        if($user->role_id == 1)
+        {
+            return view('layouts.visa24.agent.profile',compact('user'));
+        }else {
+            return view('layouts.visa24.candidate.profile',compact('user'));
+        }
+        
     }
     public function editProfile($id) {
         $user = User::where('user_id', $id)->first();
@@ -388,9 +395,16 @@ class HomeController extends Controller
         $agents = Agent::get();
         return view('visaAgents',compact('agents'));
     }
+
     public function visaAgent($id) {
         $agent = Agent::where('agent_id', $id)->first();
         return view('visaAgentDetails',compact('agent'));
+    }
+    public function agentVisa($id)
+    {
+        $visas = Visa::where('agent_id',$id)->get();
+        $latest = Visa::where('agent_id',$id)->first();
+        return view('viewVisaOffers',compact('visas','latest'));
     }
 
     public function visaDetails($id)
@@ -418,7 +432,7 @@ class HomeController extends Controller
             return redirect()->route('profile');
         } elseif($user->role_id == 2)
         {
-            return $user;
+            return redirect()->route('profile');
         }
         else{
             return redirect()->back();
@@ -483,6 +497,45 @@ class HomeController extends Controller
     }
 
     public function deleteVisa(Visa $id)
+    {
+        $id->delete();
+        return redirect()->back();
+    }
+
+    public function applyVisa($idv)
+    {
+        if(!Auth::user())
+        {
+            return redirect()->route('login');
+        } else {
+            $visa = Visa::where('visa_id', $idv)->first();
+            return view('applyVisa',compact('visa'));
+        }
+    }
+    public function applyVisaPost(Request $request, $id)
+    {
+        if(!Auth::user())
+        {
+            return redirect()->route('login');
+        } else {
+            $visa = Visa::where('visa_id', $id)->first();
+            ApplyVisa::insert([
+                'visa_id' => $id,
+                'candidate_id' => Auth::id(),
+                'agent_id' => $visa->agent_id,
+                'mobile' => $request->mobile,
+                'apply_date' => Carbon::now(),
+                'created_at' => Carbon::now(),
+            ]);
+        }
+        return redirect()->route('viewvisaoffers');
+    }
+    public function viewApplicant($id)
+    {
+        $applies = ApplyVisa::where('agent_id',$id)->get();
+        return view('layouts.visa24.agent.viewApplicant',compact('applies'));
+    }
+    public function deleteApplicant(ApplyVisa $id)
     {
         $id->delete();
         return redirect()->back();
