@@ -8,7 +8,7 @@
                 <div class="services block block-bg-gradient block-border-bottom ">
 
                     <div class="col-md-12">
-                        <form action="#" method="" class="form-horizontal" >
+                        <form action="#" method="get" class="form-horizontal" >
                             <div class="row">
                                 <div class="col-md-3">
                                     <span class="text-uppercase text-default" style="font-size:20px;"><strong>Find Candidates</strong></span>
@@ -380,7 +380,7 @@
                                                         </h4>
                                                         <h4 class="text-two">
                                                             Budget {{ $candidate->candidateDetails->budget }} Tk.
-                                                            <a href="#" title=" " class="btn btn-one pull-right">
+                                                            <a href="{{ route('candidateResumeDetails', $candidate->user_id) }}"  class="btn btn-one pull-right">
                                                                 view more
                                                             </a>
                                                         </h4>

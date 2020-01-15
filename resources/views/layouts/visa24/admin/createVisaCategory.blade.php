@@ -6,7 +6,7 @@
                                 <h2 class="block-title">
                                     Create Visa
                                 </h2>
-                                <form method="POST" action="{{ route('postVisaCategory') }}" enctype="multipart/form-data">
+                                <form method="POST" action="{{ route('admin.postVisaCategory') }}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">

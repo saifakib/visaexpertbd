@@ -10,7 +10,7 @@
                                 <h2 class="block-title">
                                     Update Visa Category
                                 </h2>
-                                <form method="PUT" action="{{ route('updateCategory', $category->category_id) }}" enctype="multipart/form-data">
+                                <form method="PUT" action="{{ route('admin.updateCategory', $category->category_id) }}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">

@@ -53,6 +53,7 @@ class CreateCandidateDetailsTable extends Migration
             $table->string('university_result')->nullable();
             $table->year('university_passing_year')->nullable();
             $table->string('candidate_image')->nullable();
+            $table->text('bio')->nullable();
             $table->timestamps();
         });
     }

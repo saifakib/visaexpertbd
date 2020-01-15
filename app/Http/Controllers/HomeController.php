@@ -75,8 +75,9 @@ class HomeController extends Controller
     }
     public function viewVisaOffers()
     {
+        $latest = Visa::latest()->first();
         $visas = Visa::get();
-        return view('viewVisaOffers',compact('visas'));
+        return view('viewVisaOffers',compact('visas','latest'));
     }
 
     public function profile()
@@ -112,63 +113,20 @@ class HomeController extends Controller
         {
             $agent = Agent::where('user_id', $request->id)->first();
             DB::beginTransaction();
-            if(!$agent)
+            if($agent)
             {
                 $user = User::where('user_id', $request->id)->first();
                 $user->full_name = $request->full_name;
                 $user->username = $request->username;
-                //$user->updated_at = getTimestamp();
+                $user->updated_at = carbon::now();
                 $user->save();
+
+                DB::commit();
 
                 if($user) {
-                    $agentC = Agent::insertGetId([
-                        'user_id' => $user->user_id,
-                        'agent_name' => $request->agent_name,
-                        'status' => '1',
-                    ]);
-                    if($agentC){
-                        $agentDetais = AgentDetails::insert([
-                            'agent_id' => $agentC,
-                            'user_id' => $user->user_id,
-                            'agent_name' => $request->agent_name,
-                            'title' => $request->title,
-                            'details' => $request->details,
-                            'license' => $request->license,
-                            'location' => $request->location,
-                        ]);
-                        //Image upload and update path at Agent
-                        if ($request->hasFile('logo'))
-                        {
-                            $aimage = $request->file('logo');
-                            $fileName = $user. '-' .time() . '.' . $aimage->getClientOriginalExtension();
-                            Image::make($aimage)->resize(350, 360)->save(public_path('assets/img/agent' . $fileName));
-                            if($fileName != null){
-                                $agentDetais = AgentDetails::where('agent_id', $agentC)
-                                    ->update([
-                                        'logo' => $fileName
-                                    ]);
-                            }
-                        }
-                        DB::commit();
-                    } else{
-                        Session::flash('error', 'Something Went Wrong !!');
-                        DB::rollBack();
-                    }
-                    Session::flash('success', 'Agent Update Successfull !!');
-                    DB::commit();
-                } else {
-                    Session::flash('error', 'Something Went Wrong !!');
-                    DB::rollBack();
-                }
-            } else {
-                $user = User::where('user_id', $request->id)->first();
-                $user->full_name = $request->full_name;
-                $user->username = $request->username;
-                $user->save();
-
-                if($user){
                     $agent->agent_name = $request->agent_name;
                     $agent->status = 1;
+                    $agent->updated_at = Carbon::now();
                     $agent->save();
 
                     $agentU = AgentDetails::where('user_id', $user->user_id)->first();
@@ -177,6 +135,7 @@ class HomeController extends Controller
                     $agentU->details = $request->details;
                     $agentU->license = $request->license;
                     $agentU->location = $request->location;
+                    $agentU->updated_at = Carbon::now();
                     $agentU->save();
 
                     if (strlen($request->file('logo')) > 0) {
@@ -197,13 +156,15 @@ class HomeController extends Controller
                             }
                         }
                     }
-
+                    Session::flash('success', 'Agent Update Successfull !!');
                     DB::commit();
-
                 } else {
                     Session::flash('error', 'Something Went Wrong !!');
                     DB::rollBack();
                 }
+            } else {
+                Session::flash('error', 'Something Went Wrong !!');
+                DB::rollBack();
             }
 
         } else {
@@ -227,6 +188,7 @@ class HomeController extends Controller
                     $candidateU = CandidateDetails::where('user_id', $user->user_id)->first();
                     $candidateU->full_name = $request->full_name;
                     $candidateU->user_name = $request->username;
+                    $candidateU->DOB = $request->dob;
                     $candidateU->occupation = $request->occupation;
                     $candidateU->presently_in_job = $request->presently_in_job;
                     $candidateU->sector = $request->sector;
@@ -241,6 +203,8 @@ class HomeController extends Controller
                     $candidateU->present_location = $request->present_location;
                     $candidateU->permanent_location = $request->permanent_location;
                     $candidateU->education = $request->education;
+                    $candidateU->bio = $request->bio;
+                    $candidateU->updated_at = Carbon::now();
                     $candidateU->save();
 
                     if (strlen($request->file('candidate_image')) > 0) {
@@ -282,6 +246,12 @@ class HomeController extends Controller
         $candidates = User::where('role_id',2)->get();
         //return $candidates;
         return view('candidateResumes',compact('candidates'));
+    }
+
+    public function candidateResumeDetails($id)
+    {
+        $candidate = Candidate::where('user_id', $id)->first();
+        return view('candidateResumeDetails', compact('candidate'));
     }
 
     public function createVisaCategory() {
@@ -349,10 +319,10 @@ class HomeController extends Controller
                  $id->save();
             }
         }
-        return redirect()->route('visaCategories');
+        return redirect()->route('admin.visaCategories');
     }
 
-    public function deleteCategorie(Category $id) 
+    public function deleteCategorie(Category $id)
     {
         $id->delete();
         return redirect()->back();
@@ -413,14 +383,109 @@ class HomeController extends Controller
 
 
 
+    public function visaAgents()
+    {
+        $agents = Agent::get();
+        return view('visaAgents',compact('agents'));
+    }
+    public function visaAgent($id) {
+        $agent = Agent::where('agent_id', $id)->first();
+        return view('visaAgentDetails',compact('agent'));
+    }
 
-
-
-
-    public function visaDetails($id) 
+    public function visaDetails($id)
     {
         $visa = Visa::where('visa_id', $id)->first();
-        return view('visaDetails', compact('visa'));
+        $visas = Visa::where('agent_id',$visa->agent_id)->inRandomOrder()->limit(2)->get();
+        return view('visaDetails', compact('visa','visas'));
+    }
+
+    public function categoryVisa($id)
+    {
+        $latest = Visa::latest()->first();
+        $visas = Visa::where('category_id',$id)->get();
+        return view('viewVisaOffers',compact('visas','latest'));
+    }
+
+    public function control()
+    {
+        $user = User::where('user_id',Auth::id())->first();
+        if($user->role_id == 0)
+        {
+            return redirect()->route('admin.visaCategories');
+        }elseif ($user->role_id == 1 )
+        {
+            return redirect()->route('profile');
+        } elseif($user->role_id == 2)
+        {
+            return $user;
+        }
+        else{
+            return redirect()->back();
+        }
+    }
+
+    public function agentviewVisa($id){
+        $visas = Visa::Where('agent_id', $id)->get();
+        return view('layouts.visa24.agent.viewVisa',compact('visas'));
+    }
+
+    public function editVisa($id)
+    {
+        $visa = Visa::where('visa_id',$id)->first();
+        $categories = Category::get();
+        return view('layouts.visa24.agent.editVisa', compact('visa','categories'));
+    }
+    public function updateVisa(Request $request, $id)
+    {
+        $visa = Visa::where('visa_id', $id)->first();
+        $visa->title = $request->title;
+        $visa->category_id = $request->category;
+        $visa->agent_id = Auth::user()->agent->agent_id ;
+        $visa->visa_authority = $request->visa_authority;
+        $visa->offered_country = $request->offered_country;
+        $visa->per_month_salary =$request->per_month_salary ;
+        $visa->contact_years = $request->contact_years;
+        $visa->processing_time = $request->processing_time;
+        $visa->visa_payment = $request->visa_payment;
+        $visa->age_limit = $request->age_limit;
+        $visa->education = $request->education;
+        $visa->language = $request->language;
+        $visa->language_test = $request->language_test;
+        $visa->study_gap = $request->study_ga;
+        $visa->discount_visa24_clint = $request->discount_visa24_clint;
+        $visa->payment_system = $request->payment_system;
+        $visa->security_type = $request->security_type;
+        $visa->visa_possible_rate = $request->visa_possible;
+        $visa->decription = $request->decription;
+        $visa->updated_at = Carbon::now();
+        $visa->save();
+
+        if ($request->hasFile('logo'))
+        {
+            $oldImage = $visa->logo;
+            $folderPath = 'assets/img/visaOffers/';
+            if (file_exists(public_path() . '/' . $folderPath . $oldImage)) {
+                unlink(public_path() . '/' . $folderPath . $oldImage);
+            }
+
+            $newImage = $request->file('logo');
+            $currentDate = Carbon::now()->toDateString();
+            $fileName = $request->category. '-' .$currentDate. '.' . $newImage->getClientOriginalExtension();
+            Image::make($newImage)->resize(225, 225)->save(public_path('assets/img/visaOffers/' . $fileName));
+            if($fileName != null){
+                $visa->logo = $fileName;
+                $visa->save();
+            }
+        }
+        Session::flash('success', 'Visa Update Successfull !!');
+        return redirect()->back();
+    }
+
+    public function deleteVisa(Visa $id)
+    {
+        $id->delete();
+        return redirect()->back();
     }
 
 

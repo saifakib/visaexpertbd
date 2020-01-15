@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div id="content"> 
+<div id="content">
     	<div class="mission block block-pd-sm block-bg-noise">
         	<div class="col-md-1"></div>
             <div class="col-md-10">
@@ -36,7 +36,7 @@
 				        <span class="col-md-3 text-capitalize text-default"><strong>visa type</strong></span>
 				        <span class="col-md-9 text-capitalize text-default"><strong>{{ $visa->category->category_name }}</strong></span>
 				        <div class="clearfix"></div>
-				               
+
 				        <span class="col-md-3 text-capitalize text-default"><strong>visa authority</strong></span>
 				        <span class="col-md-9 text-capitalize text-default"><strong>{{ $visa->visa_authority }}</strong></span>
 				        <div class="clearfix"></div>
@@ -44,7 +44,7 @@
 				        <span class="col-md-3 text-capitalize text-default"><strong>salary per month</strong></span>
 				        <span class="col-md-9 text-capitalize text-default"><strong>{{ $visa->per_month_salary }}</strong></span>
 				        <div class="clearfix"></div>
-				              
+
 
 				        <span class="col-md-3 text-capitalize text-default"><strong>contract for years</strong></span>
 				        <span class="col-md-9 text-capitalize text-default"><strong>{{$visa->contact_years}}</strong></span>
@@ -53,7 +53,7 @@
 				        <span class="col-md-3 text-capitalize text-default"><strong>processing time</strong></span>
 				        <span class="col-md-9 text-capitalize text-default"><strong>{{$visa->processing_time}}  </strong></span>
 				        <div class="clearfix"></div>
-				                
+
 				        <span class="col-md-3 text-capitalize text-default"><strong>full amount of payment</strong></span>
 							<span class="col-md-9 text-capitalize text-default"><strong>{{$visa->visa_payment}} </strong></span>
 				        <div class="clearfix"></div>
@@ -65,7 +65,7 @@
 				        <span class="col-md-3 text-capitalize text-default"><strong>state candidates age limit</strong></span>
 				        <span class="col-md-9 text-capitalize text-default"><strong>{{$visa->age_limit}}</strong></span>
 				        <div class="clearfix"></div>
-				                
+
 				        <span class="col-md-3 text-capitalize text-default"><strong>state candidates education</strong></span>
 				        <span class="col-md-9 text-capitalize text-default"><strong>{{$visa->education}}</strong></span>
 				        <div class="clearfix"></div>
@@ -77,11 +77,11 @@
 								<span class="col-md-3 text-capitalize text-default"><strong>language</strong></span>
 				        <span class="col-md-9 text-capitalize text-default"><strong>{{$visa->language}} </strong></span>
 								<div class="clearfix"></div>
-								
+
 				        <span class="col-md-3 text-capitalize text-default"><strong>language test result</strong></span>
 				        <span class="col-md-9 text-capitalize text-default"><strong>{{$visa->language_test}}  </strong></span>
 				        <div class="clearfix"></div>
-				                
+
 				        <span class="col-md-3 text-capitalize text-default"><strong>study gap</strong></span>
 				        <span class="col-md-9 text-capitalize text-default"><strong>{{$visa->study_gap}} </strong></span>
 				        <div class="clearfix"></div>
@@ -93,11 +93,11 @@
 				        <span class="col-md-3 text-capitalize text-default"><strong>payment system</strong></span>
 				        <span class="col-md-9 text-capitalize text-default"><strong>{{ $visa->payment_system}}</strong></span>
 				        <div class="clearfix"></div>
-				                
+
 				        <span class="col-md-3 text-capitalize text-default"><strong>security type</strong></span>
 				        <span class="col-md-9 text-capitalize text-default"><strong>{{$visa->security_type}}</strong></span>
 				        <div class="clearfix"></div>
-				                       
+
 				        <span class="col-md-3 text-capitalize text-default"><strong>possibility of visa</strong></span>
 				        <span class="col-md-9 text-capitalize text-default"><strong>{{$visa->visa_possible_rate}} %</strong></span>
 				        <div class="clearfix"></div>
@@ -106,7 +106,7 @@
 				        <span class="col-md-9 text-capitalize text-default"><strong>{{ $visa->decription}}</strong>
 						</span>
 				    </div>
-				    
+
 				    <div class="col-md-3">
 				    	<div class="col-md-12 block-border">
 				        	<h4 class="text-uppercase text-bold" style="color:#666"><strong>Overview</strong></h4>
@@ -114,90 +114,58 @@
 				            <br />{{ $visa->created_at->diffForHumans() }}</p>
 				            <p><span class="glyphicon glyphicon-stats text-info"></span> VISA Title<br />{{ $visa->title }}</p>
 				            <p><span class="glyphicon glyphicon-map-marker text-info"></span> VISA Location<br />{{$visa->offered_country }}</p>
-				            <p><span class="glyphicon glyphicon-usd text-info"></span> Rate<br />{{ $visa->visa_payment}} </p> 
-				            <p><span class="glyphicon glyphicon-map-marker text-info"></span> Agent Location<br />{{$visa->agentDetails->location }}</p> 				                     
+				            <p><span class="glyphicon glyphicon-usd text-info"></span> Rate<br />{{ $visa->visa_payment}} </p>
+				            <p><span class="glyphicon glyphicon-map-marker text-info"></span> Agent Location<br />{{$visa->agentDetails->location }}</p>
 		                        <a href="#" class="btn btn-info btn-lg text-uppercase" style="margin-left:-8px;">Apply for this visa</a>
 		                        <div class="clearfix"></div>
 				            &nbsp;
 				        </div>
 				    </div>
-				    
+
 				    <div class="clearfix">&nbsp;</div>
 				    <br /><br />
-				    
-				        
-				    <div class="col-md-6">
-				      <div class="col-md-12 block-border pull-left">	
-				    	<br />
-				    	<span class="col-md-12 text-uppercase text-default border-bottom-gray"><strong>Others offer of this agent</strong>
+
+
+                    @foreach($visas as $visa)
+                        <div class="col-md-6">
+                            <div class="col-md-12 block-border pull-left">
+                                <br />
+                                <span class="col-md-12 text-uppercase text-default border-bottom-gray"><strong>Others offer of this agent</strong>
 				    	</span>
-				        <div class="clearfix"></div>
+                                <div class="clearfix"></div>
 
-				        <span class="col-md-6 text-uppercase text-info"><strong>visa offer name</strong></span>
-				        <span class="col-md-6 text-uppercase text-info"><strong>
-				        	<a href="#">চায়না মোবাইল কোম্পানীর কোয়ালিটি কন্ট্রোলার জব</a></strong>
+                                <span class="col-md-6 text-uppercase text-info"><strong>visa offer name</strong></span>
+                                <span class="col-md-6 text-uppercase text-info"><strong>
+				        	<a href="#">{{ $visa->title }}</a></strong>
 				        </span>
-				        <div class="clearfix"></div>
+                                <div class="clearfix"></div>
 
-				        <span class="col-md-6 text-uppercase text-default"><strong>Agent Name</strong></span>
-				        <span class="col-md-6 text-uppercase text-default"><strong>VA-0101</strong></span>
-				        <div class="clearfix"></div>
+                                <span class="col-md-6 text-uppercase text-default"><strong>Agent Name</strong></span>
+                                <span class="col-md-6 text-uppercase text-default"><strong>{{ $visa->agent->agent_name }}</strong></span>
+                                <div class="clearfix"></div>
 
-				        <span class="col-md-6 text-uppercase text-default"><strong>offered country</strong></span>
-				        <span class="col-md-6 text-uppercase text-default"><strong>China</strong></span>
-				        <div class="clearfix"></div>
+                                <span class="col-md-6 text-uppercase text-default"><strong>offered country</strong></span>
+                                <span class="col-md-6 text-uppercase text-default"><strong>{{$visa->offerd_country}}</strong></span>
+                                <div class="clearfix"></div>
 
-						<span class="col-md-6 text-capitalize text-default"><strong>visa type</strong></span>
-				        <span class="col-md-6 text-capitalize text-default"><strong>JOB VISA</strong></span>
-				        <div class="clearfix"></div>
-						               
-				        <span class="col-md-6 text-capitalize text-default"><strong>visa authority</strong></span>
-				        <span class="col-md-6 text-capitalize text-default"><strong>Private</strong></span>
-				        <div class="clearfix"></div>
-						                
-				        <span class="col-md-6 text-capitalize text-default"><strong>full amount of payment</strong></span>
-				        <span class="col-md-6 text-capitalize text-default"><strong>৩ লক্ষ টাকা। মেম্বার ডিসকাউন্ট ২৫০০০ টাকা। REF-HAQ-IBBU </strong></span>
-				        <div class="clearfix"></div>
-				        <br />
-				       </div>
-				    </div>
-				       
-				    <div class="col-md-6">
-				      <div class="col-md-12 block-border pull-right">	
-				    	<br />
-				    	<span class="col-md-12 text-uppercase text-default border-bottom-gray"><strong>Others offer of this agent</strong></span>
-				        <div class="clearfix"></div>
+                                <span class="col-md-6 text-capitalize text-default"><strong>visa type</strong></span>
+                                <span class="col-md-6 text-capitalize text-default"><strong>{{ $visa->category->category_name }}</strong></span>
+                                <div class="clearfix"></div>
 
-				        <span class="col-md-6 text-uppercase text-info"><strong>visa offer name</strong></span>
-				        <span class="col-md-6 text-uppercase text-info"><strong>
-				        	<a href="#">কসোভো স্টুডেন্ট ভিসা জানুয়ারী ২০২০</a></strong>
-				        </span>
-				        <div class="clearfix"></div>
+                                <span class="col-md-6 text-capitalize text-default"><strong>visa authority</strong></span>
+                                <span class="col-md-6 text-capitalize text-default"><strong>{{$visa->visa_authority}}</strong></span>
+                                <div class="clearfix"></div>
 
-				        <span class="col-md-6 text-uppercase text-default"><strong>Agent Name</strong></span>
-				        <span class="col-md-6 text-uppercase text-default"><strong>VA-0101</strong></span>
-				        <div class="clearfix"></div>
+                                <span class="col-md-6 text-capitalize text-default"><strong>full amount of payment</strong></span>
+                                <span class="col-md-6 text-capitalize text-default"><strong>{{ $visa->visa_payment }} মেম্বার ডিসকাউন্ট {{ $visa->discount_visa24_clint }}% </strong></span>
+                                <div class="clearfix"></div>
+                                <br />
+                            </div>
+                        </div>
+                    @endforeach
 
-				        <span class="col-md-6 text-uppercase text-default"><strong>offered country</strong></span>
-				        <span class="col-md-6 text-uppercase text-default"><strong>Kazakhstan</strong></span>
-				        <div class="clearfix"></div>
-
-						<span class="col-md-6 text-capitalize text-default"><strong>visa type</strong></span>
-				        <span class="col-md-6 text-capitalize text-default"><strong>STUDENT VISA</strong></span>
-				        <div class="clearfix"></div>
-						               
-				        <span class="col-md-6 text-capitalize text-default"><strong>visa authority</strong></span>
-				        <span class="col-md-6 text-capitalize text-default"><strong>Private</strong></span>
-				        <div class="clearfix"></div>
-						                
-				        <span class="col-md-6 text-capitalize text-default"><strong>full amount of payment</strong></span>
-				        <span class="col-md-6 text-capitalize text-default"><strong>৮ লক্ষ টাকা। টিউশন ফি ও বিমানভাড়া সহ, মেম্বার ডিসকাউন্ট ২০,০০০ টাকা। REF-AMI-UFHO</strong></span>
-				        <div class="clearfix"></div>
-				        <br />
-				       </div>
-				    </div>
 				    <br />&nbsp;
-				   
+
 				   <!--social media icons-->
 				    <div class="navbar-text social-media social-media-inline pull-right">
 				      <!--@todo: replace with company social media details-->
@@ -217,13 +185,13 @@
 
 					<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
 						<a itemprop="item" href="#" class="pathway"><span itemprop="name">Home</span></a>
-						
+
 							<span class="divider"></span>
 								<meta itemprop="position" content="1">
 					</li>
 					<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="active">
 						<span itemprop="name">
-							View Visa Offer Details	
+							View Visa Offer Details
 						</span>
 						<meta itemprop="position" content="15">
 					</li>
@@ -231,6 +199,6 @@
 				<!-- breadcrumb start -->
 			</div>
 			<div class="col-md-1"></div>
-		</div>	
+		</div>
 	</div>
 @endsection

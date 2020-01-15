@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Session;
 use Illuminate\Http\Request;
 use App\User;
+use App\Agent;
+use App\AgentDetails;
 use Auth;
 use App\Candidate;
 use App\CandidateDetails;
@@ -34,7 +36,6 @@ class AuthController extends Controller
                 'remember_token' => $request->_token,
         ]);
 
-
          if($user && $request->type == 2)
          {
              if($user)
@@ -57,10 +58,39 @@ class AuthController extends Controller
                          'full_name' => $request->name,
                          'created_at' => date('Y-m-d')
                      ]);
+                     Session::flash('success', 'Candidate Create Successfull !!');
                      DB::commit();
                  }
-                 Session::flash('success', 'Candidate Create Successfull !!');
+             } else {
+                 DB::rollback();
+             }
+         } elseif($user && $request->type == 1) {
+             if($user)
+             {
+                 $agent = Agent::insertGetId([
+                     'user_id' => $user,
+                     'agent_name' => "Agent Name",
+                     'status' => 1,
+                     'created_at' => date('Y-m-d')
+                 ]);
                  DB::commit();
+
+                 if($agent)
+                 {
+                     $agentdetails = AgentDetails::insert([
+                         'agent_id' => $agent,
+                         'user_id' => $user,
+                         'agent_name' => "Agent Name",
+                         'title' => 'Title',
+                         'details' => 'Details',
+                         'license' => 'license',
+                         'location' => 'Dhaka',
+                         'logo' => 'diamond.png',
+                         'created_at' => date('Y-m-d')
+                     ]);
+                     Session::flash('success', 'Candidate Create Successfull !!');
+                     DB::commit();
+                 }
              } else {
                  DB::rollback();
              }

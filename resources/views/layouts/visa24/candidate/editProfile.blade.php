@@ -26,11 +26,18 @@
                                                 </div>
                                             </div>
                                             <div class="clearfix"></div>
+                                            <div class="form-group row">
+                                                <h5 for="bio" class="col-form-label col-md-3 text-uppercase text-success text-left">Bio</h5>
+                                                <div class="col-md-8">
+                                                    <textarea name="bio" id="bio" value="{{ $user->candidateDetails->bio }}" class="form-control col-md-8 text-left" cols="30" rows="05"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
 
                                             <div class="form-group row">
-                                                <h5 for="agent_name" class="col-form-label col-md-3 text-uppercase text-success text-left">Occupation</h5>
+                                                <h5 for="agent_name" class="col-form-label col-md-3 text-uppercase text-success text-left">Date Of Birth</h5>
                                                 <div class="col-md-8">
-                                                    <input type="text" name="occupation" value="{{ $user->candidateDetails->DOB }}" class="form-control col-md-8 text-left" id="agent_name">
+                                                    <input type="date" name="dob" value="{{ $user->candidateDetails->DOB }}" class="form-control col-md-8 text-left" id="agent_name">
                                                 </div>
                                             </div>
                                             <div class="clearfix"></div>
@@ -132,6 +139,13 @@
                                             </div>
                                             <div class="clearfix"></div>
 
+                                            <div class="form-group row">
+                                                <h5 for="agent_name" class="col-form-label col-md-3 text-uppercase text-success text-left">Occupation</h5>
+                                                <div class="col-md-8">
+                                                    <input type="text" name="occupation" value="{{ $user->candidateDetails->occupation }}" class="form-control col-md-8 text-left" id="agent_name">
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
                                             <div class="form-group row">
                                                 <h5 for="details" class="col-form-label col-md-3 text-uppercase text-success text-left">Education</h5>
                                                 <div class="col-md-8">

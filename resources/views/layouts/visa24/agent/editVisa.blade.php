@@ -1,157 +1,189 @@
 @extends('layouts.visa24.agent.control')
 
 @section('agentc')
- <div class="col-md-12" style="font-size:22px; line-height:40px;">
+    <div class="col-md-12" style="font-size:22px; line-height:40px;">
 
-                                <h2 class="block-title">
-                                    Post A Visa
-                                </h2>
-                                <form method="GET" action="{{ route('updateProfile') }}" enctype="multipart/form-data">
-                                    @csrf
-                                    <input type="hidden" name="id" value="{{ $user->user_id }}"/>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <h5 for="full_name" class="col-form-label col-md-3 text-uppercase text-success text-left">Full Name</h5>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="full_name" value="{{ $user->full_name }}" class="form-control col-md-8 text-left" id="full_name">
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
+        <h2 class="block-title">
+            Update Visa
+        </h2>
+        <form method="GET" action="{{ route('agent.updateVisa',$visa->visa_id) }}" enctype="multipart/form-data">
+            @csrf
+            <div class="row">
+                <div class="col-md-6">
 
-                                            <div class="form-group row">
-                                                <h5 for="username" class="col-form-label col-md-3 text-uppercase text-success text-left">User Name</h5>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="username" value="{{ $user->username }}" class="form-control col-md-8 text-left" id="username">
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
+                    <div class="form-group row">
+                        <h5 for="username" class="col-form-label col-md-3 text-uppercase text-success text-left">Category</h5>
+                        <div class="col-md-8">
+                            <select name="category" class="form-control">
+                                @foreach($categories as $category)
+                                    {
+                                    <option value="{{ $category->category_id }}">{{ $category->category_name}}</option>
+                                    }
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
 
-                                            <div class="form-group row">
-                                                <h5 for="agent_name" class="col-form-label col-md-3 text-uppercase text-success text-left">Occupation</h5>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="occupation" value="{{ $user->candidateDetails->DOB }}" class="form-control col-md-8 text-left" id="agent_name">
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
+                    <div class="form-group row">
+                        <h5 class="col-form-label col-md-3 text-uppercase text-success text-left">Visa Authority</h5>
+                        <div class="col-md-8">
+                            <select name="visa_authority" class="form-control">
 
-                                            <div class="form-group row">
-                                                <h5 for="title" class="col-form-label col-md-3 text-uppercase text-success text-left">Present Job</h5>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="presently_in_job" value="{{ $user->candidateDetails->presently_in_job }}" class="form-control col-md-8 text-left" id="title">
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
+                                <option value="Public">Public</option>
+                                <option value="Private">Private</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
 
-                                            <div class="form-group row">
-                                                <h5 for="location" class="col-form-label col-md-3 text-uppercase text-success text-left">Sector</h5>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="sector" value="{{ $user->candidateDetails->sector }}" class="form-control col-md-8 text-left" id="location">
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
+                    <div class="clearfix"></div>
+                    <div class="form-group row">
+                        <h5 for="full_name" class="col-form-label col-md-3 text-uppercase text-success text-left">Visa Title</h5>
+                        <div class="col-md-8">
+                            <input type="text" name="title" value="{{ $visa->title }}" class="form-control col-md-8 text-left" id="full_name">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
 
-                                            <div class="form-group row">
-                                                <h5 for="details" class="col-form-label col-md-3 text-uppercase text-success text-left">Job Experience</h5>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="job_experience" value="{{ $user->candidateDetails->job_experience }}" class="form-control col-md-8 text-left" id="license">
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
 
-                                            <div class="form-group row">
-                                                <h5 for="license" class="col-form-label col-md-3 text-uppercase text-success text-left">Skill</h5>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="skill" value="{{ $user->candidateDetails->skill }}" class="form-control col-md-8 text-left" id="license">
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
 
-                                            <div class="form-group row">
-                                                <h5 for="location" class="col-form-label col-md-3 text-uppercase text-success text-left">Apply Visa</h5>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="visa_need" value="{{ $user->candidateDetails->visa_need }}" class="form-control col-md-8 text-left" id="location">
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
 
-                                            <div class="form-group row">
-                                                <h5 for="location" class="col-form-label col-md-3 text-uppercase text-success text-left">Visa On Passport</h5>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="visa_on_passport" value="{{ $user->candidateDetails->visa_on_passport }}" class="form-control col-md-8 text-left" id="location">
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
 
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <h5 for="location" class="col-form-label col-md-3 text-uppercase text-success text-left">Visa Type</h5>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="visa_type" value="{{ $user->candidateDetails->visa_type }}" class="form-control col-md-8 text-left" id="location">
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="form-group row">
-                                                <h5 for="full_name" class="col-form-label col-md-3 text-uppercase text-success text-left">Expired Passport Date</h5>
-                                                <div class="col-md-8">
-                                                    <input type="date" name="expired_passport_date" value="{{ $user->candidateDetails->expired_passport_date }}" class="form-control col-md-8 text-left" id="full_name">
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
+                    <div class="form-group row">
+                        <h5 for="title" class="col-form-label col-md-3 text-uppercase text-success text-left">Offered Country</h5>
+                        <div class="col-md-8">
+                            <input type="text" name="offered_country" value="{{ $visa->offered_country }}" class="form-control col-md-8 text-left" id="title">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
 
-                                            <div class="form-group row">
-                                                <h5 for="license" class="col-form-label col-md-3 text-uppercase text-success text-left">Country Apply</h5>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="country_apply" value="{{ $user->candidateDetails->country_apply }}" class="form-control col-md-8 text-left" id="license">
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
+                    <div class="form-group row">
+                        <h5 for="location" class="col-form-label col-md-3 text-uppercase text-success text-left">Per Month Salary</h5>
+                        <div class="col-md-8">
+                            <input type="text" name="per_month_salary" value="{{ $visa->per_month_salary }}"  class="form-control col-md-8 text-left" id="location">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
 
-                                            <div class="form-group row">
-                                                <h5 for="username" class="col-form-label col-md-3 text-uppercase text-success text-left">Budget</h5>
-                                                <div class="col-md-8">
-                                                    <input type="number" name="budget" value="{{ $user->candidateDetails->expired_passport_date }}" class="form-control col-md-8 text-left" id="username">
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
+                    <div class="form-group row">
+                        <h5 for="details" class="col-form-label col-md-3 text-uppercase text-success text-left">Contact Years</h5>
+                        <div class="col-md-8">
+                            <input type="text" name="contact_years" value="{{ $visa->contact_years }}" class="form-control col-md-8 text-left" id="license">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
 
-                                            <div class="form-group row">
-                                                <h5 for="agent_name" class="col-form-label col-md-3 text-uppercase text-success text-left">Present Location</h5>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="present_location" value="{{ $user->candidateDetails->present_location }}" class="form-control col-md-8 text-left" id="agent_name">
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
+                    <div class="form-group row">
+                        <h5 for="license" class="col-form-label col-md-3 text-uppercase text-success text-left">Processing Time</h5>
+                        <div class="col-md-8">
+                            <input type="text" name="processing_time" value="{{ $visa->processing_time}}"  class="form-control col-md-8 text-left" id="license">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
 
-                                            <div class="form-group row">
-                                                <h5 for="title" class="col-form-label col-md-3 text-uppercase text-success text-left">Permanent Location</h5>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="permanent_location" value="{{ $user->candidateDetails->permanent_location }}" class="form-control col-md-8 text-left" id="title">
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
+                    <div class="form-group row">
+                        <h5 for="location" class="col-form-label col-md-3 text-uppercase text-success text-left">Visa Payment</h5>
+                        <div class="col-md-8">
+                            <input type="number" name="visa_payment" value="{{ $visa->visa_payment }}" class="form-control col-md-8 text-left" id="location">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
 
-                                            <div class="form-group row">
-                                                <h5 for="details" class="col-form-label col-md-3 text-uppercase text-success text-left">Education</h5>
-                                                <div class="col-md-8">
-                                                    <textarea name="education" id="details" value="{{ $user->candidateDetails->education }}" class="form-control col-md-8 text-left" cols="30" rows="05"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
+                    <div class="form-group row">
+                        <h5 for="location" class="col-form-label col-md-3 text-uppercase text-success text-left">Age Limit</h5>
+                        <div class="col-md-8">
+                            <input type="text" name="age_limit" value="{{ $visa->age_limit }}" class="form-control col-md-8 text-left" id="location">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group row">
+                        <h5 for="location" class="col-form-label col-md-3 text-uppercase text-success text-left">Education</h5>
+                        <div class="col-md-8">
+                            <input type="text" name="education"  value="{{ $visa->education }}" class="form-control col-md-8 text-left" id="location">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
 
-                                            <div class="form-group row">
-                                                <h5 for="logo" class="col-form-label col-md-3 text-uppercase text-success text-left">Candidate Image</h5>
-                                                <div class="col-md-8">
-                                                    <input type="file" name="candidate_image"  class=" col-md-8 text-left" id="candidate_image">
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <button type="submit" style="margin-left:280px;" class="btn btn-primary waves-effect">SUBMIT</button>
-                                        </div>
-                                    </div>
-                                </form>
+                </div>
+                <div class="col-md-6">
 
-                            </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group row">
+                        <h5 for="full_name" class="col-form-label col-md-3 text-uppercase text-success text-left">Language </h5>
+                        <div class="col-md-8">
+                            <input type="text" name="language"  value="{{ $visa->language }}" class="form-control col-md-8 text-left" id="full_name">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
 
- @endsection()
+                    <div class="form-group row">
+                        <h5 for="license" class="col-form-label col-md-3 text-uppercase text-success text-left">Language Test</h5>
+                        <div class="col-md-8">
+                            <input type="text" name="language_test"  value="{{ $visa->language_test }}" class="form-control col-md-8 text-left" id="license">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="form-group row">
+                        <h5 for="username" class="col-form-label col-md-3 text-uppercase text-success text-left">Study Gap</h5>
+                        <div class="col-md-8">
+                            <input type="text" name="study_gap"  value="{{ $visa->study_gap }}" class="form-control col-md-8 text-left" id="username">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="form-group row">
+                        <h5 for="agent_name" class="col-form-label col-md-3 text-uppercase text-success text-left">Discount Visaexpert Clint</h5>
+                        <div class="col-md-8">
+                            <input type="number" name="discount_visa24_clint"  value="{{ $visa->discount_visa24_clint }}" class="form-control col-md-8 text-left" id="agent_name">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="form-group row">
+                        <h5 for="title" class="col-form-label col-md-3 text-uppercase text-success text-left">Payment System</h5>
+                        <div class="col-md-8">
+                            <input type="text" name="payment_system" value="{{ $visa->payment_system }}" class="form-control col-md-8 text-left" id="title">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="form-group row">
+                        <h5 for="title" class="col-form-label col-md-3 text-uppercase text-success text-left">Security Type</h5>
+                        <div class="col-md-8">
+                            <input type="text" name="security_type" value="{{ $visa->security_type }}"  class="form-control col-md-8 text-left" id="title">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="form-group row">
+                        <h5 for="title" class="col-form-label col-md-3 text-uppercase text-success text-left">Visa Possible</h5>
+                        <div class="col-md-8">
+                            <input type="number" name="visa_possible"  value="{{ $visa->visa_possible }}" class="form-control col-md-8 text-left" id="title">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="form-group row">
+                        <h5 for="details" class="col-form-label col-md-3 text-uppercase text-success text-left">Description</h5>
+                        <div class="col-md-8">
+                            <textarea name="decription" id="details" value="{{ $visa->details }}"  class="form-control col-md-8 text-left" cols="30" rows="05"></textarea>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="form-group row">
+                        <h5 for="logo" class="col-form-label col-md-3 text-uppercase text-success text-left">Logo</h5>
+                        <div class="col-md-8">
+                            <input type="file" name="logo"  class=" col-md-8 text-left" id="logo">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <button type="submit" style="margin-left:280px;" class="btn btn-primary waves-effect">Update</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+@endsection()

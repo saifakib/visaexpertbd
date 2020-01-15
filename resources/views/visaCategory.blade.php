@@ -17,10 +17,10 @@
                         @foreach($categorys as $category)
                             <div class="col-md-3 m-b-20">
                                 <div class="myborder_radius">
-                                    <a href="" title="{{ $category->category_name }}">
+                                    <a href="{{ route('categoryVisa', $category->category_id) }}" title="{{ $category->category_name }}">
                                         <img src="assets/img/visaCategories/{{ $category->image }}" border="0" alt="{{ $category->category_name }}" class="img-thumbnail" width="100" />
                                     </a>
-                                    <p><a href="#" title="JOB VISA">{{ $category->category_name }}</a></p>
+                                    <p><a href="{{ route('categoryVisa', $category->category_id) }}" title="JOB VISA">{{ $category->category_name }}</a></p>
                                 </div>
                             </div>
                         @endforeach

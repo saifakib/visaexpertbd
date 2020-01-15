@@ -47,7 +47,7 @@
 					<ul class="dropdown-menu"  id="dropdownmenu3">
 					    <li class="dropdown-header">VISA AGENT PAGES</li>
 							<li><a href="{{ route('viewvisaoffers') }}" tabindex="-3" class="menu-item">Search an offer</a></li>
-							<li><a href="#" tabindex="-3" class="menu-item">Visa Agents</a></li> </ul>
+							<li><a href="{{ route('visaAgents') }}" tabindex="-3" class="menu-item">Visa Agents</a></li> </ul>
 				</li>
 
 				<li class="dropdown" >
@@ -64,6 +64,9 @@
 				<li><a href="#">Blog</a></li>
 				<li><a href="{{ route('our-services') }}">Our Service</a></li>
 				<li><a href="{{ route('contact-us') }}">Contact Us</a></li>
+                @if(Auth::user())
+                    <li><a href="{{ route('control') }}">CP</a></li>
+                @endif
 
 			</ul>
 		</div>

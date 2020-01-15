@@ -6,7 +6,7 @@
                                 <h2 class="block-title">
                                     Post A Visa
                                 </h2>
-                                <form method="GET" action="{{ route('postVisa') }}" enctype="multipart/form-data">
+                                <form method="GET" action="{{ route('agent.postVisa') }}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">
@@ -28,7 +28,7 @@
                                                 <h5 class="col-form-label col-md-3 text-uppercase text-success text-left">Visa Authority</h5>
                                                 <div class="col-md-8">
                                                 <select name="visa_authority" class="form-control">
-                                                  
+
                                                     <option value="Public">Public</option>
                                                     <option value="Private">Private</option>
                                                 </select>
@@ -45,9 +45,9 @@
                                             </div>
                                             <div class="clearfix"></div>
 
-                                            
 
-                                            
+
+
 
                                             <div class="form-group row">
                                                 <h5 for="title" class="col-form-label col-md-3 text-uppercase text-success text-left">Offered Country</h5>
@@ -106,7 +106,7 @@
 
                                         </div>
                                         <div class="col-md-6">
-                                        
+
                                             <div class="clearfix"></div>
                                             <div class="form-group row">
                                                 <h5 for="full_name" class="col-form-label col-md-3 text-uppercase text-success text-left">Language </h5>

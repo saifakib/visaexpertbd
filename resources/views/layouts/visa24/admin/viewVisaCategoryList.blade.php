@@ -32,11 +32,11 @@
                                             <td>{{ $categorie->created_by == 1 ? 'Admin' : ''}}</td>
                                             <td>{{ $categorie->created_at->diffForHumans() }}</td>
                                             <td class="text-center">
-                                                <a href="{{route('editCategory',$categorie->category_id)}}" 
+                                                <a href="{{route('admin.editCategory',$categorie->category_id)}}"
                                                 class="btn btn-info waves-effect">
                                                 <i class="material-icons">edit</i>
                                                 </a>
-                                                <a href="{{route('deleteCategorie',$categorie->category_id)}}" 
+                                                <a href="{{route('admin.deleteCategorie',$categorie->category_id)}}"
                                                 class="btn btn-danger waves-effect">
                                                 <i class="material-icons">delete</i>
                                                 </a>
