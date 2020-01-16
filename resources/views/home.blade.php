@@ -82,71 +82,26 @@
 				        <h4 class="text-success"><strong>নিচের ভিসা অফার ডিটেইলস দেখতে FIND MORE বাটনে ক্লিক করে ভেতরে যান ও ভিসার জন্য আবেদন করুন</strong>
 				        </h4>
 
+				        @foreach($visas as $visa)
 				        <div class="col-md-12 block-border" style="padding-left:0px !important; padding-right:0px !important;">
 						    <div class="col-md-12 border-bottom-gray layout-pad">
 				            	<div class="col-md-3">
-				            	    <img src="{{ asset('assets/img/visaOffers/CHINA-TRANSLATOR.png') }}" alt="" class="img-thumbnail" width="100" height="80"/>			                    
+				            	    <img src="assets/img/visaOffers/CHINA-TRANSLATOR.png" alt="" class="img-thumbnail" width="100" height="80"/>
 				            	</div>
 				                <div class="col-md-6">
-				            	  <h4 class="text-uppercase text-bold"><strong>চিনা অনুবাদক ও ইন্টারপ্রেটর জব ভিসা</strong>
+				            	  <h4 class="text-uppercase text-bold"><strong>{{ $visa->title}}</strong>
 				            	  </h4>
-				                  <h5 class="text-uppercase text-success-custom"><strong>Agent VA-0101, Dhaka , Country China, Cost ৩ লক্ষ টাকা। মেম্বার ডিসকাউন্ট ১৫০০০ টাকা। REF-HAQ-IBBU </strong>
+				                  <h5 class="text-uppercase text-success-custom"><strong>Agent {{ $visa->agentDetails->agent_name}}, {{ $visa->agentDetails->location}} , Country {{ $visa->offered_country}}, Cost {{ $visa->visa_payment}}। মেম্বার ডিসকাউন্ট {{ $visa->discount_visa24_clint}}%  {{ $visa->security_type}} </strong>
 				                  </h5>
 				            	</div>
 				                <div class="col-md-3 text-right">
-				            	  <a href="#" class="btn btn-sm btn-success-custom">FIND MORE</a>
-				                  <h5 class="text-default">Posted 21 Hours ago </h5>
+				            	  <a href="{{ route('visaDetails', $visa->visa_id) }}" class="btn btn-sm btn-success-custom">FIND MORE</a>
+				                  <h5 class="text-default">{{ $visa->created_at->diffForHumans()}} </h5>
 				            	</div>
-				            </div>	
+				            </div>
 
-				            <div class="col-md-12 border-bottom-gray layout-pad">
-				            	<div class="col-md-3">
-				            	    <img src="{{ asset('assets/img/visaOffers/CHINA-JOB7.png') }}" alt="" class="img-thumbnail" width="100" height="80"/>			                    
-				            	</div>
-				                <div class="col-md-6">
-				            	  <h4 class="text-uppercase text-bold"><strong>চায়না মোবাইল কোম্পানীর কোয়ালিটি কন্ট্রোলার জব</strong>
-				            	  </h4>
-				                  <h5 class="text-uppercase text-success-custom"><strong>Agent VA-0101, DHAKA  , Country China, Cost ৩ লক্ষ টাকা। মেম্বার ডিসকাউন্ট ২৫০০০ টাকা। REF-HAQ-IBBU </strong>
-				                  </h5>
-				            	</div>
-				                <div class="col-md-3 text-right">
-				            	  <a href="#" class="btn btn-sm btn-success-custom2">FIND MORE</a>
-				                  <h5 class="text-default">Posted 4 Days ago </h5>
-				            	</div>
-				            </div>	
-		
-							<div class="col-md-12 border-bottom-gray layout-pad">
-				            	<div class="col-md-3">
-				            	    <img src="{{ asset('assets/img/visaOffers/CHINA-TRANSLATOR.png') }}" alt="" class="img-thumbnail" width="100" height="80"/>			                    
-				            	</div>
-				                <div class="col-md-6">
-				            	  <h4 class="text-uppercase text-bold"><strong>চিনা অনুবাদক ও ইন্টারপ্রেটর জব ভিসা</strong>
-				            	  </h4>
-				                  <h5 class="text-uppercase text-success-custom"><strong>Agent VA-0101, Dhaka , Country China, Cost ৩ লক্ষ টাকা। মেম্বার ডিসকাউন্ট ১৫০০০ টাকা। REF-HAQ-IBBU </strong>
-				                  </h5>
-				            	</div>
-				                <div class="col-md-3 text-right">
-				            	  <a href="#" class="btn btn-sm btn-success-custom">FIND MORE</a>
-				                  <h5 class="text-default">Posted 21 Hours ago </h5>
-				            	</div>
-				            </div>	
-
-				            <div class="col-md-12 border-bottom-gray layout-pad">
-				            	<div class="col-md-3">
-				            	    <img src="{{ asset('assets/img/visaOffers/CHINA-JOB7.png') }}" alt="" class="img-thumbnail" width="100" height="80"/>			                    
-				            	</div>
-				                <div class="col-md-6">
-				            	  <h4 class="text-uppercase text-bold"><strong>চায়না মোবাইল কোম্পানীর কোয়ালিটি কন্ট্রোলার জব</strong>
-				            	  </h4>
-				                  <h5 class="text-uppercase text-success-custom"><strong>Agent VA-0101, DHAKA  , Country China, Cost ৩ লক্ষ টাকা। মেম্বার ডিসকাউন্ট ২৫০০০ টাকা। REF-HAQ-IBBU </strong>
-				                  </h5>
-				            	</div>
-				                <div class="col-md-3 text-right">
-				            	  <a href="#" class="btn btn-sm btn-success-custom2">FIND MORE</a>
-				                  <h5 class="text-default">Posted 4 Days ago </h5>
-				            	</div>
-				            </div>		
 				        </div>
+						@endforeach
 				        
 
 				        <div class="col-md-12 text-center">
@@ -169,15 +124,16 @@
 				    
 				    <div class="col-md-4">
 				    	<h2 class="block-title">Featured Visa</h2>
+							@if(isset($latest))
 				        <div class="col-md-12 block-border">
-				        	<h3 class="text-uppercase" style="font-weight:400; color:#666;">কানাডা ওয়ার্কপারমিট ভিসা (ঢাকা থেকে)
+				        	<h3 class="text-uppercase" style="font-weight:400; color:#666;">{{ $latest->title }}
 				        	</h3>
-				            <a href="#" class="btn btn-sm btn-success-custom">FIND MORE</a>
-				            <h5 class="text-uppercase text-default"><strong>Agent VA-0101, Dhaka  , Country Canada, Cost ১২ লক্ষ টাকা ভিসার পর REF-MIJ-TI5L</strong>
+				            <a href="{{ route('visaDetails', $latest->visa_id) }}" class="btn btn-sm btn-success-custom">FIND MORE</a>
+				            <h5 class="text-uppercase text-default"><strong>Agent VA-01{{ $latest->agent->agent_id }}, {{ $latest->agent->location }}  , Country {{$latest->offered_country }}, Cost {{$latest->visa_payment }} {{ $latest->payment_system }} {{ $latest->security_type }}</strong>
 				            </h5>
-				            <p>এটি একটি পরীক্ষামূলক সংযোজন। প্রচুর চাহিদার প্রেক্ষিতে আমরা কিছু সংখ্যক কানাডা ওয়ার্ক পারমিট ও জব ভিসার কাজ করতে যাচ্ছি। শুধুমাত্র যারা ২০ বছর বয়স থেকে ৪৫ বছর বয়সের মধ্যে আছে ও এসএসসি পাশ তারাই এই ভিসার জন্য আবেদন করুন। সর্বোচ্চ সময় ৩ মাস ১৫ দিন। ঢাকা ভিএসএস এ আপনি নিজের হাতে পেপার জমা দেবেন ও তুলবেন। ভিসা হলে পেমেন্ট করতে হবে। সেক্ষেত্রে সরকারীভাবে ম্যানপাওয়ার হবে এবং স্মার্ট কার্ড পাওয়ার পরই ফ্লাই করবেন। 
-							</p>
-				        </div>   
+				            <p>{{ $latest->decription }}</p>
+				        </div>
+							@endif  
 				    </div>
 				    <!-- visa offers side bar end -->
 				</div>
@@ -191,87 +147,18 @@
 					    Visa Categories
 					</h2>
 
-				    <div class="row m-b-20">
-				    
-				        <div class="col-md-3">        	
-				          <div class="myborder_radius">
-				            <a href="#" title="STUDENT VISA">
-				            	<img src="{{ asset('assets/img/visaCategories/studentv.png') }}" border="0" alt="STUDENT VISA" class="img-thumbnail" width="100" />
-				            </a>
-				            <p><a href="" title="STUDENT VISA">STUDENT VISA</a></p>
-				          </div>              
-				        </div>
-				    
-				        <div class="col-md-3">        	
-				          <div class="myborder_radius">
-				            <a href="#" title="BUSINESS VISA">
-				            	<img src="{{ asset('assets/img/visaCategories/businessv.jpg') }}" border="0" alt="BUSINESS VISA" class="img-thumbnail" width="100" />
-				            </a>
-				            <p><a href="#" title="BUSINESS VISA">BUSINESS VISA</a></p>
-				          </div>              
-				        </div>
+					<div class="row m-b-20">
+                        @foreach($categorys as $category)
+                            <div class="col-md-3 m-b-20">
+                                <div class="myborder_radius">
+                                    <a href="{{ route('categoryVisa', $category->category_id) }}" title="{{ $category->category_name }}">
+                                        <img src="assets/img/visaCategories/{{ $category->image }}" border="0" alt="{{ $category->category_name }}" class="img-thumbnail" width="100" />
+                                    </a>
+                                    <p><a href="{{ route('categoryVisa', $category->category_id) }}" title="JOB VISA">{{ $category->category_name }}</a></p>
+                                </div>
+                            </div>
+                        @endforeach
 
-				    
-				        <div class="col-md-3">        	
-				          <div class="myborder_radius">
-				            <a href="" title="JOB VISA">
-				            	<img src="{{ asset('assets/img/visaCategories/job-visa-icon.png') }}" border="0" alt="JOB VISA" class="img-thumbnail" width="100" />
-				            </a>
-				            <p><a href="#" title="JOB VISA">JOB VISA</a></p>
-				          </div>              
-				        </div>
-
-				    
-				        <div class="col-md-3">        	
-				          <div class="myborder_radius">
-				            <a href="#" title="TOURIST VISA">
-				            	<img src="{{ asset('assets/img/visaCategories/touristvisa.png') }}" border="0" alt="TOURIST VISA" class="img-thumbnail" width="100" />
-				            </a>
-				            <p><a href="#" title="TOURIST VISA">TOURIST VISA</a></p>
-				          </div>              
-				        </div>
-				         
-				    </div>				    
-
-				    <div class="row m-b-20">
-				    
-				        <div class="col-md-3">        	
-				          <div class="myborder_radius">
-				            <a href="#" title="STUDENT VISA">
-				            	<img src="{{ asset('assets/img/visaCategories/studentv.png') }}" border="0" alt="STUDENT VISA" class="img-thumbnail" width="100" />
-				            </a>
-				            <p><a href="" title="STUDENT VISA">STUDENT VISA</a></p>
-				          </div>              
-				        </div>
-				    
-				        <div class="col-md-3">        	
-				          <div class="myborder_radius">
-				            <a href="#" title="BUSINESS VISA">
-				            	<img src="{{ asset('assets/img/visaCategories/businessv.jpg') }}" border="0" alt="BUSINESS VISA" class="img-thumbnail" width="100" />
-				            </a>
-				            <p><a href="#" title="BUSINESS VISA">BUSINESS VISA</a></p>
-				          </div>              
-				        </div>
-
-				    
-				        <div class="col-md-3">        	
-				          <div class="myborder_radius">
-				            <a href="" title="JOB VISA">
-				            	<img src="{{ asset('assets/img/visaCategories/job-visa-icon.png') }}" border="0" alt="JOB VISA" class="img-thumbnail" width="100" />
-				            </a>
-				            <p><a href="#" title="JOB VISA">JOB VISA</a></p>
-				          </div>              
-				        </div>
-
-				    
-				        <div class="col-md-3">        	
-				          <div class="myborder_radius">
-				            <a href="#" title="TOURIST VISA">
-				            	<img src="{{ asset('assets/img/visaCategories/touristvisa.png') }}" border="0" alt="TOURIST VISA" class="img-thumbnail" width="100" />
-				            </a>
-				            <p><a href="#" title="TOURIST VISA">TOURIST VISA</a></p>
-				          </div>              
-				        </div>				         
 				    </div>
 				</div>
 				<!-- visa categories end --> 	
@@ -284,7 +171,7 @@
 				  <div class="row">
 				    <div class="col-md-4 text-center">
 				      <span class="fa-stack fa-5x">
-					      <a href="#">
+					      <a href="{{ route('extraOne')}}">
 					      <img src="{{ asset('assets/img/services/tuxpi.com.1512485160.jpg') }}" border="0" /> 
 					      </a>
 				      </span>
@@ -293,13 +180,13 @@
 				      </h4>
 				      <p class="text-justify">আমাদের সবচেয়ে বড়ো সার্ভিসটি হলো আমরা টেকনাফ থেকে তেঁতুলিয়া পর্যন্ত বাংলাদেশের সকল ভিসা এজেন্টের সকল ভিসা অফার আমাদের সাইটে প্রদর্শন করি। একজন ভিসা প্রার্থী খুব সহজেই সেই সব ভিসা অফারে ক্লিক করে অফারগুলি গ্রহন করতে পারেন। এখন আপনাকে ভিসা এজেন্টের বিজ্ঞাপন অন্য কোথাও খুঁজতে হবেনা। খুঁজতে হবেনা কতো টাকা, কি শর্তে কোথায় কিভাবে ভিসা হবে আপনার, ভিসা হবার পরে নাকি আগে টাকা দিতে হবে, এজেন্টের অফিস কোথায়, কোথায় গিয়ে কার সাথে দেখা করবেন। এই সাইট থেকে আপনি নিজে নিজেই ভিসার আবেদন করতে পারবেন।</p>
 				      <p>
-				        <a href="#" class="btn btn-more i-right">আরো জানুন <i class="fa fa-angle-right"></i></a>
+				        <a href="{{ route('extraOne')}}" class="btn btn-more i-right">আরো জানুন <i class="fa fa-angle-right"></i></a>
 				      </p>
 				    </div>
 
 				    <div class="col-md-4 text-center">
 				      <span class="fa-stack fa-5x">
-				      <a href="#">
+				      <a href="{{ route('extraTwo')}}">
 				      <!--<i class="fa fa-circle fa-stack-2x text-primary"></i>
 				      <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>-->
 				      <img src="{{ asset('assets/img/services/tuxpi.com.1512485918.jpg') }}" border="0" /> </a></span>
@@ -308,13 +195,13 @@
 				      </h4>
 				      <p class="text-justify">ধরুন আপনি একা কিংবা ব্যস্ত। অথবা আপনি এই ধরনের কোন ঝামেলায় যেতে চাচ্ছেননা। এজেন্টের অফিসে যাওয়া, কথাবার্তা বলে শিডিউল করা, এজেন্ট কি বলতে চাইছে বা ভবিষ্যতে সে কি বলবে বা করতে পারবে তা আপনাকে বুঝতে হবে। তাছাড়া এজেন্টের সাথে কন্ট্রাক্ট সাইন করা ও নানা ধরনের কাজগুলো বুঝে করতে হয়। তাই আপনি এগুলো সরাসরি নিজে না করে আমাদের সাহায্য নিতে পারেন। আমরা আপনার হয়ে এজেন্টের সাথে কথাবার্তা বলবো। কন্ট্রাক্ট করবো। সব দায়িত্ব আমাদের। আমরা আপনার অবস্থানে থেকে আপনার হয়ে কাজ করবো। </p>
 				      <p>
-				        <a href="#" class="btn btn-more i-right">আরো জানুন <i class="fa fa-angle-right"></i></a>
+				        <a href="{{ route('extraTwo')}}" class="btn btn-more i-right">আরো জানুন <i class="fa fa-angle-right"></i></a>
 				      </p>
 				    </div>
 
 				    <div class="col-md-4 text-center">
 				      <span class="fa-stack fa-5x">
-				      <a href="#">
+				      <a href="{{ route('extraThree')}}">
 				      <!--<i class="fa fa-circle fa-stack-2x text-primary"></i>
 				      <i class="fa fa-cogs fa-stack-1x fa-inverse"></i>-->
 				      <img src="{{ asset('assets/img/services/tuxpi.com.1512560973.jpg') }}" border="0" /> </a> </span>
@@ -323,7 +210,7 @@
 				      </h4>
 				      <p class="text-justify">বিমানের টিকিং বুকিং, বিদেশের হোটেল বুকিং ও প্যাকেজ ট্যুর আমাদের অন্য সার্ভিসগুলির কয়েকটি। আপনি ইচ্ছে করলে বাইরের অন্যান্য ট্রাভেল এজেন্সিগুলো থেকে বেশী দামে বিমানের টিকিট না কিনে আমাদের সাহায্য নিতে পারেন। আমরা ভিসার পর বা ভিসার কাজ ছাড়াও বাইরের যে কোন ক্লায়েন্টের জন্য এই কাজগুলো করে দিতে পারি। এ জন্য আপনি আমাদের সাইটে সাইন আপ না করেও কেবল আমাদের মেইল করে বিস্তারিত জানিয়ে টিকিট ক্রয়, </p>
 				      <p>
-				        <a href="/purchase-tickets-package-tours.html" class="btn btn-more i-right">আরো জানুন <i class="fa fa-angle-right"></i></a>
+				        <a href="{{ route('extraThree')}}" class="btn btn-more i-right">আরো জানুন <i class="fa fa-angle-right"></i></a>
 				      </p>
 				    </div>
 				  </div>
@@ -409,7 +296,7 @@
 					<div class="col-md-10"> 
 						<h3 class="text-shadow-white" style="line-height: 40px;">
 							বাংলার একটি ভিসা মার্কেটপ্লেস যেখানে শত শত ভিসার খোঁজ পাবেন আপনি। এই সমস্ত ভিসার ব্যপারে জানতে পারবেন এবং আবেদন করতে পারবেন। আমাদের রয়েছে দেশজোড়া অসংখ্য ভিসা এজেন্ট যারা বিভিন্ন দেশের বিভিন্ন ক্যাটাগরির ভিসা অফার আমাদের ওয়েব সাইটে নিয়ে আসছেন। এই সমস্ত ভিসা অফার থেকে আপনি আপনার পছন্দসই ভিসা অফারটি বেছে নিয়ে আবেদন করতে পারবেন। আমরা একটি সম্পুর্নভাবে স্বাধীন অনলাইনভিত্তিক প্রতিষ্ঠান। আমরা প্রতিদিন বিভিন্ন এজেন্টের ভিসা অফার পোস্টিং করার পাশাপাশি ভিসা প্রার্থীদেরকেও তাদের বায়োডাটা পোস্টিং করার সুবিধা দিয়ে থাকি। 
-							<a href="" class="btn btn-more btn"><i class="fa fa-plus"></i>আরো জানুন</a>
+							<a href="{{ route('about-us') }}" class="btn btn-more btn"><i class="fa fa-plus"></i>আরো জানুন</a>
 						</h3>  
 				</div>
 			</div>  
@@ -424,7 +311,9 @@
 					of Happy Visa Candidates!
 				</h3>
 				<p>
+				@if(!Auth::user())
 					<a href="{{ route('register')}}" class="btn btn-more btn-lg i-right">Join them today! <i class="fa fa-angle-right"></i></a>
+				@endif
 				</p>
 			</div>  
 					<!--counter end-->   
@@ -449,81 +338,17 @@
 				<div class="media">
 				    <div class="media-left hidden-xs">
 				    	<div class="date-wrapper"> 
-				    		<span class="date-m">May</span> 
+				    		<span class="date-m">Jan</span> 
 				    		<span class="date-d">01</span>
 				    	</div>
 				    </div>
 					<div class="media-body">
 							<h4 class="media-heading">
-							  <a href="#" class="text-weight-strong">কানাডার স্টুডেন্ট ভিসার উপযুক্ত সময় এই মাস</a>
+							  <a href="#" class="text-weight-strong">Under Contruction this blog</a>
 							</h4>
-					<p>
-
-					আপনারা সবাই জানেন কানাডা এতোবড়ো একটা দেশ যাকে মহাদেশ বললেও ভুল হবেনা। আর এ 
-					<a href="#">Read more <i class="fa fa-angle-right"></i></a>
-					</p>
 					</div>    
 				</div>
 
-				<!-- Blog post 1-->
-				<div class="media">
-				    <div class="media-left hidden-xs">
-				    	<div class="date-wrapper"> 
-				    		<span class="date-m">May</span> 
-				    		<span class="date-d">01</span>
-				    	</div>
-				    </div>
-					<div class="media-body">
-							<h4 class="media-heading">
-							  <a href="#" class="text-weight-strong">কানাডার স্টুডেন্ট ভিসার উপযুক্ত সময় এই মাস</a>
-							</h4>
-					<p>
-
-					আপনারা সবাই জানেন কানাডা এতোবড়ো একটা দেশ যাকে মহাদেশ বললেও ভুল হবেনা। আর এ 
-					<a href="#">Read more <i class="fa fa-angle-right"></i></a>
-					</p>
-					</div>    
-				</div>
-				
-				<!-- Blog post 1-->
-				<div class="media">
-				    <div class="media-left hidden-xs">
-				    	<div class="date-wrapper"> 
-				    		<span class="date-m">May</span> 
-				    		<span class="date-d">01</span>
-				    	</div>
-				    </div>
-					<div class="media-body">
-							<h4 class="media-heading">
-							  <a href="#" class="text-weight-strong">কানাডার স্টুডেন্ট ভিসার উপযুক্ত সময় এই মাস</a>
-							</h4>
-					<p>
-
-					আপনারা সবাই জানেন কানাডা এতোবড়ো একটা দেশ যাকে মহাদেশ বললেও ভুল হবেনা। আর এ 
-					<a href="#">Read more <i class="fa fa-angle-right"></i></a>
-					</p>
-					</div>    
-				</div>
-
-				<!-- Blog post 1-->
-				<div class="media">
-				    <div class="media-left hidden-xs">
-				    	<div class="date-wrapper"> 
-				    		<span class="date-m">May</span> 
-				    		<span class="date-d">01</span>
-				    	</div>
-				    </div>
-					<div class="media-body">
-							<h4 class="media-heading">
-							  <a href="#" class="text-weight-strong">কানাডার স্টুডেন্ট ভিসার উপযুক্ত সময় এই মাস</a>
-							</h4>
-					<p>
-
-					আপনারা সবাই জানেন কানাডা এতোবড়ো একটা দেশ যাকে মহাদেশ বললেও ভুল হবেনা। আর এ 
-					<a href="#">Read more <i class="fa fa-angle-right"></i></a>
-					</p>
-					</div>    
-				</div>
 				          
 				</div>
 				<!-- Latest Blog posts end -->	

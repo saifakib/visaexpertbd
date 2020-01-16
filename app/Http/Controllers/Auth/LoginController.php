@@ -36,14 +36,14 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        if(Auth::check() && Auth::user()->role->id == 0)
+        if(Auth::check() && Auth::user()->role_id == 0)
         {
-            $this->redirectTo = route('home');
+            $this->redirectTo = route('admin.visaCategories');
         }
-        elseif(Auth::check() && Auth::user()->role->id == 1){
-            $this->redirectTo = route('home');
-        } else {
-            $this->redirectTo = route('home');
+        elseif(Auth::check() && Auth::user()->role_id == 1){
+            $this->redirectTo = route('profile');
+        } elseif(Auth::check() && Auth::user()->role_id == 2){ 
+            $this->redirectTo = route('profile');
         }
         $this->middleware('guest')->except('logout');
     }

@@ -34,7 +34,10 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>['auth','admin']],f
     Route::get('/edit-category/{id}', 'HomeController@editCategory')->name('editCategory');
     Route::get('/delete-category/{id}', 'HomeController@deleteCategorie')->name('deleteCategorie');
     Route::get('/update-category/{id}', 'HomeController@updateCategory')->name('updateCategory');
-
+    Route::get('/agents', 'HomeController@agents')->name('agents');
+    Route::get('/delete-agent/{id}', 'HomeController@deleteAgent')->name('deleteAgent');
+    Route::get('/candidates', 'HomeController@candidates')->name('candidates');
+    Route::get('/delete-candidate/{id}', 'HomeController@deleteCandidate')->name('deleteCandidate');
 
 });
 
@@ -59,7 +62,7 @@ Route::group(['as'=>'agent.','prefix'=>'agent','middleware'=>['auth','agent']],f
 
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/how-to-start-agent', 'HomeController@agentStart')->name('agent-start');
 Route::get('/how-to-start-candidate', 'HomeController@candidateStart')->name('candidate-start');
 Route::get('/about-us', 'HomeController@aboutUs')->name('about-us');
@@ -79,6 +82,10 @@ Route::get('/category/{id}/visa', 'HomeController@categoryVisa')->name('category
 Route::get('/agent-visas/{id}', 'HomeController@agentVisa')->name('agentVisa');
 Route::get('/apply-visa/{idv}', 'HomeController@applyVisa')->name('applyVisa');
 Route::get('/apply-visa-post/{id}', 'HomeController@applyVisaPost')->name('applyVisaPost');
+Route::get('/sign-up-for-free-and-get-visa', 'HomeController@extraOne')->name('extraOne');
+Route::get('/hire-us-for-your-visa', 'HomeController@extraTwo')->name('extraTwo');
+Route::get('/purchase-tickets-package-tours', 'HomeController@extraThree')->name('extraThree');
+
 
 
 

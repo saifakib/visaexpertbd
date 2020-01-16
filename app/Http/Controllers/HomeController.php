@@ -41,7 +41,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $visas = Visa::get();
+        $latest = Visa::latest()->first();
+        $categorys = Category::get();
+        return view('home',compact('visas','latest','categorys'));
     }
 
     public function agentStart()
@@ -508,8 +511,14 @@ class HomeController extends Controller
         {
             return redirect()->route('login');
         } else {
-            $visa = Visa::where('visa_id', $idv)->first();
-            return view('applyVisa',compact('visa'));
+            if(Auth::user()->role->role_id == 0) {
+                return redirect()->back();
+            } elseif(Auth::user()->role->role_id == 1){
+                return redirect()->back();
+            } else {
+                $visa = Visa::where('visa_id', $idv)->first();
+                return view('applyVisa',compact('visa'));
+            }
         }
     }
     public function applyVisaPost(Request $request, $id)
@@ -541,6 +550,39 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
+    public function agents() {
+        $agents = AgentDetails::get();
+        return view('layouts.visa24.admin.viewAgent',compact('agents'));
+    }
+    public function candidates() {
+        $candidates = CandidateDetails::get();
+        return view('layouts.visa24.admin.viewCandidate',compact('candidates'));
+    }
+    
+    public function deleteAgent(User $id)
+    {
+        $id->delete();
+        return redirect()->back();
+    }
+    public function deleteCandidate(User $id)
+    {
+        $id->delete();
+        return redirect()->back();
+    }
+
+
+    public function extraOne()
+    {
+        return view('signUpFreeGetVisa');
+    }
+    public function extraTwo()
+    {
+        return view('hireUsForVisa');
+    }    
+    public function extraThree()
+    {
+        return view('purchaseTicket');
+    }
 
     public function clear()
     {
