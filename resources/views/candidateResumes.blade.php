@@ -365,7 +365,7 @@
                                                 <div class="row">
                                                     <div class="col-md-3">
                                                         <a href="/#" title="ABUL ">
-                                                            <img src="assets/img/candidate/IMG-20190916-WA0013.jpg" border="0" alt=" " class="img-thumbnail" width="100" />
+                                                            <img src="{{ url('public/assets/img/candidate/'.$candidate->candidateDetails->candidate_image) }}" border="0" alt=" " class="img-thumbnail" width="100" />
                                                         </a>
                                                     </div>
                                                     <div class="col-md-9">

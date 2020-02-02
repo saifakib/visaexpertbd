@@ -16,7 +16,7 @@
                                     <div class="row">
                                         <div class="col-md-3">
                                             <a href="#" title="">
-                                                <img src="{{ url('assets/img/visaAgent/'.$agent->agentDetails->logo) }}" border="0" alt="" class="img-thumbnail" width="100" />
+                                                <img src="{{ url('public/assets/img/visaAgent/'.$agent->agentDetails->logo) }}" border="0" alt="" class="img-thumbnail" width="100" />
                                             </a>
                                         </div>
                                         <div class="col-md-9">

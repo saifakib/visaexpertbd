@@ -23,8 +23,8 @@
 	            <li><a href="{{ route('about-us') }}">About Us</a></li><li>&bull;</li>                
 	            <li><a href="#">Blog</a></li><li>&bull;</li>
 	            <li><a href="{{ route('our-services') }}">Our Service</a></li><li>&bull;</li>
-	          <li><a href="#">Terms</a></li><li>&bull;</li>
-	          <li><a href="#">Privecy</a></li><li>&bull;</li>
+	          <li><a href="{{ route('terms') }}">Terms</a></li><li>&bull;</li>
+	          <li><a href="{{ route('privacy') }}">Privecy</a></li><li>&bull;</li>
 	          <li><a href="{{ route('contact-us') }}">Contact Us</a></li>	          
 	        </ul>
 

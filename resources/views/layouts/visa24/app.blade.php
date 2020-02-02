@@ -2,25 +2,28 @@
 
 
 <body class="page-index has-hero">
+	<!-- ======== header and navigation start ======== -->
+	<div id="navigation" class="wrapper">
 
+		<!-- ========navbar start ========-->     
+		@include('layouts.visa24.partials.navbar')
+		<!-- ========navbar end ========-->
+
+	</div>
+	<!-- ======== header and navigation end ======== -->  
+	
+	<!-- ======== heading searching option start ======== --> 
+	
 	<div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1">
+        
+		<!-- ========Header start ========-->
 		
-		<!-- ======== header and navigation start ======== -->
-		<div id="navigation" class="wrapper">
-
-				<!-- ========navbar start ========-->     
-				@include('layouts.visa24.partials.navbar')
-				<!-- ========navbar end ========-->
-
-				<!-- ========Header start ========-->
-				
-				@include('layouts.visa24.partials.header')
-				<!-- ========Header end ========-->
-		</div>
-		<!-- ======== header and navigation end ======== -->  
+		@include('layouts.visa24.partials.header')
+		<!-- ========Header end ========-->
 		
-		<!-- ======== heading searching option start ======== --> 
-
+    @if(Request::is('/'))
+        @include('layouts.visa24.partials.search')
+    @endif
 	<!-- <div class="hero" id="highlighted">
 		<div class="inner">
 			

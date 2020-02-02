@@ -3,6 +3,12 @@
   Author URL: https://gocybercity.com
 */
 /* blog coding start */
+.navbar {
+    position: relative;
+    min-height: 50px; 
+    margin-bottom: 0px; 
+    border: 1px solid transparent;
+}
 .blog-post{
   margin-bottom: 15px;
 }
@@ -1722,12 +1728,12 @@ a:hover {
   color: #ff5821;
 }
 #background-wrapper {
-  background-color: #000000;
-  background-position: left top;
+  background-color: #beb5b5;
+  background-position: 50% 80%;
+  /* background-attachment: fixed; */
+  /* padding-bottom: 100; */
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  padding-bottom: 0;
-  border-bottom: 2px solid #ff5821;
+  /* border-bottom: 2px solid #ff5821; */
 }
 .benches {
   background-image: url(../img/backgrounds/benches.png);
@@ -1736,7 +1742,7 @@ a:hover {
   background-image: url(../img/backgrounds/boots.png);
 }
 .buildings {
-  background: url(../img/header-bg.png) no-repeat center center fixed;  
+  background: url(../img/final-header.png);  
 	  -webkit-background-size: cover;
 	  -moz-background-size: cover;
 	  -o-background-size: cover;
@@ -1813,9 +1819,9 @@ a.btn-hh-trigger.target-open:after {
   color: #ffffff;
 }
 .header {
-  padding: 5px 0 0px 0;
-  position: relative;
+  padding: 15px 0px;
   color: white;
+  height: 155px;
 }
 .header a:not(.btn) {
   color: white;

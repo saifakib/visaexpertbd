@@ -39,6 +39,13 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>['auth','admin']],f
     Route::get('/candidates', 'HomeController@candidates')->name('candidates');
     Route::get('/delete-candidate/{id}', 'HomeController@deleteCandidate')->name('deleteCandidate');
 
+    Route::get('/view-visa', 'HomeController@adminviewVisa')->name('viewVisa');
+    Route::get('/post-visa', 'HomeController@createVisa')->name('createVisa');
+    Route::get('/posted-visa', 'HomeController@postVisa')->name('postVisa');
+    Route::get('/edit-visa/{id}', 'HomeController@editVisa')->name('editVisa');
+    Route::get('/delete-visa/{id}', 'HomeController@deleteVisa')->name('deleteVisa');
+    Route::get('/update-visa/{id}', 'HomeController@updateVisa')->name('updateVisa');
+
 });
 
 
@@ -48,11 +55,11 @@ Route::group(['as'=>'agent.','prefix'=>'agent','middleware'=>['auth','agent']],f
     Route::get('/view-applicant/{id}', 'HomeController@viewApplicant')->name('viewApplicant');
     Route::get('/delete-applicant/{id}', 'HomeController@deleteApplicant')->name('deleteApplicant');
     Route::get('/view-visa/{id}', 'HomeController@agentviewVisa')->name('viewVisa');
-    Route::get('/post-visa', 'HomeController@createVisa')->name('createVisa');
-    Route::get('/posted-visa', 'HomeController@postVisa')->name('postVisa');
-    Route::get('/edit-visa/{id}', 'HomeController@editVisa')->name('editVisa');
-    Route::get('/delete-visa/{id}', 'HomeController@deleteVisa')->name('deleteVisa');
-    Route::get('/update-visa/{id}', 'HomeController@updateVisa')->name('updateVisa');
+    //Route::get('/post-visa', 'HomeController@createVisa')->name('createVisa');
+    //Route::get('/posted-visa', 'HomeController@postVisa')->name('postVisa');
+    //Route::get('/edit-visa/{id}', 'HomeController@editVisa')->name('editVisa');
+    //Route::get('/delete-visa/{id}', 'HomeController@deleteVisa')->name('deleteVisa');
+    //Route::get('/update-visa/{id}', 'HomeController@updateVisa')->name('updateVisa');
 });
 
 
@@ -86,7 +93,8 @@ Route::get('/sign-up-for-free-and-get-visa', 'HomeController@extraOne')->name('e
 Route::get('/hire-us-for-your-visa', 'HomeController@extraTwo')->name('extraTwo');
 Route::get('/purchase-tickets-package-tours', 'HomeController@extraThree')->name('extraThree');
 
-
+Route::get('/terms', 'HomeController@terms')->name('terms');
+Route::get('/privacy', 'HomeController@privacy')->name('privacy');
 
 
 

@@ -345,15 +345,16 @@ class HomeController extends Controller
     public function createVisa()
     {
         $categories = Category::get();
+        $agents = Agent::get();
         //return $categories;
-        return view('layouts.visa24.agent.createVisa', compact('categories'));
+        return view('layouts.visa24.admin.createVisa', compact('categories','agents'));
     }
     public function postVisa(Request $request)
     {
         $visa = Visa::insertGetId([
             'title' => $request->title,
             'category_id' => $request->category,
-            'agent_id' => Auth::user()->agent->agent_id,
+            'agent_id' => $request->agent_id,
             'visa_authority' => $request->visa_authority,
             'offered_country' => $request->offered_country,
             'per_month_salary' => $request->per_month_salary,
@@ -442,23 +443,29 @@ class HomeController extends Controller
         }
     }
 
-    public function agentviewVisa($id){
+    public function agentviewVisa($id) {
         $visas = Visa::Where('agent_id', $id)->get();
         return view('layouts.visa24.agent.viewVisa',compact('visas'));
+    }
+
+    public function adminviewVisa() {
+        $visas = Visa::get();
+        // return $visas;
+        return view('layouts.visa24.admin.viewVisa', compact('visas'));
     }
 
     public function editVisa($id)
     {
         $visa = Visa::where('visa_id',$id)->first();
         $categories = Category::get();
-        return view('layouts.visa24.agent.editVisa', compact('visa','categories'));
+        return view('layouts.visa24.admin.editVisa', compact('visa','categories'));
     }
     public function updateVisa(Request $request, $id)
     {
         $visa = Visa::where('visa_id', $id)->first();
         $visa->title = $request->title;
         $visa->category_id = $request->category;
-        $visa->agent_id = Auth::user()->agent->agent_id ;
+        //$visa->agent_id = Auth::user()->agent->agent_id ;
         $visa->visa_authority = $request->visa_authority;
         $visa->offered_country = $request->offered_country;
         $visa->per_month_salary =$request->per_month_salary ;
@@ -582,6 +589,15 @@ class HomeController extends Controller
     public function extraThree()
     {
         return view('purchaseTicket');
+    }
+    
+    public function terms()
+    {
+        return view('terms');
+    }
+    public function privacy()
+    {
+        return view('privacy');
     }
 
     public function clear()

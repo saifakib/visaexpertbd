@@ -1,6 +1,6 @@
-@extends('layouts.visa24.agent.control')
+@extends('layouts.visa24.admin.control')
 
-@section('agentc')
+@section('admin')
     <div class="col-md-12" style="font-size:22px; line-height:40px;">
 
         <h2 class="block-title">
@@ -19,9 +19,10 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Category</th>
+                                            <th>Agent</th>
                                             <th>Offered Country</th>
                                             <th>Created at</th>
-                                            <!-- <th class="text-center">Action</th> -->
+                                            <th class="text-center">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -29,18 +30,19 @@
                                             <tr>
                                                 <td>{{ $key+1 }}</td>
                                                 <td>{{ $visa->category->category_name }}</td>
+                                                <td>{{ $visa->agent->agent_name}}</td>
                                                 <td>{{ $visa->offered_country}}</td>
                                                 <td>{{ $visa->created_at->diffForHumans() }}</td>
-                                                <!-- <td class="text-center">
-                                                    <a href="#"
+                                                <td class="text-center">
+                                                    <a href="{{route('admin.editVisa',$visa->visa_id)}}"
                                                        class="btn btn-info waves-effect">
                                                         <i class="material-icons">edit</i>
                                                     </a>
-                                                    <a href="#"
+                                                    <a href="{{route('admin.deleteVisa',$visa->visa_id)}}"
                                                        class="btn btn-danger waves-effect">
                                                         <i class="material-icons">delete</i>
                                                     </a>
-                                                </td> -->
+                                                </td>
                                             </tr>
                                         @endforeach
                                         </tbody>

@@ -1,4 +1,4 @@
-<div class="hero" id="highlighted">
+<div class="hero" id="highlighted" style="height:280px;">
 		<div class="inner">
 			<!--owl carosuel start-->
 			<div id="highlighted-slider" class="">
@@ -9,7 +9,7 @@
 									<h2 class="h1 text-weight-light ">
 									&nbsp; &nbsp; 
 									</h2>		            
-									<div class="clearfix" style="height:50px;">&nbsp;</div>         
+									<div class="clearfix" style="height:20px;">&nbsp;</div>         
 
 									<form accept-charset="UTF-8" role="form" action="#" >
 										<div class="row">
@@ -38,7 +38,7 @@
 									
 									<div class="col-md-2">&nbsp;</div>
 									<div class="col-md-10">
-										<span style="color:#fff; font-weight:bold; font-size:26px; text-transform:uppercase;">We Have <span class="text-primary">305</span> visa offers for you</span>
+										<span style="color:#fff; font-weight:bold; font-size:26px; text-transform:uppercase;">We Have <span class="text-primary">00</span> visa offers for you</span>
 									</div>    
 								</div>		          
 							</div>

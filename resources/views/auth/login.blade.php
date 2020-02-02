@@ -57,18 +57,18 @@
 
 					    <div>
 					        <ul class="nav nav-tabs nav-stacked">
+					            <!--<li>-->
+					            <!--    <a href="/registration.html?view=reset">-->
+					            <!--        Forgot your password?                -->
+					            <!--    </a>-->
+					            <!--</li>-->
+					            <!--<li>-->
+					            <!--    <a href="/registration.html?view=remind">-->
+					            <!--        Forgot your username?                -->
+					            <!--    </a>-->
+					            <!--</li>-->
 					            <li>
-					                <a href="/registration.html?view=reset">
-					                    Forgot your password?                
-					                </a>
-					            </li>
-					            <li>
-					                <a href="/registration.html?view=remind">
-					                    Forgot your username?                
-					                </a>
-					            </li>
-					            <li>
-					                <a href="/registration.html">
+					                <a href="{{ route('register') }}">
 					                        Don't have an account?                    
 					                    </a>
 					            </li>

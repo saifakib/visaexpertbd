@@ -18,7 +18,7 @@
                             <div class="col-md-3 m-b-20">
                                 <div class="myborder_radius">
                                     <a href="{{ route('categoryVisa', $category->category_id) }}" title="{{ $category->category_name }}">
-                                        <img src="assets/img/visaCategories/{{ $category->image }}" border="0" alt="{{ $category->category_name }}" class="img-thumbnail" width="100" />
+                                        <img src="{{url('/public/assets/img/visaCategories/'.$category->image)}}" border="0" alt="{{ $category->category_name }}" class="img-thumbnail" width="100"/>
                                     </a>
                                     <p><a href="{{ route('categoryVisa', $category->category_id) }}" title="JOB VISA">{{ $category->category_name }}</a></p>
                                 </div>
@@ -55,4 +55,3 @@
 	</div>
 
 @endsection
-offersViewDetails.html

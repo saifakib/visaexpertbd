@@ -11,24 +11,44 @@
 				<div class="services block block-bg-gradient block-border-bottom m-b-20">
 				
 					<div class="col-md-12 m-b-20">
-						<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+						<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="5000">
 							  <!-- Indicators -->
 							<ol class="carousel-indicators">
 							   <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 							   <li data-target="#carousel-example-generic" data-slide-to="1"></li>
 							   <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+								 <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+							   <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+								 <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+							   <li data-target="#carousel-example-generic" data-slide-to="6"></li>
+								 <li data-target="#carousel-example-generic" data-slide-to="7"></li>
 							</ol>
 
 							  <!-- Wrapper for slides -->
 							<div class="carousel-inner" role="listbox">
 							   <div class="item active">
-							      <img src="{{ asset('assets/img/slider/Australia.jpg') }}" alt="...">
+							      <img src="{{ asset('assets/img/slider/Australia.png') }}" style="height: 350px" alt="...">
 							   </div>
 							   <div class="item">
-							     <img src="{{ asset('assets/img/slider/canada.jpg') }}" alt="...">
+							     <img src="{{ asset('assets/img/slider/canada.png') }}" style="height: 350px" alt="...">
 							   </div>
 							   <div class="item">
-							     <img src="{{ asset('assets/img/slider/Singapore 8.jpg') }}" alt="...">
+							     <img src="{{ asset('assets/img/slider/Singapore.png') }}" style="height: 350px" alt="...">
+							   </div>
+								 <div class="item">
+							      <img src="{{ asset('assets/img/slider/CAMBODIA.png') }}" style="height: 350px" alt="...">
+							   </div>
+							   <div class="item">
+							     <img src="{{ asset('assets/img/slider/DohaQATAR.png') }}" style="height: 350px" alt="...">
+							   </div>
+							   <div class="item">
+							     <img src="{{ asset('assets/img/slider/Turkey.png') }}" style="height: 350px" alt="...">
+							   </div>
+								 <div class="item">
+							     <img src="{{ asset('assets/img/slider/MAKKA-MADINAH-1.png') }}" style="height: 350px" alt="...">
+							   </div>
+							   <div class="item">
+							     <img src="{{ asset('assets/img/slider/Vietnam.png') }}" style="height: 350px" alt="...">
 							   </div>
 								
 						    </div>
@@ -86,7 +106,7 @@
 				        <div class="col-md-12 block-border" style="padding-left:0px !important; padding-right:0px !important;">
 						    <div class="col-md-12 border-bottom-gray layout-pad">
 				            	<div class="col-md-3">
-				            	    <img src="assets/img/visaOffers/CHINA-TRANSLATOR.png" alt="" class="img-thumbnail" width="100" height="80"/>
+				            	    <img src="public/assets/img/visaOffers/CHINA-TRANSLATOR.png" alt="" class="img-thumbnail" width="100" height="80"/>
 				            	</div>
 				                <div class="col-md-6">
 				            	  <h4 class="text-uppercase text-bold"><strong>{{ $visa->title}}</strong>
@@ -152,7 +172,7 @@
                             <div class="col-md-3 m-b-20">
                                 <div class="myborder_radius">
                                     <a href="{{ route('categoryVisa', $category->category_id) }}" title="{{ $category->category_name }}">
-                                        <img src="assets/img/visaCategories/{{ $category->image }}" border="0" alt="{{ $category->category_name }}" class="img-thumbnail" width="100" />
+                                        <img src="public/assets/img/visaCategories/{{ $category->image }}" border="0" alt="{{ $category->category_name }}" class="img-thumbnail" width="100" />
                                     </a>
                                     <p><a href="{{ route('categoryVisa', $category->category_id) }}" title="JOB VISA">{{ $category->category_name }}</a></p>
                                 </div>
@@ -231,7 +251,7 @@
 							<div dir="ltr">
 								<div class="separator" style="clear: both; text-align: justify;"> </div>
 								
-								<span style="font-size: 12pt;"><img class="pull-left" style="float: left; margin-right: 10px; margin-bottom: 8px;" src="assets/img/visa.jpg" alt="" width="428" height="179" />
+								<span style="font-size: 12pt;"><img class="pull-left" style="float: left; margin-right: 10px; margin-bottom: 8px;" src="public/assets/img/visa.jpg" alt="" width="428" height="179" />
 								<p>
 									একটি সম্পুর্ন স্বাধীন প্রতিষ্ঠান। আমরা কোন ভিসা এজেন্সি নই। আমাদের সাথে সরাসরি অফিসে এসে আপনাদের সাক্ষাত করারও প্রয়োজন নেই।আমরা ভিসা প্রার্থী ও ভিসা এজেন্টের মাঝামাঝি একটি সেতুবন্ধ হিসাবে কাজ করি। আমাদের সব কার্যক্রম অনলাইন ভিত্তিক। আমাদের সাইটে যে সব অফারগুলো আপনি দেখছেন সেগুলো সবই আমাদের এজেন্টদের দেয়া অফার।
 								</p>
@@ -248,7 +268,7 @@
 								<div style="text-align: justify;">
 									<span style="font-size: 12pt;">
 									আপনি যদি একজন ভিসা প্রার্থী হয়ে থাকেন তবে সবার আগে আমাদের ভিসা ক্লাবের মেম্বার হোন। ভিসা ক্লাব এর মেম্বার না হলে আপনি আমাদের নিকট থেকে কোন ভিসা তথ্য বা ভিসা সহায়তা নিতে পারবেন না। ভিসা ক্লাব এর মেম্বার হবার জন্য নিচের ছবিতে ক্লিক করুন 
-									<a href="#"><img src="assets/img/download.png" alt="" width="99" height="88" style="margin-right: 8px; margin-bottom: 8px;" /></a> ভিসা ক্লাবের মেম্বার হবার পর আপনার প্রদেয় ইমেইল এ দুটি মেইল পাবেন। এবার মেইলে দেয়া আইডি ও পাসওয়ার্ড দিয়ে এই সাইটে লগ ইন করুন।তারপর আপনার ড্যাশবোর্ড থেকে POST A RESUME এ ক্লিক করে আপনার বায়োডাটা ফর্ম ফিলআপ করে রিজিউম আপলোড করুন ছবি সহ। এরপর প্রথম পেজ থেকে যে কোন ভিসা অফারের APPLY FOR THE VISA বাটন ক্লিক করে আবেদন করুন আপনার পছন্দসই ভিসাতে। এরপর  আবেদন করার পর আমরাই আপনার সাথে যোগাযোগ করবো।
+									<a href="#"><img src="public/assets/img/download.png" alt="" width="99" height="88" style="margin-right: 8px; margin-bottom: 8px;" /></a> ভিসা ক্লাবের মেম্বার হবার পর আপনার প্রদেয় ইমেইল এ দুটি মেইল পাবেন। এবার মেইলে দেয়া আইডি ও পাসওয়ার্ড দিয়ে এই সাইটে লগ ইন করুন।তারপর আপনার ড্যাশবোর্ড থেকে POST A RESUME এ ক্লিক করে আপনার বায়োডাটা ফর্ম ফিলআপ করে রিজিউম আপলোড করুন ছবি সহ। এরপর প্রথম পেজ থেকে যে কোন ভিসা অফারের APPLY FOR THE VISA বাটন ক্লিক করে আবেদন করুন আপনার পছন্দসই ভিসাতে। এরপর  আবেদন করার পর আমরাই আপনার সাথে যোগাযোগ করবো।
 									</span>
 								</div>
 
@@ -303,7 +323,7 @@
 					<!-- about company end -->    
       
 					<!--counter start-->
-			<div class="block block-pd-sm block-bg-grey-dark block-bg-overlay block-bg-overlay-6 text-center" data-block-bg-img="assets/img/passport-world-map-hero-1400x500.jpg?q=40&amp;w=1650&amp;sharp=30" data-stellar-background-ratio="0.3">
+			<div class="block block-pd-sm block-bg-grey-dark block-bg-overlay block-bg-overlay-6 text-center" data-block-bg-img="public/assets/img/passport-world-map-hero-1400x500.jpg?q=40&amp;w=1650&amp;sharp=30" data-stellar-background-ratio="0.3">
 				<h2 class="h-xlg h1 m-a-0">
 					<span data-counter-up>1000</span>s
 				</h2>
@@ -325,7 +345,7 @@
 	                <h3 class="block-title">
 	                  Testimonials
 	                </h3>
-	                <img src="assets/img/man1.png" alt="রেজিস্ট্রেশন করুন, সিভি দিন ভিসা নিন">
+	                <img src="public/assets/img/man1.png" alt="রেজিস্ট্রেশন করুন, সিভি দিন ভিসা নিন">
 	          	</div>
           
 				<!-- Latest Blog posts start -->
