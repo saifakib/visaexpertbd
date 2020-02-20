@@ -28,6 +28,8 @@ Route::get('/clear', 'HomeController@clear')->name('clear');
 Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>['auth','admin']],function()
 {
 
+    Route::get('/create-post', 'HomeController@createPost')->name('createPost');
+    Route::get('/create-post-post', 'HomeController@postBlog')->name('postBlog');
     Route::get('/create-visa-category', 'HomeController@createVisaCategory')->name('createVisaCategory');
     Route::post('/post-visa-category', 'HomeController@postVisaCategory')->name('postVisaCategory');
     Route::get('/visa-categories', 'HomeController@visaCategories')->name('visaCategories');
@@ -35,13 +37,17 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>['auth','admin']],f
     Route::get('/delete-category/{id}', 'HomeController@deleteCategorie')->name('deleteCategorie');
     Route::get('/update-category/{id}', 'HomeController@updateCategory')->name('updateCategory');
     Route::get('/agents', 'HomeController@agents')->name('agents');
+    Route::get('/contacts', 'HomeController@contacts')->name('contacts');
     Route::get('/delete-agent/{id}', 'HomeController@deleteAgent')->name('deleteAgent');
+    Route::get('/delete-contact/{id}', 'HomeController@deleteContact')->name('deleteContact');
     Route::get('/candidates', 'HomeController@candidates')->name('candidates');
     Route::get('/delete-candidate/{id}', 'HomeController@deleteCandidate')->name('deleteCandidate');
 
+    Route::get('/medias', 'HomeController@media')->name('media');
+
     Route::get('/view-visa', 'HomeController@adminviewVisa')->name('viewVisa');
     Route::get('/post-visa', 'HomeController@createVisa')->name('createVisa');
-    Route::get('/posted-visa', 'HomeController@postVisa')->name('postVisa');
+    Route::post('/posted-visa', 'HomeController@postVisa')->name('postVisa');
     Route::get('/edit-visa/{id}', 'HomeController@editVisa')->name('editVisa');
     Route::get('/delete-visa/{id}', 'HomeController@deleteVisa')->name('deleteVisa');
     Route::get('/update-visa/{id}', 'HomeController@updateVisa')->name('updateVisa');
@@ -75,6 +81,7 @@ Route::get('/how-to-start-candidate', 'HomeController@candidateStart')->name('ca
 Route::get('/about-us', 'HomeController@aboutUs')->name('about-us');
 Route::get('/our-services', 'HomeController@ourServices')->name('our-services');
 Route::get('/contact-us', 'HomeController@contactUs')->name('contact-us');
+Route::get('/contact-us-post', 'HomeController@contactUsPost')->name('contact-us-post');
 Route::get('/profile', 'HomeController@profile')->name('profile');
 Route::get('/profile-edit/{id}', 'HomeController@editProfile')->name('editProfile');
 Route::get('/profile-update', 'HomeController@updateProfile')->name('updateProfile');
@@ -97,21 +104,5 @@ Route::get('/terms', 'HomeController@terms')->name('terms');
 Route::get('/privacy', 'HomeController@privacy')->name('privacy');
 
 
-
-
-
 Route::get('/control', 'HomeController@control')->name('control');
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -1728,12 +1728,12 @@ a:hover {
   color: #ff5821;
 }
 #background-wrapper {
-  background-color: #beb5b5;
+  background-color: #000000;
   background-position: 50% 80%;
-  /* background-attachment: fixed; */
-  /* padding-bottom: 100; */
+  /*background-attachment: fixed;*/
+  /*padding-bottom: 0;*/
   background-repeat: no-repeat;
-  /* border-bottom: 2px solid #ff5821; */
+  /*border-bottom: 2px solid #ff5821;*/
 }
 .benches {
   background-image: url(../img/backgrounds/benches.png);
@@ -1742,7 +1742,7 @@ a:hover {
   background-image: url(../img/backgrounds/boots.png);
 }
 .buildings {
-  background: url(../img/final-header.png);  
+  background: url(../img/final-header4.png);  
 	  -webkit-background-size: cover;
 	  -moz-background-size: cover;
 	  -o-background-size: cover;

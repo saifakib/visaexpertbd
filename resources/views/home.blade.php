@@ -3,13 +3,13 @@
 @section('content')
 
     <!-- ======== Main content start ======== -->
-    <div id="content"> 
+    <div id="content">
     	<div class="mission block block-pd-sm block-bg-noise">
         	<div class="col-md-1"></div>
             <div class="col-md-10">
 				<!-- visa offers start -->
 				<div class="services block block-bg-gradient block-border-bottom m-b-20">
-				
+
 					<div class="col-md-12 m-b-20">
 						<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="5000">
 							  <!-- Indicators -->
@@ -50,7 +50,7 @@
 							   <div class="item">
 							     <img src="{{ asset('assets/img/slider/Vietnam.png') }}" style="height: 350px" alt="...">
 							   </div>
-								
+
 						    </div>
 						</div>
 
@@ -76,7 +76,7 @@
 				        </div>
 
 				        <div class="col-md-3">
-				         <input name="search_key" id="search_key" value="" class="form-control " placeholder="Visa type" aria-invalid="false" type="text">         
+				         <input name="search_key" id="search_key" value="" class="form-control " placeholder="Visa type" aria-invalid="false" type="text">
 				         <span class="text-default" style="font-size:10px; color:#999;">Visa type</span>
 				        </div>
 
@@ -87,12 +87,12 @@
 
 				        <div class="col-md-3">
 				         <button type="submit" class="validate btn btn-danger btn-block">
-							FIND						
+							FIND
 						</button>
 				        </div>
 				     </div>
 				    </form>
-				         
+
 				    </div>
 				    <!-- visa search form end -->
 
@@ -106,7 +106,7 @@
 				        <div class="col-md-12 block-border" style="padding-left:0px !important; padding-right:0px !important;">
 						    <div class="col-md-12 border-bottom-gray layout-pad">
 				            	<div class="col-md-3">
-				            	    <img src="public/assets/img/visaOffers/CHINA-TRANSLATOR.png" alt="" class="img-thumbnail" width="100" height="80"/>
+				            	    <img src="public/assets/img/visaOffers/{{ $visa->logo }}" border="0" alt="" class="img-thumbnail" width="100" height="80" />
 				            	</div>
 				                <div class="col-md-6">
 				            	  <h4 class="text-uppercase text-bold"><strong>{{ $visa->title}}</strong>
@@ -122,26 +122,18 @@
 
 				        </div>
 						@endforeach
-				        
+
 
 				        <div class="col-md-12 text-center">
 				   		 <ul class='pagination'>
-				   		 	<li><a class='current'>1</a></li>
-				   		 	<li><a href=''>2</a></li>
-				   		 	<li><a href=''>3</a></li>
-				   		 	<li><a href=''>4</a></li>
-				   		 	<li><a href=''>5</a></li>
-				   		 	<li><a href=''>6</a></li>
-				   		 	<li><a href=''>7</a></li>
-				   		 	<li><a href=''>Next</a></li>
-				   		 	<li><a href=''>Last</a></li>
+				   		 	{{ $visas->links() }}
 				   		 </ul>
 				        </div>
 				    </div>
 				    <!-- visa 0ffers list end -->
-				    
+
 				    <!-- visa offers side bar start -->
-				    
+
 				    <div class="col-md-4">
 				    	<h2 class="block-title">Featured Visa</h2>
 							@if(isset($latest))
@@ -153,14 +145,14 @@
 				            </h5>
 				            <p>{{ $latest->decription }}</p>
 				        </div>
-							@endif  
+							@endif
 				    </div>
 				    <!-- visa offers side bar end -->
 				</div>
 				<!-- visa offers end -->
-				
 
-				<!-- visa categories start --> 
+
+				<!-- visa categories start -->
 				<div class="services block block-bg-gradient block-border-bottom m-b-20">
 
 					<h2 class="block-title">
@@ -181,9 +173,9 @@
 
 				    </div>
 				</div>
-				<!-- visa categories end --> 	
+				<!-- visa categories end -->
 
-				<!-- Services start -->  
+				<!-- Services start -->
 				<div class="services block block-bg-gradient block-border-bottom m-b-20">
 				  <h2 class="block-title">
 				    Our Services
@@ -192,7 +184,7 @@
 				    <div class="col-md-4 text-center">
 				      <span class="fa-stack fa-5x">
 					      <a href="{{ route('extraOne')}}">
-					      <img src="{{ asset('assets/img/services/tuxpi.com.1512485160.jpg') }}" border="0" /> 
+					      <img src="{{ asset('assets/img/services/tuxpi.com.1512485160.jpg') }}" border="0" />
 					      </a>
 				      </span>
 				      <h4 class="text-weight-strong">
@@ -235,22 +227,22 @@
 				    </div>
 				  </div>
 				</div>
-				<!-- Services end --> 
+				<!-- Services end -->
 
 				<!-- visa process start -->
 	            <div class="services block block-bg-gradient block-border-bottom">
 					<div class="item-page" itemscope itemtype="https://schema.org/Article">
-			
+
 						<div class="">
 							<h2 class="block-title">
-								কিভাবে আপনি ভিসা পাবেন			
+								কিভাবে আপনি ভিসা পাবেন
 							</h2>
 						</div>
-						
+
 						<div itemprop="articleBody">
 							<div dir="ltr">
 								<div class="separator" style="clear: both; text-align: justify;"> </div>
-								
+
 								<span style="font-size: 12pt;"><img class="pull-left" style="float: left; margin-right: 10px; margin-bottom: 8px;" src="public/assets/img/visa.jpg" alt="" width="428" height="179" />
 								<p>
 									একটি সম্পুর্ন স্বাধীন প্রতিষ্ঠান। আমরা কোন ভিসা এজেন্সি নই। আমাদের সাথে সরাসরি অফিসে এসে আপনাদের সাক্ষাত করারও প্রয়োজন নেই।আমরা ভিসা প্রার্থী ও ভিসা এজেন্টের মাঝামাঝি একটি সেতুবন্ধ হিসাবে কাজ করি। আমাদের সব কার্যক্রম অনলাইন ভিত্তিক। আমাদের সাইটে যে সব অফারগুলো আপনি দেখছেন সেগুলো সবই আমাদের এজেন্টদের দেয়া অফার।
@@ -258,16 +250,16 @@
 								</span>
 
 								<br />
-								
+
 								<div style="text-align: justify;">
 									<span style="font-size: 12pt;">
-									আমরা আমাদের দীর্ঘ অভিজ্ঞতার আলোকে প্রতিটি এজেন্টের অফিস ভিজিট করি ও তাদের কার্যক্রমের দিকে খেয়াল করি। তাদের কার্যক্রমের ভিত্তিতেই তাদেরকে আমরা ভেরিফায়েড এজেন্ট, সুবিধালভার এজেন্ট, গোল্ডেন এজেন্ট, ডায়মন্ড এজেন্ট হিসাবে চিহ্নিত করি। 
+									আমরা আমাদের দীর্ঘ অভিজ্ঞতার আলোকে প্রতিটি এজেন্টের অফিস ভিজিট করি ও তাদের কার্যক্রমের দিকে খেয়াল করি। তাদের কার্যক্রমের ভিত্তিতেই তাদেরকে আমরা ভেরিফায়েড এজেন্ট, সুবিধালভার এজেন্ট, গোল্ডেন এজেন্ট, ডায়মন্ড এজেন্ট হিসাবে চিহ্নিত করি।
 									</span>
 								</div>
 
 								<div style="text-align: justify;">
 									<span style="font-size: 12pt;">
-									আপনি যদি একজন ভিসা প্রার্থী হয়ে থাকেন তবে সবার আগে আমাদের ভিসা ক্লাবের মেম্বার হোন। ভিসা ক্লাব এর মেম্বার না হলে আপনি আমাদের নিকট থেকে কোন ভিসা তথ্য বা ভিসা সহায়তা নিতে পারবেন না। ভিসা ক্লাব এর মেম্বার হবার জন্য নিচের ছবিতে ক্লিক করুন 
+									আপনি যদি একজন ভিসা প্রার্থী হয়ে থাকেন তবে সবার আগে আমাদের ভিসা ক্লাবের মেম্বার হোন। ভিসা ক্লাব এর মেম্বার না হলে আপনি আমাদের নিকট থেকে কোন ভিসা তথ্য বা ভিসা সহায়তা নিতে পারবেন না। ভিসা ক্লাব এর মেম্বার হবার জন্য নিচের ছবিতে ক্লিক করুন
 									<a href="#"><img src="public/assets/img/download.png" alt="" width="99" height="88" style="margin-right: 8px; margin-bottom: 8px;" /></a> ভিসা ক্লাবের মেম্বার হবার পর আপনার প্রদেয় ইমেইল এ দুটি মেইল পাবেন। এবার মেইলে দেয়া আইডি ও পাসওয়ার্ড দিয়ে এই সাইটে লগ ইন করুন।তারপর আপনার ড্যাশবোর্ড থেকে POST A RESUME এ ক্লিক করে আপনার বায়োডাটা ফর্ম ফিলআপ করে রিজিউম আপলোড করুন ছবি সহ। এরপর প্রথম পেজ থেকে যে কোন ভিসা অফারের APPLY FOR THE VISA বাটন ক্লিক করে আবেদন করুন আপনার পছন্দসই ভিসাতে। এরপর  আবেদন করার পর আমরাই আপনার সাথে যোগাযোগ করবো।
 									</span>
 								</div>
@@ -281,47 +273,47 @@
 									<span style="font-size: 12pt;">আমাদের মাধ্যমে ভিসা আবেদন করলে ভিসা হবার সম্ভাবনা ৯৯% কেননা এজেন্ট এর পাশাপাশি আমরাও এজেন্টের ভিসা প্রসেসিং কার্যক্রম তদারকি করে থাকি।
 									</span>
 								</div>
-							</div> 	
+							</div>
 						</div>
 					</div>
 				</div>
 				<!-- visa process end -->
-				
+
 				<!-- breadcrumb start -->
 				<ul itemscope itemtype="https://schema.org/BreadcrumbList" class="breadcrumb">
 					<li>
 						You are here: &#160;
 					</li>
-					
+
 					<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="active">
 						<span itemprop="name">
-							Home				
+							Home
 						</span>
 						<meta itemprop="position" content="1">
 					</li>
-				</ul> 
-				<!-- breadcrumb end -->                   
+				</ul>
+				<!-- breadcrumb end -->
 	        </div>
             <div class="col-md-1"></div>
         </div>
     </div>
      <!-- ======== main content end ======== -->
-    
+
     <!-- ======== content area start ======== -->
     <div id="content">
 
 				<!-- about company start -->
 			<div class="mission text-justify block block-pd-sm block-bg-noise m-b-20">
-					<div class="col-md-1"></div> 
-					<div class="col-md-10"> 
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
 						<h3 class="text-shadow-white" style="line-height: 40px;">
-							বাংলার একটি ভিসা মার্কেটপ্লেস যেখানে শত শত ভিসার খোঁজ পাবেন আপনি। এই সমস্ত ভিসার ব্যপারে জানতে পারবেন এবং আবেদন করতে পারবেন। আমাদের রয়েছে দেশজোড়া অসংখ্য ভিসা এজেন্ট যারা বিভিন্ন দেশের বিভিন্ন ক্যাটাগরির ভিসা অফার আমাদের ওয়েব সাইটে নিয়ে আসছেন। এই সমস্ত ভিসা অফার থেকে আপনি আপনার পছন্দসই ভিসা অফারটি বেছে নিয়ে আবেদন করতে পারবেন। আমরা একটি সম্পুর্নভাবে স্বাধীন অনলাইনভিত্তিক প্রতিষ্ঠান। আমরা প্রতিদিন বিভিন্ন এজেন্টের ভিসা অফার পোস্টিং করার পাশাপাশি ভিসা প্রার্থীদেরকেও তাদের বায়োডাটা পোস্টিং করার সুবিধা দিয়ে থাকি। 
+							বাংলার একটি ভিসা মার্কেটপ্লেস যেখানে শত শত ভিসার খোঁজ পাবেন আপনি। এই সমস্ত ভিসার ব্যপারে জানতে পারবেন এবং আবেদন করতে পারবেন। আমাদের রয়েছে দেশজোড়া অসংখ্য ভিসা এজেন্ট যারা বিভিন্ন দেশের বিভিন্ন ক্যাটাগরির ভিসা অফার আমাদের ওয়েব সাইটে নিয়ে আসছেন। এই সমস্ত ভিসা অফার থেকে আপনি আপনার পছন্দসই ভিসা অফারটি বেছে নিয়ে আবেদন করতে পারবেন। আমরা একটি সম্পুর্নভাবে স্বাধীন অনলাইনভিত্তিক প্রতিষ্ঠান। আমরা প্রতিদিন বিভিন্ন এজেন্টের ভিসা অফার পোস্টিং করার পাশাপাশি ভিসা প্রার্থীদেরকেও তাদের বায়োডাটা পোস্টিং করার সুবিধা দিয়ে থাকি।
 							<a href="{{ route('about-us') }}" class="btn btn-more btn"><i class="fa fa-plus"></i>আরো জানুন</a>
-						</h3>  
+						</h3>
 				</div>
-			</div>  
-					<!-- about company end -->    
-      
+			</div>
+					<!-- about company end -->
+
 					<!--counter start-->
 			<div class="block block-pd-sm block-bg-grey-dark block-bg-overlay block-bg-overlay-6 text-center" data-block-bg-img="public/assets/img/passport-world-map-hero-1400x500.jpg?q=40&amp;w=1650&amp;sharp=30" data-stellar-background-ratio="0.3">
 				<h2 class="h-xlg h1 m-a-0">
@@ -335,19 +327,19 @@
 					<a href="{{ route('register')}}" class="btn btn-more btn-lg i-right">Join them today! <i class="fa fa-angle-right"></i></a>
 				@endif
 				</p>
-			</div>  
-					<!--counter end-->   
-      
+			</div>
+					<!--counter end-->
+
         <div class="mission text-justify block block-pd-sm ">
-        	<div class="col-md-1"></div> 
-        	<div class="col-md-10">        	
+        	<div class="col-md-1"></div>
+        	<div class="col-md-10">
 	        	<div class="col-md-6 m-b-lg">
 	                <h3 class="block-title">
 	                  Testimonials
 	                </h3>
 	                <img src="public/assets/img/man1.png" alt="রেজিস্ট্রেশন করুন, সিভি দিন ভিসা নিন">
 	          	</div>
-          
+
 				<!-- Latest Blog posts start -->
 				<div class="col-md-6 blog-roll">
 				<h3 class="block-title">
@@ -357,8 +349,8 @@
 				<!-- Blog post 1-->
 				<div class="media">
 				    <div class="media-left hidden-xs">
-				    	<div class="date-wrapper"> 
-				    		<span class="date-m">Jan</span> 
+				    	<div class="date-wrapper">
+				    		<span class="date-m">Jan</span>
 				    		<span class="date-d">01</span>
 				    	</div>
 				    </div>
@@ -366,14 +358,14 @@
 							<h4 class="media-heading">
 							  <a href="#" class="text-weight-strong">Under Contruction this blog</a>
 							</h4>
-					</div>    
+					</div>
 				</div>
 
-				          
+
 				</div>
-				<!-- Latest Blog posts end -->	
+				<!-- Latest Blog posts end -->
         	</div>
-    	</div>  
-    </div>	    
+    	</div>
+    </div>
     <!-- ======== content area end ======== -->
 @endsection

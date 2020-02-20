@@ -3,7 +3,7 @@ $('.carousel').carousel({
 })
 /********************************************************
  *
- * Custom Javascript code 
+ * Custom Javascript code
  *
  *******************************************************/
 $(document).ready(function() {
@@ -79,7 +79,7 @@ $(document).ready(function() {
     var $this = $(this),
       owlCarouselSettings = $this.data('owlcarousel-settings') || {};
 
-    $this.owlCarousel(owlCarouselSettings);
+    //$this.owlCarousel(owlCarouselSettings);
   });
 
   //initialise Stellar.js

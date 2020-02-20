@@ -3,10 +3,10 @@
 @section('admin')
  <div class="col-md-12" style="font-size:22px; line-height:40px;">
 
-                                <h2 class="block-title">
-                                    Create Visa
-                                </h2>
-                                <form method="POST" action="{{ route('admin.postVisaCategory') }}" enctype="multipart/form-data">
+        <h2 class="block-title">
+            Create Visa
+        </h2>
+     <form method="POST" action="{{ route('admin.postVisaCategory') }}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">
@@ -30,6 +30,6 @@
                                     </div>
                                 </form>
 
-                            </div>
+ </div>
 
  @endsection()

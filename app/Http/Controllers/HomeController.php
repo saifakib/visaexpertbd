@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Candidate;
 use App\CandidateDetails;
 use App\Category;
+use App\Contact;
 use App\Visa;
 use App\ApplyVisa;
 use Cassandra\Date;
@@ -41,7 +42,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $visas = Visa::get();
+        $visas = Visa::paginate(5);
         $latest = Visa::latest()->first();
         $categorys = Category::get();
         return view('home',compact('visas','latest','categorys'));
@@ -71,6 +72,20 @@ class HomeController extends Controller
     {
         return view('contactUs');
     }
+    public function contactUsPost(Request $request)
+    {
+//        {"_token":"DoiMDenkEWxDCT8M4t9ngb7iGlYjjUxIBpHGhUiw",
+//            "name":"testing candidate","email":"azim@gmail.com","subect":"fd","message":"v"}
+        $contact = new Contact();
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->subject = $request->subject;
+        $contact->message = $request->message;
+        $contact->created_at = Carbon::now();
+        $contact->save();
+
+        return redirect()->route('contact-us');
+    }
 
     public function visaCategory()
     {
@@ -80,7 +95,7 @@ class HomeController extends Controller
     public function viewVisaOffers()
     {
         $latest = Visa::latest()->first();
-        $visas = Visa::get();
+        $visas = Visa::paginate(10);
         return view('viewVisaOffers',compact('visas','latest'));
     }
 
@@ -93,7 +108,7 @@ class HomeController extends Controller
         }else {
             return view('layouts.visa24.candidate.profile',compact('user'));
         }
-        
+
     }
     public function editProfile($id) {
         $user = User::where('user_id', $id)->first();
@@ -148,22 +163,34 @@ class HomeController extends Controller
                     $agentU->updated_at = Carbon::now();
                     $agentU->save();
 
-                    if (strlen($request->file('logo')) > 0) {
-                        $oldImage = $agentU->logo;
-                        $folderPath = 'images/agent/';
+                    // if (strlen($request->file('logo')) > 0) {
+                    //     $oldImage = $agentU->logo;
+                    //     $folderPath = 'images/agent/';
+                    //     $aimage = $request->file('logo');
+                    //     $fileName = $user . '-' . time() . '.' . $aimage->getClientOriginalExtension();
+                    //     $img = Image::make($aimage)->resize(350, 360)->save(public_path('assets/img/agent/' . $fileName));
+                    //     if ($fileName != null) {
+                    //         $updateAgentImage = AgentDetails::where('user_id', $user)
+                    //             ->update([
+                    //                 'logo' => $fileName
+                    //             ]);
+                    //         if (file_exists(public_path() . '/' . $folderPath . '/' . $fileName)) {
+                    //             if (file_exists(public_path() . '/' . $folderPath . $oldImage)) {
+                    //                 unlink(public_path() . '/' . $folderPath . $oldImage);
+                    //             }
+                    //         }
+                    //     }
+                    // }
+                    if ($request->hasFile('logo'))
+                    {
                         $aimage = $request->file('logo');
-                        $fileName = $user . '-' . time() . '.' . $aimage->getClientOriginalExtension();
-                        $img = Image::make($aimage)->resize(350, 360)->save(public_path('assets/img/agent/' . $fileName));
-                        if ($fileName != null) {
-                            $updateAgentImage = AgentDetails::where('user_id', $user)
+                        $fileName =$request->id . '-' .$request->agent_name. '-' .time() . '.' . $aimage->getClientOriginalExtension();
+                        Image::make($aimage)->resize(225, 225)->save(public_path('assets/img/visaAgent/' . $fileName));
+                        if($fileName != null){
+                            AgentDetails::where('user_id', $user->user_id)
                                 ->update([
                                     'logo' => $fileName
                                 ]);
-                            if (file_exists(public_path() . '/' . $folderPath . '/' . $fileName)) {
-                                if (file_exists(public_path() . '/' . $folderPath . $oldImage)) {
-                                    unlink(public_path() . '/' . $folderPath . $oldImage);
-                                }
-                            }
                         }
                     }
                     Session::flash('success', 'Agent Update Successfull !!');
@@ -253,7 +280,7 @@ class HomeController extends Controller
     }
 
     public function candidateResumes() {
-        $candidates = User::where('role_id',2)->get();
+        $candidates = User::where('role_id',2)->paginate(10);
         //return $candidates;
         return view('candidateResumes',compact('candidates'));
     }
@@ -269,10 +296,11 @@ class HomeController extends Controller
     }
     public function postVisaCategory(Request $request)
     {
-//         $this->validate($request, [
-//             'category_name' => 'required',
-//             'image' => 'required|image'
-//         ]);
+
+         $this->validate($request, [
+             'category_name' => 'required',
+             'image' => 'required|image'
+         ]);
          $category = Category::insertGetId([
              'category_name' => $request->category_name,
              'created_by' => Auth::id(),
@@ -379,7 +407,7 @@ class HomeController extends Controller
         {
             $aimage = $request->file('logo');
             $currentDate = Carbon::now()->toDateString();
-            $fileName = $request->category. '-' .$currentDate. '.' . $aimage->getClientOriginalExtension();
+            $fileName = $request->category. '-' .$request->agent_id. '-' .$currentDate. '.' . $aimage->getClientOriginalExtension();
             Image::make($aimage)->resize(225, 225)->save(public_path('assets/img/visaOffers/' . $fileName));
             if($fileName != null){
                  Visa::where('visa_id', $visa)
@@ -406,7 +434,7 @@ class HomeController extends Controller
     }
     public function agentVisa($id)
     {
-        $visas = Visa::where('agent_id',$id)->get();
+        $visas = Visa::where('agent_id',$id)->paginate(10);
         $latest = Visa::where('agent_id',$id)->first();
         return view('viewVisaOffers',compact('visas','latest'));
     }
@@ -416,12 +444,13 @@ class HomeController extends Controller
         $visa = Visa::where('visa_id', $id)->first();
         $visas = Visa::where('agent_id',$visa->agent_id)->inRandomOrder()->limit(2)->get();
         return view('visaDetails', compact('visa','visas'));
+        //dd($visa);
     }
 
     public function categoryVisa($id)
     {
         $latest = Visa::latest()->first();
-        $visas = Visa::where('category_id',$id)->get();
+        $visas = Visa::where('category_id',$id)->paginate(10);
         return view('viewVisaOffers',compact('visas','latest'));
     }
 
@@ -443,7 +472,7 @@ class HomeController extends Controller
         }
     }
 
-    public function agentviewVisa($id) {
+    public function agentviewVisa($id){
         $visas = Visa::Where('agent_id', $id)->get();
         return view('layouts.visa24.agent.viewVisa',compact('visas'));
     }
@@ -565,8 +594,19 @@ class HomeController extends Controller
         $candidates = CandidateDetails::get();
         return view('layouts.visa24.admin.viewCandidate',compact('candidates'));
     }
-    
+
+    public function contacts()
+    {
+        $contacts = Contact::all();
+        return view('layouts.visa24.admin.viewContact',compact('contacts'));
+    }
+
     public function deleteAgent(User $id)
+    {
+        $id->delete();
+        return redirect()->back();
+    }
+    public function deleteContact(Contact $id)
     {
         $id->delete();
         return redirect()->back();
@@ -585,12 +625,12 @@ class HomeController extends Controller
     public function extraTwo()
     {
         return view('hireUsForVisa');
-    }    
+    }
     public function extraThree()
     {
         return view('purchaseTicket');
     }
-    
+
     public function terms()
     {
         return view('terms');
@@ -600,6 +640,16 @@ class HomeController extends Controller
         return view('privacy');
     }
 
+    public function createPost()
+    {
+        return view('layouts.visa24.admin.createPost');
+    }
+
+    public function postBlog(Request $request)
+    {
+        return $request;
+    }
+
     public function clear()
     {
         Artisan::call('route:clear');
@@ -607,5 +657,9 @@ class HomeController extends Controller
         Artisan::call('cache:clear');
         Artisan::call('view:clear');
         return redirect()->back();
+    }
+
+    public function media()
+    {
     }
 }

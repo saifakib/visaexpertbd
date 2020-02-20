@@ -6,7 +6,7 @@
                                 <h2 class="block-title">
                                     Post A Visa
                                 </h2>
-                                <form method="GET" action="{{ route('agent.postVisa') }}" enctype="multipart/form-data">
+                                <form method="GET" action="#" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">
