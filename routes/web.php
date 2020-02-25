@@ -29,7 +29,11 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>['auth','admin']],f
 {
 
     Route::get('/create-post', 'HomeController@createPost')->name('createPost');
-    Route::get('/create-post-post', 'HomeController@postBlog')->name('postBlog');
+    Route::post('/create-post-post', 'HomeController@postBlog')->name('postBlog');
+    Route::get('/view-post', 'HomeController@blogPosts')->name('blogPosts');
+    Route::get('/edit-post/{id}', 'HomeController@editPost')->name('editPost');
+    Route::get('/update-post', 'HomeController@updatePost')->name('updatePost');
+    Route::get('/delete-post/{id}', 'HomeController@deletePost')->name('deletePost');
     Route::get('/create-visa-category', 'HomeController@createVisaCategory')->name('createVisaCategory');
     Route::post('/post-visa-category', 'HomeController@postVisaCategory')->name('postVisaCategory');
     Route::get('/visa-categories', 'HomeController@visaCategories')->name('visaCategories');
@@ -98,10 +102,12 @@ Route::get('/apply-visa/{idv}', 'HomeController@applyVisa')->name('applyVisa');
 Route::get('/apply-visa-post/{id}', 'HomeController@applyVisaPost')->name('applyVisaPost');
 Route::get('/sign-up-for-free-and-get-visa', 'HomeController@extraOne')->name('extraOne');
 Route::get('/hire-us-for-your-visa', 'HomeController@extraTwo')->name('extraTwo');
-Route::get('/purchase-tickets-package-tours', 'HomeController@extraThree')->name('extraThree');
+Route::get('/purchase-tickets-package-tourscontact-us', 'HomeController@extraThree')->name('extraThree');
 
 Route::get('/terms', 'HomeController@terms')->name('terms');
 Route::get('/privacy', 'HomeController@privacy')->name('privacy');
+Route::get('/blog', 'HomeController@blog')->name('blog');
+Route::get('/blog/{id}', 'HomeController@singlePost')->name('singlePost');
 
 
 Route::get('/control', 'HomeController@control')->name('control');

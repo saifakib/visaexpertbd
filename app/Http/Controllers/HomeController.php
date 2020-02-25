@@ -7,6 +7,7 @@ use App\CandidateDetails;
 use App\Category;
 use App\Contact;
 use App\Visa;
+use App\Blog;
 use App\ApplyVisa;
 use Cassandra\Date;
 use Intervention\Image\Facades\Image;
@@ -163,24 +164,6 @@ class HomeController extends Controller
                     $agentU->updated_at = Carbon::now();
                     $agentU->save();
 
-                    // if (strlen($request->file('logo')) > 0) {
-                    //     $oldImage = $agentU->logo;
-                    //     $folderPath = 'images/agent/';
-                    //     $aimage = $request->file('logo');
-                    //     $fileName = $user . '-' . time() . '.' . $aimage->getClientOriginalExtension();
-                    //     $img = Image::make($aimage)->resize(350, 360)->save(public_path('assets/img/agent/' . $fileName));
-                    //     if ($fileName != null) {
-                    //         $updateAgentImage = AgentDetails::where('user_id', $user)
-                    //             ->update([
-                    //                 'logo' => $fileName
-                    //             ]);
-                    //         if (file_exists(public_path() . '/' . $folderPath . '/' . $fileName)) {
-                    //             if (file_exists(public_path() . '/' . $folderPath . $oldImage)) {
-                    //                 unlink(public_path() . '/' . $folderPath . $oldImage);
-                    //             }
-                    //         }
-                    //     }
-                    // }
                     if ($request->hasFile('logo'))
                     {
                         $aimage = $request->file('logo');
@@ -645,9 +628,68 @@ class HomeController extends Controller
         return view('layouts.visa24.admin.createPost');
     }
 
+    public function blog()
+    {
+        $blogs = Blog::get();
+        return view('blog',compact('blogs'));
+    }
+
     public function postBlog(Request $request)
     {
-        return $request;
+
+        $slug = preg_replace('/\s+/u', '-', trim($request->title));
+        $post = Blog::insertGetId([
+            'title' => $request->title,
+            'slug' => $slug,
+            'body' => $request->body,
+            'Created_at' => Carbon::now()
+            ]);
+        //Image upload
+        if ($request->hasFile('image'))
+        {
+            $aimage = $request->file('image');
+            $currentDate = Carbon::now()->toDateTimeLocalString();
+            $random = mt_rand(00000, 99999);
+            $fileName = $random . $currentDate. '.' . $aimage->getClientOriginalExtension();
+            Image::make($aimage)->resize(300, 350)->save(public_path('assets/img/visaCategories/' . $fileName));
+            if($fileName != null){
+                Blog::where('post_id', $post)
+                    ->update([
+                        'image' => $fileName
+                    ]);
+            }
+        }
+        return redirect()->back()->with('success','Blog Posted');
+    }
+
+    public function blogPosts()
+    {
+        $blogs = Blog::all();
+        return view('layouts.visa24.admin.viewPosts',compact('blogs'));
+
+    }
+
+    public function editPost(Request $request)
+    {
+        $blog = Blog::where('post_id',$request->id)->get();
+
+        return view('layouts.visa24.admin.editPost',compact('blog'));;
+
+    }
+    public function updatePost(Request $request)
+    {
+        return $request->id;
+    }
+    public function deletePost(Request $request)
+    {
+        $post = Blog::where('post_id', $request->id)->delete();
+        return redirect()->back();
+
+    }
+    public function singlePost(Request $request)
+    {
+        $post = Blog::where('post_id',$request->id)->first();
+        return view('singlePost',compact('post'));
     }
 
     public function clear()

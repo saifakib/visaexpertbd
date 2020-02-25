@@ -61,7 +61,7 @@
 				</li>
 
 				<li><a href="{{ route('about-us') }}">About Us</a></li>
-				<li><a href="#">Blog</a></li>
+				<li><a href="{{ route('blog') }}">Blog</a></li>
 				<li><a href="{{ route('our-services') }}">Our Service</a></li>
 				<li><a href="{{ route('contact-us') }}">Contact Us</a></li>
                 @if(Auth::user())

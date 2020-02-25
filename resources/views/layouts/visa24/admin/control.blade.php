@@ -33,7 +33,9 @@
     </div>
 
     @push('js')
-        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script
+            src="https://cdn.tiny.cloud/1/5bbdq1lqbag2n3u1tnvomf9884sn0fo6h2qdmsstwwr0h33n/tinymce/5/tinymce.min.js" referrerpolicy="origin"
+        ></script>
         <script>
             tinymce.init({
                 selector: '#body',
