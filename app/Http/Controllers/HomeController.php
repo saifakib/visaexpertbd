@@ -43,10 +43,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $visas = Visa::paginate(5);
+        $visas = Visa::paginate(6);
+        $totalVisa = Visa::get();
         $latest = Visa::latest()->first();
         $categorys = Category::get();
-        return view('home',compact('visas','latest','categorys'));
+        return view('home',compact('visas','latest','categorys','totalVisa'));
     }
 
     public function agentStart()
@@ -112,12 +113,16 @@ class HomeController extends Controller
 
     }
     public function editProfile($id) {
-        $user = User::where('user_id', $id)->first();
-        if($user->role_id == 1) {
-            return view('layouts.visa24.agent.editProfile',compact('user'));
-        } else {
-            return view('layouts.visa24.candidate.editProfile',compact('user'));
+        if(Auth::user())
+        {
+            $user = User::where('user_id', $id)->first();
+            if($user->role_id == 1) {
+                return view('layouts.visa24.agent.editProfile',compact('user'));
+            } else {
+                return view('layouts.visa24.candidate.editProfile',compact('user'));
+            }
         }
+
 
     }
 
@@ -134,6 +139,7 @@ class HomeController extends Controller
         //     'location' => 'required',
         //     'logo' => 'required|mimes:jpeg,jpg,JPG,bmp,png,wepp'
         // ]);
+        //return $request->all();
         $user = User::where('user_id', $request->id)->first();
         if($user->role_id == 1)
         {
@@ -170,7 +176,7 @@ class HomeController extends Controller
                         $fileName =$request->id . '-' .$request->agent_name. '-' .time() . '.' . $aimage->getClientOriginalExtension();
                         Image::make($aimage)->resize(225, 225)->save(public_path('assets/img/visaAgent/' . $fileName));
                         if($fileName != null){
-                            AgentDetails::where('user_id', $user->user_id)
+                            AgentDetails::where('user_id', $request->id)
                                 ->update([
                                     'logo' => $fileName
                                 ]);
@@ -192,11 +198,12 @@ class HomeController extends Controller
             DB::beginTransaction();
             if($candidate)
             {
-                $user = User::where('user_id', $request->id)->first();
+//                $user = User::where('user_id', $request->id)->first();
                 $user->full_name = $request->full_name;
                 $user->username = $request->username;
                 $user->updated_at = Date('Y-m-d');
                 $user->save();
+                DB::commit();
 
                 if($user){
                     $candidate->full_name = $request->full_name;
@@ -205,7 +212,7 @@ class HomeController extends Controller
                     $candidate->status = 1;
                     $candidate->save();
 
-                    $candidateU = CandidateDetails::where('user_id', $user->user_id)->first();
+                    $candidateU = CandidateDetails::where('user_id', $request->id)->first();
                     $candidateU->full_name = $request->full_name;
                     $candidateU->user_name = $request->username;
                     $candidateU->DOB = $request->dob;
@@ -227,16 +234,17 @@ class HomeController extends Controller
                     $candidateU->updated_at = Carbon::now();
                     $candidateU->save();
 
+
                     if (strlen($request->file('candidate_image')) > 0) {
                         $oldImage = $candidateU->candidate_image;
                         $folderPath = 'images/candidate/';
                         $aimage = $request->file('candidate_image');
-                        $fileName = $user . '-' . time() . '.' . $aimage->getClientOriginalExtension();
-                        $img = Image::make($aimage)->resize(350, 360)->save(public_path('assets/img/candidate' . $fileName));
+                        $fileName = $user->user_id . time() . '.' . $aimage->getClientOriginalExtension();
+                        $img = Image::make($aimage)->resize(350, 360)->save(public_path('assets/img/candidate/' . $fileName));
                         if ($fileName != null) {
-                            $updateAgentImage = CandidateDetails::where('user_id', $user)
+                            $updateAgentImage = CandidateDetails::where('user_id', $request->id)
                                 ->update([
-                                    'candidate' => $fileName
+                                    'candidate_image' => $fileName
                                 ]);
                             if (file_exists(public_path() . '/' . $folderPath . '/' . $fileName)) {
                                 if (file_exists(public_path() . '/' . $folderPath . $oldImage)) {
@@ -426,7 +434,8 @@ class HomeController extends Controller
     {
         $visa = Visa::where('visa_id', $id)->first();
         $visas = Visa::where('agent_id',$visa->agent_id)->inRandomOrder()->limit(2)->get();
-        return view('visaDetails', compact('visa','visas'));
+        $media = DB::table('media')->get();
+        return view('visaDetails', compact('visa','visas','media'));
         //dd($visa);
     }
 
@@ -630,7 +639,7 @@ class HomeController extends Controller
 
     public function blog()
     {
-        $blogs = Blog::get();
+        $blogs = Blog::paginate(3);
         return view('blog',compact('blogs'));
     }
 
@@ -647,11 +656,12 @@ class HomeController extends Controller
         //Image upload
         if ($request->hasFile('image'))
         {
+            echo 'yes';
             $aimage = $request->file('image');
-            $currentDate = Carbon::now()->toDateTimeLocalString();
-            $random = mt_rand(00000, 99999);
-            $fileName = $random . $currentDate. '.' . $aimage->getClientOriginalExtension();
-            Image::make($aimage)->resize(300, 350)->save(public_path('assets/img/visaCategories/' . $fileName));
+            $random = mt_rand(00000000, 99999999);
+            $fileName = $random . '.' . $aimage->getClientOriginalExtension();
+            //dd($fileName);
+            Image::make($aimage)->resize(300, 350)->save(public_path('assets/img/blog/' . $fileName));
             if($fileName != null){
                 Blog::where('post_id', $post)
                     ->update([
@@ -692,6 +702,62 @@ class HomeController extends Controller
         return view('singlePost',compact('post'));
     }
 
+    public function media()
+    {
+        $medias = DB::table('media')->get();
+        return view('layouts.visa24.admin.media',compact('medias'));
+    }
+    public function editMedia(Request $request)
+    {
+        $media = DB::table('media')->where('media_id', $request->id)->first();
+        return view('layouts.visa24.admin.editMedia',compact('media'));
+    }
+    public function updateMedia(Request $request)
+    {
+        DB::table('media')
+            ->where('media_id', $request->id)
+            ->update(
+                ['social_medial_link' => $request->media_link]
+            );
+        return redirect()->route('admin.media');
+    }
+
+    public function queryVisa(Request $request)
+    {
+        $category = Category::where('category_name','like', '%' . $request->visa_type . '%')->first();
+        if(isset($category))
+        {
+            $visas = Visa::where('category_id', $category->category_id)
+                ->orWhere('offered_country', 'like', '%' . $request->visa_location . '%')->paginate(10);
+        }
+        else{
+            $visas = Visa::Where('offered_country', 'like', '%' . $request->visa_location . '%')->paginate(10);
+        }
+        $latest = Visa::latest()->first();
+        return view('viewVisaOffers',compact('visas','latest'));
+    }
+    public function queryCandidate(Request $request)
+    {
+        $candidates = CandidateDetails::where('full_name', 'like', '%' . $request->candidate_info . '%')
+            ->orWhere('user_name', 'like', '%' . $request->candidate_info . '%')
+            ->orWhere('budget', 'like', '%' . $request->candidate_info . '%')
+            ->orWhere('present_location', 'like', '%' . $request->candidate_location . '%')
+            ->orWhere('permanent_location', 'like', '%' . $request->candidate_location . '%')
+            ->orWhere('occupation', 'like', '%' . $request->candidate_info . '%')
+            ->orWhere('sector', 'like', '%' . $request->candidate_info . '%')
+            ->orWhere('presently_in_job', 'like', '%' . $request->candidate_info . '%')
+            ->orWhere('country_apply', 'like', '%' . $request->candidate_info . '%')
+            ->orWhere('visa_type', 'like', '%' . $request->candidate_info . '%')
+            ->paginate(10);
+
+        return view('candidateResumes',compact('candidates'));
+    }
+    public function filterCandidate(Request $request)
+    {
+        return $request->all();
+    }
+
+
     public function clear()
     {
         Artisan::call('route:clear');
@@ -701,7 +767,5 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
-    public function media()
-    {
-    }
+
 }

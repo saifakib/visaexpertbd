@@ -6,8 +6,9 @@
                                 <h2 class="block-title">
                                     Visa Agent Profile Update
                                 </h2>
-                                <form method="GET" action="{{ route('updateProfile') }}" enctype="multipart/form-data">
+                                <form method="POST" action="{{ route('updateProfile') }}" enctype="multipart/form-data">
                                     @csrf
+                                    @method('PUT')
                                     <input type="hidden" name="id" value="{{ $user->user_id }}"/>
                                     <div class="row">
                                         <div class="col-md-12">

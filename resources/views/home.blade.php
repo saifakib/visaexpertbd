@@ -68,7 +68,7 @@
 					<!-- visa search form start -->
 					<div class="col-md-12 m-b-20">
 
-				    <form action="#" method="#" class="form-validate form-horizontal" >
+				    <form action="{{ route('queryVisa') }}" method="GET" class="form-validate form-horizontal" >
 				     <div class="row">
 				     	<div class="col-md-3">
 				         <span class="text-uppercase text-default" style="font-size:20px;"><strong>Find Visa Offers</strong>
@@ -76,12 +76,12 @@
 				        </div>
 
 				        <div class="col-md-3">
-				         <input name="search_key" id="search_key" value="" class="form-control " placeholder="Visa type" aria-invalid="false" type="text">
+				         <input name="visa_type" id="search_key" value="" class="form-control " placeholder="Visa type" aria-invalid="false" type="text">
 				         <span class="text-default" style="font-size:10px; color:#999;">Visa type</span>
 				        </div>
 
 				        <div class="col-md-3">
-				         <input name="search_location" id="search_location" value="" autocomplete="off" class="form-control " placeholder="Country" aria-invalid="false" type="text"  >
+				         <input name="visa_location" id="search_location" value="" autocomplete="off" class="form-control " placeholder="Country" aria-invalid="false" type="text"  >
 				         <span class="text-default" style="font-size:10px; color:#999;">Country</span>
 				        </div>
 

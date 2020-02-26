@@ -197,10 +197,10 @@
                     <!--social media icons-->
                     <div class="navbar-text social-media social-media-inline pull-right">
                         <!--@todo: replace with company social media details-->
-                        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-google-plus"></i></a>
+                        <a href="{{ $media[1]->social_medial_link }}" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="{{ $media[0]->social_medial_link }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="{{ $media[2]->social_medial_link }}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        <a href="{{ $media[3]->social_medial_link }}" target="_blank"><i class="fa fa-google-plus"></i></a>
                     </div>
                 </div>
                 <!-- offers View Details end -->

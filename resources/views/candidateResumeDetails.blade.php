@@ -120,7 +120,7 @@
                         <div class="col-md-6 border-left-dotted">
                             <div class="col-md-12 bg-info border-info-radius">
             <span class="col-md-6">
-			<img src="{{ url('assets/img/candidate/'.$candidate->candidateDetails->candidate_image) }}" alt="" class="img-thumbnail" width="180"/></a>            </span>
+			<img src="{{ asset('assets/img/candidate/'.$candidate->candidateDetails->candidate_image) }}" alt="" class="img-thumbnail" width="180"/></a>            </span>
                                 <span class="col-md-6"><br />
 
             </span>

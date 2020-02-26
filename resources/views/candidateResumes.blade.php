@@ -8,17 +8,17 @@
                 <div class="services block block-bg-gradient block-border-bottom ">
 
                     <div class="col-md-12">
-                        <form action="#" method="get" class="form-horizontal" >
+                        <form action="{{ route('queryCandidate') }}" method="GET" class="form-horizontal" >
                             <div class="row">
                                 <div class="col-md-3">
                                     <span class="text-uppercase text-default" style="font-size:20px;"><strong>Find Candidates</strong></span>
                                 </div>
                                 <div class="col-md-3">
-                                    <input name="search_key" id="search_key" value="" class="form-control " placeholder="Name, Job Title, Budget etc" aria-invalid="false" type="text">
+                                    <input name="candidate_info" id="search_key" value="" class="form-control " placeholder="Name, Job Title, Budget etc" aria-invalid="false" type="text">
                                     <span class="text-default" style="font-size:10px; color:#999;">Name , Job Title, etc</span>
                                 </div>
                                 <div class="col-md-3">
-                                    <input name="search_location" id="search_location" value="" autocomplete="off" class="form-control " placeholder="City, Country" aria-invalid="false" type="text"  >
+                                    <input name="candidate_location" id="search_location" value="" autocomplete="off" class="form-control " placeholder="City, Country" aria-invalid="false" type="text"  >
                                     <span class="text-default" style="font-size:10px; color:#999;">City, Country, etc</span>
                                 </div>
                                 <div class="col-md-3">
@@ -37,24 +37,8 @@
 				            		<span class="glyphicon glyphicon glyphicon-search text-danger"></span> Refine Your Search
 				            	</span>
                                 <br /><br />
-                                <span class="col-md-12 text-default">Search By:</span>
-
                                 <form action="" method="post" class="form-validate form-horizontal" >
-					              <span class="col-md-12 text-default" style="padding-bottom:5px; padding-top:5px;">
-					               <input name="result_key" id="result_key" value="" class="form-control " placeholder="Candidates Result" aria-invalid="false" type="text">
-					              </span>
-
-                                    <span class="col-md-12 text-default" style="padding-bottom:5px; padding-top:5px;">
-					               <input name="age_key" id="age_key" value="" class="form-control " placeholder="Candidates Age" aria-invalid="false" type="text">
-					              </span>
-
-                                    <span class="col-md-12 text-default border-bottom" style="padding-bottom:5px; padding-top:5px;">
-					               &nbsp;
-					              </span>
-
-
                                     <span class="col-md-12 text-default"><br />Filter By:</span>
-
                                     <span class="col-md-12 text-default" style="padding-bottom:5px; padding-top:5px;">
 					               <select id="visatype_key" name="visatype_key" class="form-control " >
 					                    <option value="">Visa Type</option>
@@ -341,9 +325,9 @@
 					              </span>
 
                                     <span class="col-md-12 text-default " style="padding-bottom:5px; padding-top:15px;">
-					               <!-- <button type="submit" class="validate btn btn-danger col-md-5">
+					               <button type="submit" class="validate btn btn-danger col-md-5">
 										Filter
-								   </button> -->
+								   </button>
 
 					               <a class="btn btn-one col-md-5 pull-right" href="#" title="Reset">
 					                    Reset

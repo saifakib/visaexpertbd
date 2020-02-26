@@ -7,10 +7,10 @@
 		<!--social media icons-->
 		<div class="navbar-text social-media social-media-inline pull-right">
 			<!--@todo: replace with company social media details-->
-			<a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a>
-			<a href="https://facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a>
-			<a href="https://linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a>
-			<a href="https://youtube.com/" target="_blank"><i class="fa fa-youtube"></i></a>
+			<a href="{{ $media[1]->social_medial_link }}" target="_blank"><i class="fa fa-twitter"></i></a>
+			<a href="{{ $media[0]->social_medial_link }}" target="_blank"><i class="fa fa-facebook"></i></a>
+			<a href="{{ $media[2]->social_medial_link }}" target="_blank"><i class="fa fa-linkedin"></i></a>
+			<a href="{{ $media[3]->social_medial_link }}" target="_blank"><i class="fa fa-youtube"></i></a>
 		</div>
 
 		<!--everything within this div is collapsed on mobile-->

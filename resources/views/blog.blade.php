@@ -7,13 +7,7 @@
             <div class="col-md-1">
             </div>
             <div class="col-md-10">
-                <!--<div class="container">   -->
-                <!-- Begin Content -->
-
-
-                <div id="system-message-container">
-                </div>
-
+                <div id="system-message-container"></div>
                 <div class="services block block-bg-gradient block-border-bottom">
                     <h1>Posts</h1>
 
@@ -32,7 +26,7 @@
                                 </div>
 
                                 <div class="blogfactory-post-content">
-                                    <p class="separator" style="text-align: justify;" data-blogger-escaped-style="clear: both; text-align: center;"><a href="https://4.bp.blogspot.com/--vxPNo4dDHA/W2FIVlN4ouI/AAAAAAAAal0/JjhvgkGldHMg18zItjgQWpRKmvvvBbawQCLcBGAs/s1600/CANADA.png" data-blogger-escaped-style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img style="float: left; padding-right: 20px;" src="" width="235" height="320" border="0" data-blogger-escaped-data-original-height="498" data-blogger-escaped-data-original-width="366" /></a></p>
+                                    <p class="separator" style="text-align: justify;" data-blogger-escaped-style="clear: both; text-align: center;"><a href="" data-blogger-escaped-style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img style="float: left; padding-right: 20px;" src="{{ asset('assets/img/blog/' . $blog->image) }}" width="235" height="320" border="0" data-blogger-escaped-data-original-height="498" data-blogger-escaped-data-original-width="366" /></a></p>
                                     <div data-blogger-escaped-style="text-align: justify;">
                                         <p style="text-align: justify;"><span style="font-size: x-large;" data-blogger-escaped-style="font-size: large;"/>{!! $blog->body !!}  </p>
                                     </div>

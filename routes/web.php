@@ -48,6 +48,8 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>['auth','admin']],f
     Route::get('/delete-candidate/{id}', 'HomeController@deleteCandidate')->name('deleteCandidate');
 
     Route::get('/medias', 'HomeController@media')->name('media');
+    Route::get('/media/{id}', 'HomeController@editMedia')->name('editMedia');
+    Route::get('/update-media/{id}', 'HomeController@updateMedia')->name('updateMedia');
 
     Route::get('/view-visa', 'HomeController@adminviewVisa')->name('viewVisa');
     Route::get('/post-visa', 'HomeController@createVisa')->name('createVisa');
@@ -88,7 +90,7 @@ Route::get('/contact-us', 'HomeController@contactUs')->name('contact-us');
 Route::get('/contact-us-post', 'HomeController@contactUsPost')->name('contact-us-post');
 Route::get('/profile', 'HomeController@profile')->name('profile');
 Route::get('/profile-edit/{id}', 'HomeController@editProfile')->name('editProfile');
-Route::get('/profile-update', 'HomeController@updateProfile')->name('updateProfile');
+Route::put('/profile-update', 'HomeController@updateProfile')->name('updateProfile');
 Route::get('/visa-category', 'HomeController@visaCategory')->name('visacategory');
 Route::get('/view-visa-offers', 'HomeController@viewVisaOffers')->name('viewvisaoffers');
 Route::get('/candidate-resumes', 'HomeController@candidateResumes')->name('candidateResumes');
@@ -109,6 +111,16 @@ Route::get('/privacy', 'HomeController@privacy')->name('privacy');
 Route::get('/blog', 'HomeController@blog')->name('blog');
 Route::get('/blog/{id}', 'HomeController@singlePost')->name('singlePost');
 
+Route::get('/visa-offers', 'HomeController@queryVisa')->name('queryVisa');
+Route::get('/search-candidates', 'HomeController@queryCandidate')->name('queryCandidate');
+Route::get('/filter-candidates', 'HomeController@filterCandidate')->name('filterCandidate');
 
 Route::get('/control', 'HomeController@control')->name('control');
+
+
+//
+View::composer('layouts.visa24.partials.navbar',function($view){
+    $medias =DB::table('media')->get();
+    $view->with('media',$medias);
+});
 
