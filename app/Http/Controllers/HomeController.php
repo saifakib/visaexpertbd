@@ -747,14 +747,19 @@ class HomeController extends Controller
             ->orWhere('sector', 'like', '%' . $request->candidate_info . '%')
             ->orWhere('presently_in_job', 'like', '%' . $request->candidate_info . '%')
             ->orWhere('country_apply', 'like', '%' . $request->candidate_info . '%')
+            ->orWhere('visa_need', 'like', '%' . $request->candidate_info . '%')
             ->orWhere('visa_type', 'like', '%' . $request->candidate_info . '%')
             ->paginate(10);
 
-        return view('candidateResumes',compact('candidates'));
+        return view('queryCandidateResumes',compact('candidates'));
     }
     public function filterCandidate(Request $request)
     {
-        return $request->all();
+        $candidates = CandidateDetails::where('visa_type', 'like', '%' . $request->visatype_key . '%')
+            ->orWhere('country_apply', 'like', '%' . $request->country_key . '%')
+            ->orWhere('visa_need', 'like', '%' . $request->country_key . '%')
+            ->paginate(10);
+        return view('queryCandidateResumes',compact('candidates'));
     }
 
 

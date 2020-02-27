@@ -329,7 +329,7 @@
 										Filter
 								   </button>
 
-					               <a class="btn btn-one col-md-5 pull-right" onclick="location.reload();"  title="Reset">
+					               <a class="btn btn-one col-md-5 pull-right" onclick="location.reload();" title="Reset">
 					                    Reset
 					                </a>
 					              </span>
@@ -349,7 +349,7 @@
                                                 <div class="row">
                                                     <div class="col-md-3">
                                                         <a href="/#" title="ABUL ">
-                                                            <img src="{{ asset('assets/img/candidate/'.$candidate->candidateDetails->candidate_image) }}" border="0" alt=" " class="img-thumbnail" width="100" />
+                                                            <img src="{{ asset('assets/img/candidate/'.$candidate->candidate_image) }}" border="0" alt=" " class="img-thumbnail" width="100" />
                                                         </a>
                                                     </div>
                                                     <div class="col-md-9">
@@ -357,13 +357,13 @@
                                                             {{ $candidate->full_name }}
                                                         </h4>
                                                         <h5 class="text-default">
-                                                             {{ $candidate->candidateDetails->present_location }}, {{ $candidate->candidateDetails->education }},  {{ $candidate->candidateDetails->language }}
+                                                            {{ $candidate->present_location }}, {{ $candidate->education }},  {{ $candidate->language }}
                                                         </h5>
                                                         <h4 class="text-one">
-                                                            Interested for {{ $candidate->candidateDetails->country_apply }} (  )
+                                                            Interested for {{ $candidate->country_apply }} (  )
                                                         </h4>
                                                         <h4 class="text-two">
-                                                            Budget {{ $candidate->candidateDetails->budget }} Tk.
+                                                            Budget {{ $candidate->budget }} Tk.
                                                             <a href="{{ route('candidateResumeDetails', $candidate->user_id) }}"  class="btn btn-one pull-right">
                                                                 view more
                                                             </a>

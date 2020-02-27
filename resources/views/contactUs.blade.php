@@ -44,7 +44,7 @@
 	     			</div>
 				    <div class="col-md-6">
 				        <div class="col-md-12" style="font-size:22px; line-height:40px;">
-				            <span class="col-md-12 text-info"> Please contact our call centre at 01893759258 from 9 to 5 on all days except Friday and National holidays. Or fill in with what you want to say from below. Generally, we try to serve you instantly providing information. But if there is any holiday or on weekend we respond on next weekday. Take that, you send a message at 4.30 PM on Thursday; we will respond you on Saturday or Sunday. Please have patience. Don’t call repeatedly.</span>
+				            <span class="col-md-12 text-info"> Please contact our call centre at 01713085971 from 9 to 5 on all days except Friday and National holidays. Or fill in with what you want to say from below. Generally, we try to serve you instantly providing information. But if there is any holiday or on weekend we respond on next weekday. Take that, you send a message at 4.30 PM on Thursday; we will respond you on Saturday or Sunday. Please have patience. Don’t call repeatedly.</span>
 				       </div>
 					</div>
 				</div>
