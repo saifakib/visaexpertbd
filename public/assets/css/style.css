@@ -5,8 +5,8 @@
 /* blog coding start */
 .navbar {
     position: relative;
-    min-height: 50px; 
-    margin-bottom: 0px; 
+    min-height: 50px;
+    margin-bottom: 0px;
     border: 1px solid transparent;
 }
 .blog-post{
@@ -48,11 +48,11 @@
   margin-bottom: 20px;
 }
 .text-one{
-  color: #337ab7; 
+  color: #337ab7;
   font-weight: 400;
 }
 .text-two{
-  color: #a94442; 
+  color: #a94442;
   font-weight: 400;
 }
 .btn-one {
@@ -1727,13 +1727,21 @@ a {
 a:hover {
   color: #ff5821;
 }
+/*#background-wrapper {*/
+/*  background-color: #000000;*/
+/*  background-position: 50% 80%;*/
+/*  !*background-attachment: fixed;*!*/
+/*  !*padding-bottom: 0;*!*/
+/*  background-repeat: no-repeat;*/
+/*  !*border-bottom: 2px solid #ff5821;*!*/
+/*}*/
 #background-wrapper {
-  background-color: #000000;
-  background-position: 50% 80%;
-  /*background-attachment: fixed;*/
-  /*padding-bottom: 0;*/
-  background-repeat: no-repeat;
-  /*border-bottom: 2px solid #ff5821;*/
+    background-color: #000000;
+    background-position: 50% 40%;
+    /*background-attachment: fixed;*/
+    /*padding-bottom: 0;*/
+    background-repeat: no-repeat;
+    /*border-bottom: 2px solid #ff5821;*/
 }
 .benches {
   background-image: url(../img/backgrounds/benches.png);
@@ -1742,12 +1750,12 @@ a:hover {
   background-image: url(../img/backgrounds/boots.png);
 }
 .buildings {
-  background: url(../img/final-header4.png);  
+  background: url(../img/final-header4.png);
 	  -webkit-background-size: cover;
 	  -moz-background-size: cover;
 	  -o-background-size: cover;
 	  background-size: cover;
-	 
+
 }
 .city {
   background-image: url(../img/backgrounds/city.png);
@@ -2117,7 +2125,7 @@ a.btn-hh-trigger.target-open:after {
 }
 .navbar-default .navbar-nav li > a:not(.btn):hover .dropdown-menu {
   display: block;
-  
+
 }
 
 .navbar-default .navbar-nav li a {
@@ -2634,7 +2642,7 @@ ul.nav-tabs.nav-tabs-right > li:last-child {
 }
 
 .slide1bg{
-	background: url(../images/bg1.jpg) no-repeat center center fixed; 
+	background: url(../images/bg1.jpg) no-repeat center center fixed;
 	  -webkit-background-size: cover;
 	  -moz-background-size: cover;
 	  -o-background-size: cover;
@@ -2642,7 +2650,7 @@ ul.nav-tabs.nav-tabs-right > li:last-child {
 	  min-height: 380px;
 }
 .slide2bg{
-	background: url(../images/bg2.jpg) no-repeat center center fixed; 
+	background: url(../images/bg2.jpg) no-repeat center center fixed;
 	  -webkit-background-size: cover;
 	  -moz-background-size: cover;
 	  -o-background-size: cover;
@@ -2651,21 +2659,21 @@ ul.nav-tabs.nav-tabs-right > li:last-child {
 }
 
 .registerbg{
-	background: url(../images/regis.jpg) no-repeat center center fixed; 	
+	background: url(../images/regis.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  
+
 }
 
 .loginbg{
-	background: url(../images/bg-login-small.jpg) no-repeat top right fixed; 	
+	background: url(../images/bg-login-small.jpg) no-repeat top right fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  
+
 }
 
 .myborder_radius {
@@ -2685,10 +2693,10 @@ ul.nav-tabs.nav-tabs-right > li:last-child {
 	border:1px solid #CCC;
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
-          border-radius: 5px;		  
+          border-radius: 5px;
 		  text-align:left;
 		  padding:10px;
-		 
+
 }
 .border-left-dotted{border-left:3px dotted #999999;}
 .texttitle{padding-left:15px; margin-left:-30px; color:#ffee00; font-size:24px; line-height:43px;}
@@ -2699,16 +2707,16 @@ ul.nav-tabs.nav-tabs-right > li:last-child {
 
 -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
-          border-radius: 5px; 
+          border-radius: 5px;
 		  padding:10px;}
 
 .border-info-radius{border:1px solid #d9edf7;
 
 -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
-          border-radius: 5px; 
+          border-radius: 5px;
 		  padding:10px;}
-		  
+
 ul#agentmenu > li > a.label {
     position: absolute;
     top: 5px;
@@ -2737,7 +2745,7 @@ ul#agentmenu > li > a.label {
 .border-info-cust{border:10px solid #f0f0f0;
 -webkit-border-radius: 15px;
      -moz-border-radius: 15px;
-          border-radius: 15px; 
+          border-radius: 15px;
 		  padding:10px;
 }
 .h4text-cust{color:#e4dfeb; font-weight:bold;}

@@ -342,28 +342,31 @@
 
 				<!-- Latest Blog posts start -->
 				<div class="col-md-6 blog-roll">
-				<h3 class="block-title">
-				  Latest From Our Blog
-				</h3>
+                    <h3 class="block-title">
+                      Latest From Our Blog
+                    </h3>
 
-				<!-- Blog post 1-->
-				<div class="media">
-				    <div class="media-left hidden-xs">
-				    	<div class="date-wrapper">
-				    		<span class="date-m">Jan</span>
-				    		<span class="date-d">01</span>
-				    	</div>
-				    </div>
-					<div class="media-body">
-							<h4 class="media-heading">
-							  <a href="#" class="text-weight-strong">Under Contruction this blog</a>
-							</h4>
-					</div>
+                    @foreach($blogs as $blog)
+                        <div class="media">
+                            <div class="media-left hidden-xs">
+                                <div class="date-wrapper">
+                                    <span class="date-m">{{ $blog->created_at->format('M') }}</span>
+                                    <span class="date-d">{{ $blog->created_at->format('d') }}</span>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    <a href="/component/blogfactory/post/5/কানাডার-স্টুডেন্ট-ভিসার-উপযুক্ত-সময়-এই-মাস.html" class="text-weight-strong">{{ $blog->title }}</a>
+                                </h4>
+                                <p>
+                                    {{-- {!! mb_strimwidth($blog->body,'0','10') !!}--}}
+                                    <a href="{{ route('singlePost', $blog->post_id) }}">Read more <i class="fa fa-angle-right"></i></a>
+                                </p>
+                            </div>
+                        </div>
+                    @endforeach
 				</div>
 
-
-				</div>
-				<!-- Latest Blog posts end -->
         	</div>
     	</div>
     </div>

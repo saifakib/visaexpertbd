@@ -47,7 +47,8 @@ class HomeController extends Controller
         $totalVisa = Visa::get();
         $latest = Visa::latest()->first();
         $categorys = Category::get();
-        return view('home',compact('visas','latest','categorys','totalVisa'));
+        $blogs = Blog::all()->take(4);
+        return view('home',compact('visas','latest','categorys','totalVisa','blogs'));
     }
 
     public function agentStart()

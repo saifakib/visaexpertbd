@@ -3,7 +3,7 @@
 
 <body class="page-index has-hero">
 	<!-- ======== header and navigation start ======== -->
-	<div id="navigation" class="wrapper">
+        <div id="navigation" class="wrapper">
 
 		<!-- ========navbar start ========-->
 		@include('layouts.visa24.partials.navbar')
@@ -14,7 +14,7 @@
 
 	<!-- ======== heading searching option start ======== -->
 
-	<div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1">
+	<div id="background-wrapper" class="buildings" data-stellar-background-ratio="1.0">
 
 		<!-- ========Header start ========-->
 

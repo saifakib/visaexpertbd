@@ -37,6 +37,12 @@
                             </div>
                         @endforeach
 
+                            <div class="text-center">
+                                <ul class='pagination'>
+                                    {{ $blogs->links() }}
+                                </ul>
+                            </div>
+
                     </div>
 
                 </div>
